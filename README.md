@@ -1,3 +1,3 @@
 # pa-analysis
 
-This project aims scrapping and analysing Brazilian Protected Areas 
+This project aims to scrape and analyze data from Brazilian Protected Areas available on the Internet 
