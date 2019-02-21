@@ -19,7 +19,7 @@ pt_names <- pa_names %>%
   subset(is.na(enNameWiki)) %>%
   subset(!is.na(ptNameWiki))
 
-# Verify pages by Name: in enNameWiki without page in ptnNameWiki
+# Verify pages by Name: in enNameWiki without page in ptNameWiki
 en_names <- pa_names %>%
   subset(is.na(ptNameWiki)) %>%
   subset(!is.na(enNameWiki))
