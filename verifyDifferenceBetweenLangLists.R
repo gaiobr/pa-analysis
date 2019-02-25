@@ -7,6 +7,9 @@
 # Load packages
 library(tidyverse)
 
+# Clean R memory
+rm(list=ls())
+
 # Define dataset
 pa_names <- read_csv("./data/BrazilianProtectedAreas_2018-12-10_reviewed.csv")
 
