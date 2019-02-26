@@ -42,7 +42,7 @@ eCaps <- list(chromeOptions = list(prefs = list(
 )))
 
 # Here we connect with the Docker
-remDr <- RSelenium::remoteDriver(remoteServerAddr = "localhost", port = 4445L, browserName = "firefox", extraCapabilities = eCaps)
+remDr <- RSelenium::remoteDriver(remoteServerAddr = "localhost", port = 4445L, browserName = "chrome", extraCapabilities = eCaps)
 remDr$open()
 
 # Running loop to extract from English Pages
@@ -151,9 +151,51 @@ for(i in 1:nrow(pt_names)){
 dif_id <- PA_DB %>%
   subset(idPtWikiData != idEnWikiData)
 
-url = "www.google.com"
-remDr$navigate(url)
-remDr$screenshot(display = TRUE)
+for(i in 1:nrow(dif_id)){
+  # This first line defines the link
+  #### Very important to define view dates
+  # If statement to control errors from non-existent pages
+  print(paste(dif_id[i,10]," - ",dif_id[i,2]))
+  
+  ptWikiPage <- gsub("^.*?wiki/","", dif_id$ptWikiPage[i])
+  
+  codCnuc <- dif_id$codCnuc
+  url<-paste("https://tools.wmflabs.org/langviews/?project=pt.wikipedia.org&platform=all-access&agent=user&start=",views_start,"&end=",views_end,"&sort=views&direction=1&view=list&page=", sep="")
+  url2<-paste(url,ptWikiPage,sep="")
+  
+  print(url2)
+  
+  # Automatized data download - adjust Sys.sleep values for speed
+  remDr$navigate(url2)
+  Sys.sleep(20) #20 early
+  remDr$screenshot(display = TRUE)
+  webElem <- remDr$findElement("class", "download-btn-group")
+  remDr$screenshot(display = TRUE)
+  webElem$clickElement()
+  remDr$screenshot(display = TRUE)
+  Sys.sleep(2)
+  webElem <- remDr$findElement("class", "download-csv")
+  webElem$clickElement()
+  Sys.sleep(10) #10 early
+  
+  # Assigns a name to the PA_Name variable that will be used to rename the CSV file 
+  PA_Name <- dif_id$ptNameWiki[i]
+  
+  #Automatically renames files according to PA_DB line number - adjust accordingly if necessary
+  #file.rename(paste("/home/seluser/Data/Raw_Data/Wikipedia/",PA_cat,"/","langviews-20150701-20180731.csv",sep=""),paste("/home/seluser/Data/Raw_Data/Wikipedia/",PA_cat,"/",i,"_",PA_DB$enNameWiki[i],"_20150701_20180731.csv",sep=""))
+  # Define standard filename from Wikipedia download
+  filename <- paste("/home/gaio/test/","langviews-",gsub("-",'',views_start),"-",gsub("-",'',views_end),".csv",sep="")
+  # Rename Wikipedia filename to a custom filename
+  if (file.exists(filename)) {
+    newFilename <- paste("/home/gaio/test/",codCnuc[i],"_",gsub("/","-",dif_id$ptNameWiki[i]),"_",views_start,"_",views_end,".csv",sep="")
+    file.rename(filename, newFilename)
+    print(paste("Arquivo",newFilename,"baixado com sucesso!"))
+    #pa_names$ptWikiPageDown[i] <- TRUE
+  }  else {
+    print(paste("Não foi possível baixar o arquivo referente à página",dif_id$ptNameWiki[i]))
+    #pa_names$ptWikiPageDown[i] <- FALSE
+  }
+  print(paste(i," out of ",nrow(dif_id),sep=""))
+  
+}
 
-
-rD[["server"]]$stop()
