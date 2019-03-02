@@ -58,7 +58,20 @@ for (i in 1:length(pa_csv_files)) {
     xml_contents() %>%
     html_text()
   
-  page_creation <- pa_page_content[2]
+  # Split character variable and standardize date
+  page_creation <- unlist(strsplit(pa_page_content[2], " "))
+  
+  page_creation_day <- page_creation[2]
+  page_creation_month <- page_creation[3]
+  page_creation_year <- page_creation[4]
+  
+  # Set locale to work with dates
+  Sys.setlocale("LC_TIME", "en_US.UTF-8")
+  
+  page_creation <- paste(page_creation_day, page_creation_month, page_creation_year)
+  page_creation <- as.Date(page_creation, tryFormats = c("%d %B %Y"))
+  page_creation <- as.character(page_creation)
+
   
   # Add information to the dataset
   new_row <- data.table(codcnuc = pa_cod_cnuc, pa_name = pa_name, pa_start_views = pa_start_views, pa_end_views = pa_end_views, page_creation = page_creation)
@@ -107,8 +120,21 @@ for (i in 1:length(pa_csv_files)) {
     xml_contents() %>%
     html_text()
   
-  page_creation <- pa_page_content[2]
+  # Split character variable and standardize date
+  page_creation <- unlist(strsplit(pa_page_content[2], " de "))
   
+  page_creation_day <- page_creation[2]
+  page_creation_month <- page_creation[3]
+  page_creation_year <- page_creation[4]
+  
+  # Set locale to work with dates
+  Sys.setlocale("LC_TIME", "pt_BR.UTF-8")
+  
+  page_creation <- paste(page_creation_day, page_creation_month, page_creation_year)
+  page_creation <- as.Date(page_creation, tryFormats = c("%d %B %Y"))
+  page_creation <- as.character(page_creation)
+  
+    
   # Add information to the dataset
   new_row <- data.table(codcnuc = pa_cod_cnuc, pa_name = pa_name, pa_start_views = pa_start_views, pa_end_views = pa_end_views, page_creation = page_creation)
   
