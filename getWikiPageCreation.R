@@ -142,4 +142,10 @@ for (i in 1:length(pa_csv_files)) {
   
 }
 
+
+# Save PA Dataset
+today <- Sys.Date()
+
+write_csv(pa_dataset, paste0("./data/BPA_WikipediaPages_", today, ".csv"))
+
 # ---- Test area ----
