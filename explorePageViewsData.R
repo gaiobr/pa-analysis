@@ -1,11 +1,11 @@
-#####################################
+# ---- Head ----$$$$$$$$$$$$$$$
 #
 # Explore pageviews data
 # Created in 2019-03-05
 #
 # Guedes-Santos, J
 #
-#####################################
+# $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 # Clean environment
 rm(list = ls())
@@ -13,13 +13,14 @@ rm(list = ls())
 # Load packages
 library(tidyverse)
 library(data.table)
+library(lubridate)
 
 # Load datasets
 cnuc_data <- read_csv("./data/BrazilianProtectedAreas_2018-12-10_reviewed.csv")
 page_creation_data_eng <- read_csv("./data/BPA_WikipediaPages_eng_2019-03-05.csv")
 
 # Create a Mean dataset
-mean_pageviews <- data.table(
+mean_eng_pageviews <- data.table(
   cod_cnuc = character(),
   mean = numeric(),
   na_rows = integer(),
@@ -29,9 +30,9 @@ mean_pageviews <- data.table(
 # Load list of CSV files
 files <- list.files("./data/eng/")
 
-# Calculate mean values to pageviews
+# ---- Calculate mean values for all pageviews ----
 for (i in 1:length(files)) {
-  pa_pageviews <- read_csv(paste0("./data/eng/",files[i]))
+  pa_pageviews <- read_csv(paste0("./data/eng/",files[i]), col_types = cols()) # col_types = cols() supress output information when reading CSV
 
   # Extract CNUC code from CSV filename
   cod_cnuc_pageview <- substr(files[i], 0, 12)
@@ -67,11 +68,7 @@ for (i in 1:length(files)) {
   pa_pageviews <- pa_pageviews %>%
     slice(row_num:nrow(pa_pageviews))
 
-  print("Linhas")
-  print(nrow(pa_pageviews))
-    
-  str(pa_pageviews)
-  summary(pa_pageviews)
+  # Calculate mean
   pa_mean <- mean(as.integer(pa_pageviews$Views), na.rm = TRUE)
   print(pa_mean)
   
@@ -85,6 +82,77 @@ for (i in 1:length(files)) {
   # Add information to the dataset
   new_row <- data.table(cod_cnuc = cod_cnuc_pageview, mean = pa_mean, na_rows = na_rows, total_days = nrow(pa_pageviews))
   
-  mean_pageviews <- rbind(mean_pageviews, new_row)  
+  mean_eng_pageviews <- rbind(mean_eng_pageviews, new_row)  
+}
+
+
+# ---- Calculate mean values by month to each CSV file ----
+# Create a primary table with a row for each month starting from 2015-07
+month_mean_eng_pageviews <- data.table(
+  month = seq(
+    as.Date("2015-07-01"), 
+    as.Date("2019-02-01"), 
+    by = "month"
+    )
+)
+
+
+for (i in 1:length(files)) {
+  # Read CSV
+  pa_pageviews <- read_csv(paste0("./data/eng/",files[i]), col_types = cols()) # col_types = cols() supress output information when reading CSV
+  
+  # Extract CNUC code from CSV filename
+  cod_cnuc_pageview <- substr(files[i], 0, 12)
+  
+  # Extract page creation 
+  page_creation <- page_creation_data_eng %>%
+    filter(codcnuc == cod_cnuc_pageview) %>%
+    select(page_creation)
+  
+  
+  # Transform data
+  # Rearrange CSV Pageviews Dataset
+  pa_pageviews <- pa_pageviews %>%
+    filter(Language == "en") %>%
+    select(4:ncol(pa_pageviews)) %>%
+    t()
+  
+  pa_pageviews <- as.data.frame(pa_pageviews)
+  
+  pa_pageviews <- cbind(rownames(pa_pageviews), pa_pageviews)
+  colnames(pa_pageviews) <- c("Dates", "Views")
+  
+  # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
+  if (page_creation$page_creation >= as.Date("2015-07-01")) {
+    row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
+    print("Depois#############################")
+    print(cod_cnuc_pageview)
+    print(row_num)
+    print(page_creation$page_creation)
+  } else {
+    row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
+    print("Antes$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+    print(cod_cnuc_pageview)
+    print(row_num)
+    print(page_creation$page_creation)
+  }
+  
+  # Select a subset when necessary
+  pa_pageviews <- pa_pageviews %>%
+    slice(row_num:nrow(pa_pageviews))
+  
+  # Filter by month and calculate means
+  month_eng_means <- pa_pageviews %>%
+    arrange(as.Date(Dates)) %>%
+    mutate(Month_Year = substr(Dates, 1,7)) %>%
+    group_by(Month_Year) %>%
+    summarise(mean(as.numeric(Views, na.rm = TRUE))) 
+  
+  colnames(month_eng_means) <- c("month", cod_cnuc_pageview)
+  month_eng_means$month <- as.Date(paste0(month_eng_means$month, "-01"))
+  
+  # Populate data table
+  month_mean_eng_pageviews <- merge(x = month_mean_eng_pageviews, y = month_eng_means, by = "month", all = TRUE)
+  
 }
 
