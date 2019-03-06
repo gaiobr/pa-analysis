@@ -18,7 +18,10 @@ library(data.table)
 pa_original <- read_csv("./data/BrazilianProtectedAreas_2018-12-10_reviewed.csv")
 
 # Create PA dataset with date of page creation
-pa_dataset <- data.table(codcnuc = character(), pa_name = character(), pa_start_views = character(), pa_end_views = character(), page_creation = character())
+pa_dataset_eng <- data.table(codcnuc = character(), pa_name = character(), pa_start_views = character(), pa_end_views = character(), page_creation = character())
+
+pa_dataset_pt <- data.table(codcnuc = character(), pa_name = character(), pa_start_views = character(), pa_end_views = character(), page_creation = character())
+
 
 # ---- English ----
 
@@ -76,7 +79,7 @@ for (i in 1:length(pa_csv_files)) {
   # Add information to the dataset
   new_row <- data.table(codcnuc = pa_cod_cnuc, pa_name = pa_name, pa_start_views = pa_start_views, pa_end_views = pa_end_views, page_creation = page_creation)
   
-  pa_dataset <- rbind(pa_dataset, new_row)
+  pa_dataset_eng <- rbind(pa_dataset_eng, new_row)
   
 }
 
@@ -138,7 +141,7 @@ for (i in 1:length(pa_csv_files)) {
   # Add information to the dataset
   new_row <- data.table(codcnuc = pa_cod_cnuc, pa_name = pa_name, pa_start_views = pa_start_views, pa_end_views = pa_end_views, page_creation = page_creation)
   
-  pa_dataset <- rbind(pa_dataset, new_row)
+  pa_dataset_pt <- rbind(pa_dataset_pt, new_row)
   
 }
 
@@ -146,6 +149,5 @@ for (i in 1:length(pa_csv_files)) {
 # Save PA Dataset
 today <- Sys.Date()
 
-write_csv(pa_dataset, paste0("./data/BPA_WikipediaPages_", today, ".csv"))
-
-# ---- Test area ----
+write_csv(pa_dataset_eng, paste0("./data/BPA_WikipediaPages_eng_", today, ".csv"))
+write_csv(pa_dataset_pt, paste0("./data/BPA_WikipediaPages_pt_", today, ".csv"))
