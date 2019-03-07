@@ -16,8 +16,8 @@ library(data.table)
 library(lubridate)
 
 # Load datasets
-cnuc_data <- read_csv("./data/BrazilianProtectedAreas_2018-12-10_reviewed.csv")
-page_creation_data_eng <- read_csv("./data/BPA_WikipediaPages_eng_2019-03-06.csv")
+cnuc_data <- read_csv("./data/BrazilianProtectedAreas_2019-03-07_reviewed.csv")
+page_creation_data_eng <- read_csv("./data/BPA_WikipediaPages_eng_2019-03-07.csv")
 
 # Create a Mean Eng dataset
 mean_eng_pageviews <- data.table(
@@ -160,7 +160,7 @@ for (i in 1:length(files)) {
 
 # ---- MEAN PT PAGEVIEWS: Calculate mean values for all PT pageviews ----
 files_pt <- list.files("./data/pt/")
-page_creation_data_pt <- read_csv("./data/BPA_WikipediaPages_pt_2019-03-06.csv")
+page_creation_data_pt <- read_csv("./data/BPA_WikipediaPages_pt_2019-03-07.csv")
 
 # Create a Mean Pt dataset
 mean_pt_pageviews <- data.table(

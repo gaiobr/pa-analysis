@@ -15,7 +15,7 @@ library(data.table)
 
 
 # Read PA Dataset
-pa_original <- read_csv("./data/BrazilianProtectedAreas_2018-12-10_reviewed.csv")
+pa_original <- read_csv("./data/BrazilianProtectedAreas_2019-03-07_reviewed.csv")
 
 # ---- Create PA dataset with date of page creation ----
 pa_dataset_eng <- data.table(codcnuc = character(), pa_name = character(), pa_start_views = character(), pa_end_views = character(), page_creation = character())
