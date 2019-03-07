@@ -234,6 +234,84 @@ for (i in 1:length(files)) {
 }
 
 
+# ---- MEAN MONTH PT PAGEVIEWS: Calculate mean values by month to ENG pageviews ----
+# Create a primary table with a row for each month starting from 2015-07
+month_mean_pt_pageviews <- data.table(
+  month = seq(
+    as.Date("2015-07-01"), 
+    as.Date("2019-02-01"), 
+    by = "month"
+  )
+)
+
+
+for (i in 1:length(files)) {
+  # Read CSV
+  pa_pageviews <- read_csv(paste0("./data/eng/",files[i]), col_types = cols()) # col_types = cols() supress output information when reading CSV
+  
+  # Extract CNUC code from CSV filename
+  cod_cnuc_pageview <- substr(files[i], 0, 12)
+  
+  # Extract page creation 
+  page_creation <- page_creation_data_pt %>%
+    filter(codcnuc == cod_cnuc_pageview) %>%
+    select(page_creation)
+  
+  # Test if pt language exists in CSV Eng File
+  pt_verify <- pa_pageviews %>%
+    subset(pa_pageviews$Language == "pt")
+  
+  if (length(pt_verify$Language) > 0) {
+   
+     # Transform data
+    # Rearrange CSV Pageviews Dataset
+    pa_pageviews <- pa_pageviews %>%
+      filter(Language == "pt") %>%
+      select(4:ncol(pa_pageviews)) %>%
+      t()
+    
+    pa_pageviews <- as.data.frame(pa_pageviews)
+    
+    pa_pageviews <- cbind(rownames(pa_pageviews), pa_pageviews)
+    colnames(pa_pageviews) <- c("Dates", "Views")
+    
+    # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
+    if (page_creation$page_creation >= as.Date("2015-07-01")) {
+      row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
+      print("Depois#############################")
+      print(cod_cnuc_pageview)
+      print(row_num)
+      print(page_creation$page_creation)
+    } else {
+      row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
+      print("Antes$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+      print(cod_cnuc_pageview)
+      print(row_num)
+      print(page_creation$page_creation)
+    }
+    
+    # Select a subset when necessary
+    pa_pageviews <- pa_pageviews %>%
+      slice(row_num:nrow(pa_pageviews))
+    
+    # Filter by month and calculate means
+    month_pt_means <- pa_pageviews %>%
+      arrange(as.Date(Dates)) %>%
+      mutate(Month_Year = substr(Dates, 1,7)) %>%
+      group_by(Month_Year) %>%
+      summarise(mean(as.numeric(Views, na.rm = TRUE))) 
+    
+    colnames(month_pt_means) <- c("month", cod_cnuc_pageview)
+    month_pt_means$month <- as.Date(paste0(month_pt_means$month, "-01"))
+    
+    # Populate data table
+    month_mean_pt_pageviews <- merge(x = month_mean_pt_pageviews, y = month_pt_means, by = "month", all = TRUE)
+    
+  }
+  
+  
+}
+
 # ---- IMPORTANT TO VERIFY ----
 # Some PAs that have PT data, but is not listed in the CNUC Dataset
 # It is important to make a comparison between CNUC Name and WikiNAme (engs and portuguese)
@@ -248,6 +326,9 @@ for (i in 1:length(files)) {
   page_creation <- page_creation_data_pt %>%
     filter(codcnuc == cod_cnuc_pageview) %>%
     select(page_creation)
+  
+  print(cod_cnuc_pageview)
+  print(page_creation$page_creation)
   
   # Test if pt language exists in CSV Eng File
   pt_verify <- pa_pageviews %>%
