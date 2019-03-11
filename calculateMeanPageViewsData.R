@@ -1,11 +1,10 @@
-# ---- Head ----$$$$$$$$$$$$$$$
-#
-# Explore pageviews data
+# ---- Head ------------------- 
+# Calculate mean pageviews data
 # Created in 2019-03-05
 #
 # Guedes-Santos, J
 #
-# $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#______________________________
 
 # Clean environment
 rm(list = ls())
@@ -85,6 +84,10 @@ for (i in 1:length(files)) {
   mean_eng_pageviews <- rbind(mean_eng_pageviews, new_row)  
 }
 
+# Save PA Dataset
+today <- Sys.Date()
+
+write_csv(mean_eng_pageviews, paste0("./data/BPA_Wiki_Eng_", today, ".csv"))
 
 # ---- MEAN MONTH ENG PAGEVIEWS: Calculate mean values by month to ENG pageviews ----
 # Create a primary table with a row for each month starting from 2015-07
@@ -156,6 +159,10 @@ for (i in 1:length(files)) {
   
 }
 
+# Save PA Dataset
+today <- Sys.Date()
+
+write_csv(month_mean_eng_pageviews, paste0("./data/BPA_Wiki_Eng_Month_", today, ".csv"))
 
 
 # ---- MEAN PT PAGEVIEWS: Calculate mean values for all PT pageviews ----
@@ -232,6 +239,11 @@ for (i in 1:length(files)) {
 
   
 }
+
+# Save PA Dataset
+today <- Sys.Date()
+
+write_csv(mean_pt_pageviews, paste0("./data/BPA_Wiki_Pt_", today, ".csv"))
 
 
 # ---- MEAN MONTH PT PAGEVIEWS: Calculate mean values by month to ENG pageviews ----
@@ -311,6 +323,12 @@ for (i in 1:length(files)) {
   
   
 }
+
+# Save PA Dataset
+today <- Sys.Date()
+
+write_csv(month_mean_pt_pageviews, paste0("./data/BPA_Wiki_Pt_Month_", today, ".csv"))
+
 
 # ---- IMPORTANT TO VERIFY ----
 # Some PAs that have PT data, but is not listed in the CNUC Dataset
