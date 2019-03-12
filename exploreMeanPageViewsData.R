@@ -20,15 +20,19 @@ eng_month_means <- read_csv('./data/BPA_Wiki_Eng_Month_2019-03-10.csv')
 pt_means <- read_csv('./data/BPA_Wiki_Pt_2019-03-10.csv')
 pt_month_means <- read_csv('./data/BPA_Wiki_Pt_Month_2019-03-10.csv')
 
-# Subset datas
-
-# Define an initial PA Code
-cod_cnuc <- "0000.00.0001"
-
+# Define functions
 # Return Brazilian Protected Area Original Name
-pa_dataset %>%
-  filter(codCnuc == cod_cnuc) %>%
-  select(nomeUC)
+pa_name <- function(dataset, cod_cnuc) {
+  # This function is based in PA_Dataset: BrazilianProtectedAreas_[date]>_reviewed.csv
+  name <- dataset %>%
+    filter(codCnuc == cod_cnuc) %>%
+    select(nomeUC)
+  return(name$nomeUC)
+}
+
+# Subset datas
+# Define an initial PA Code - Only for tests
+cod_cnuc <- "0000.00.0001"
 
 # Join eng and pt means in a unique dataset
 pa_means <- eng_means %>%
@@ -36,6 +40,7 @@ pa_means <- eng_means %>%
 
 # Join eng and pt month means in a unique dataset
 pa_month_means <- eng_month_means %>%
+  
   inner_join(pt_month_means, by = c("month"), suffix = c(".eng", ".pt"))
 
 
@@ -47,6 +52,10 @@ pa_governance <- pa_dataset %>%
 pa_means <- pa_means %>%
   inner_join(pa_governance, by = c("cod_cnuc" = "codCnuc"))
 
+for (i in 1:((ncol(pa_month_means)-1)/2)) {
+  cod_cnuc <- colnames(pa_month_means)
+  print(cod_cnuc[i])
+}
 
 # Plot a simple graph compare eng and pt pageviews
 ggplot(data = pa_month_means) +
@@ -58,10 +67,18 @@ ggplot(data = pa_month_means) +
   ylab("Monthly averages of page views") +
   ggtitle(pa_dataset$nomeUC)
 
+ggsave("pa_pageview2.png")
+
 # Plot all PAs - not working yet
 pa_month_Melted <- reshape2::melt(pa_month_means, id.var='month')
 head(pa_month_Melted)
 
 ggplot(pa_month_Melted, aes(x = month, y = value, col = variable)) + 
   geom_line()
+
+fahrenheit_to_kelvin <- function(temp_F) {
+  temp_K <- ((temp_F - 32) * (5 / 9)) + 273.15
+  return(temp_K)
+}
+
 
