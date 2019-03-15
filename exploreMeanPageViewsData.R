@@ -40,9 +40,12 @@ pa_means <- eng_means %>%
 
 # Join eng and pt month means in a unique dataset
 pa_month_means <- eng_month_means %>%
-  
-  inner_join(pt_month_means, by = c("month"), suffix = c(".eng", ".pt"))
+  select(one_of(colnames(pt_month_means))) %>%
+  inner_join(pt_month_means, by = c("month"), suffix = c(".eng", ".pt")) 
 
+colnames(pa_month_means)
+
+gsub(".", "_", "am.an.da")
 
 # Get category and government level
 pa_governance <- pa_dataset %>%
@@ -52,22 +55,33 @@ pa_governance <- pa_dataset %>%
 pa_means <- pa_means %>%
   inner_join(pa_governance, by = c("cod_cnuc" = "codCnuc"))
 
-for (i in 1:((ncol(pa_month_means)-1)/2)) {
-  cod_cnuc <- colnames(pa_month_means)
-  print(cod_cnuc[i])
+# Rename col names because an error with dots in col names
+for (i in 2:((ncol(pa_month_means)))) {
+  names(pa_month_means)[i] <- paste0("cnuc_", gsub('[.]', '_', names(pa_month_means)[i]))
+  print(paste(i, names(pa_month_means)[i]))
 }
 
-# Plot a simple graph compare eng and pt pageviews
-ggplot(data = pa_month_means) +
-  geom_point(mapping = aes(x = month, y = `0000.00.0001.pt`), color = "red") +
-  geom_point(mapping = aes(x = month, y = `0000.00.0001.eng`), color = "blue") +
-  geom_line(mapping = aes(x = month, y = `0000.00.0001.pt`), color = "red") +
-  geom_line(mapping = aes(x = month, y = `0000.00.0001.eng`), color = "blue") +
-  xlab('Time') +
-  ylab("Monthly averages of page views") +
-  ggtitle(pa_dataset$nomeUC)
+for (i in 2:((ncol(pa_month_means)-1)/2)) {
+  cod_cnuc <- gsub("_", ".", substr(names(pa_month_means)[i], 6, 17))
+  pt_colname <- gsub("_eng", "_pt", names(pa_month_means)[i])
+  
+  print(paste(i, cod_cnuc, names(pa_month_means)[i]))
+  #print(pa_name(pa_dataset, cod_cnuc))
 
-ggsave("pa_pageview2.png")
+  # Plot a simple graph compare eng and pt pageviews
+  ggplot(data = pa_month_means) +
+    geom_point(mapping = aes_string(x = "month", y = names(pa_month_means)[i]), color = "red") +
+    geom_point(mapping = aes_string(x = "month", y = pt_colname), color = "blue") +
+    geom_line(mapping = aes_string(x = "month", y = names(pa_month_means)[i]), color = "red") +
+    geom_line(mapping = aes_string(x = "month", y = pt_colname), color = "blue") +
+    xlab('Time') +
+    ylab("Monthly averages of page views") +
+    ggtitle(pa_name(pa_dataset, cod_cnuc))
+  
+  ggsave(paste0("./figures/", cod_cnuc, ".png"))
+}
+
+
 
 # Plot all PAs - not working yet
 pa_month_Melted <- reshape2::melt(pa_month_means, id.var='month')
