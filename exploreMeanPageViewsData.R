@@ -32,21 +32,26 @@ pa_name <- function(dataset, cod_cnuc) {
 
 # Subset datas
 # Define an initial PA Code - Only for tests
-cod_cnuc <- "0000.00.0001"
+#cod_cnuc <- "0000.00.0001"
 
 # Join eng and pt means in a unique dataset
 pa_means <- eng_means %>%
-  inner_join(eng_means, pt_means, by = "cod_cnuc", suffix = c(".eng", ".pt"))
+  inner_join(pt_means, eng_means, by = "cod_cnuc", suffix = c(".eng", ".pt"))
 
 # Join eng and pt month means in a unique dataset
 pa_month_means <- eng_month_means %>%
   select(one_of(colnames(pt_month_means))) %>%
   inner_join(pt_month_means, by = c("month"), suffix = c(".eng", ".pt")) 
 
+# Rename col names because an error with dots in col names
+for (i in 2:((ncol(pa_month_means)))) {
+  names(pa_month_means)[i] <- paste0("cnuc_", gsub('[.]', '_', names(pa_month_means)[i]))
+  print(paste(i, names(pa_month_means)[i]))
+}
+
 colnames(pa_month_means)
 
-gsub(".", "_", "am.an.da")
-
+# --------------------------------
 # Get category and government level
 pa_governance <- pa_dataset %>%
   select(codCnuc, cat, esfera)
@@ -55,11 +60,6 @@ pa_governance <- pa_dataset %>%
 pa_means <- pa_means %>%
   inner_join(pa_governance, by = c("cod_cnuc" = "codCnuc"))
 
-# Rename col names because an error with dots in col names
-for (i in 2:((ncol(pa_month_means)))) {
-  names(pa_month_means)[i] <- paste0("cnuc_", gsub('[.]', '_', names(pa_month_means)[i]))
-  print(paste(i, names(pa_month_means)[i]))
-}
 
 for (i in 2:((ncol(pa_month_means)-1)/2)) {
   cod_cnuc <- gsub("_", ".", substr(names(pa_month_means)[i], 6, 17))
@@ -82,7 +82,6 @@ for (i in 2:((ncol(pa_month_means)-1)/2)) {
 }
 
 
-
 # Plot all PAs - not working yet
 pa_month_Melted <- reshape2::melt(pa_month_means, id.var='month')
 head(pa_month_Melted)
@@ -95,4 +94,12 @@ fahrenheit_to_kelvin <- function(temp_F) {
   return(temp_K)
 }
 
+# Get 10 most visited PAs in eng
+pa_means %>%
+  top_n(10, mean.eng) %>%
+  arrange(desc(mean.eng))
 
+# Get 10 most visited PAs in pt
+pa_means %>%
+  top_n(10, mean.pt) %>%
+  arrange(desc(mean.pt))
