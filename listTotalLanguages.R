@@ -4,7 +4,7 @@ rm(list = ls())
 
 library(tidyverse)
 
-pa_dir <- "./data/tmp/"
+pa_dir <- "./data/eng/"
 
 length(list.files(pa_dir))
 

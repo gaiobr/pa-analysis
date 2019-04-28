@@ -13,9 +13,7 @@ library(tidyverse)
 
 # ---- Brazilian Protected Areas Database ----
 ### This Database is based in the ICMBio Database added with some Wikipedia information
-PA_file <- "./data/BrazilianProtectedAreas_2018-12-10_reviewed.csv"
-
-PA_DB <- read_csv(PA_file)
+PA_DB <- read_csv("./data/BrazilianProtectedAreas_2019-03-07_reviewed.csv")
 
 PA_DB$enWikiPageDown <- NA # Column to verify if a page was verified and download was succeeded
 

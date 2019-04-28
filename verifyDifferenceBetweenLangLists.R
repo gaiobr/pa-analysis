@@ -11,11 +11,10 @@ library(tidyverse)
 rm(list=ls())
 
 # Define dataset
-pa_names <- read_csv("./data/BrazilianProtectedAreas_2018-12-10_reviewed.csv")
+pa_names <- read_csv("./data/BrazilianProtectedAreas_2019-03-07_reviewed.csv")
 
 # View dataset
-str(pa_names)
-summary(pa_names)
+head(pa_names)
 
 # Verify pages by Name: in ptNameWiki without page in enNameWiki
 pt_names <- pa_names %>%

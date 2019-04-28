@@ -30,6 +30,14 @@ pa_name <- function(dataset, cod_cnuc) {
   return(name$nomeUC)
 }
 
+pa_government <- function(dataset, cod_cnuc) {
+  # This function is based in PA_Dataset: BrazilianProtectedAreas_[date]>_reviewed.csv
+  name <- dataset %>%
+    filter(codCnuc == cod_cnuc) %>%
+    select(esfera)
+  return(name$esfera)
+}
+
 # Subset datas
 # Define an initial PA Code - Only for tests
 #cod_cnuc <- "0000.00.0001"
@@ -59,6 +67,12 @@ pa_governance <- pa_dataset %>%
 # Join category and government level
 pa_means <- pa_means %>%
   inner_join(pa_governance, by = c("cod_cnuc" = "codCnuc"))
+
+# Save PA Dataset
+today <- Sys.Date()
+
+write_csv(pa_means, paste0("./data/BPA_Wiki_Means_", today, ".csv"))
+write_csv(pa_month_means, paste0("./data/BPA_Wiki_Month_Means_", today, ".csv"))
 
 
 for (i in 2:((ncol(pa_month_means)-1)/2)) {
@@ -103,3 +117,4 @@ pa_means %>%
 pa_means %>%
   top_n(10, mean.pt) %>%
   arrange(desc(mean.pt))
+
