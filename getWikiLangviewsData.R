@@ -13,7 +13,7 @@ library(tidyverse)
 
 # ---- Brazilian Protected Areas Database ----
 ### This Database is based in the ICMBio Database added with some Wikipedia information
-PA_DB <- read_csv("./data/BrazilianProtectedAreas_2019-03-07_reviewed.csv")
+PA_DB <- read_csv("./data/BrazilianProtectedAreas_2019-05-13.csv")
 
 PA_DB$enWikiPageDown <- NA # Column to verify if a page was verified and download was succeeded
 
@@ -49,7 +49,7 @@ for(i in 1:nrow(PA_DB)){
   #### Very important to define view dates
   # If statement to control errors from non-existent pages
   if (is.na(PA_DB[i,7]) == FALSE) {
-    print(paste(PA_DB[i,7]," - ",PA_DB[i,2]))
+    print(paste(PA_DB$enNameWiki[i]," - ",PA_DB$nomeUC[i]))
     
     enWikiPage <- gsub("^.*?wiki/","", PA_DB$enWikiPage[i])
     
