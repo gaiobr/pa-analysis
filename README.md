@@ -16,6 +16,13 @@ Suggestion: add the values of the two pages
 
 Scripts
 
+differences_in_pages.R
+  
+  List differences in the dataset:
+    * Pages with different Wikidata Id in each language (Pt and Eng)
+    * Pages with Wikidata Id only in Portuguese
+    * Pages with Wikidata Id only in English
+
 verifyDifferenceBetweenLangLists.R (Only for tests)
 
   Verifica no conjunto de dados se a ID Wikidata de cada Área Protegida se repete para cada idioma. Caso não, lista o conjunto de APs que não se repetem

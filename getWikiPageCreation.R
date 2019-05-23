@@ -22,6 +22,12 @@ pa_dataset_eng <- data.table(codcnuc = character(), pa_name = character(), pa_st
 
 pa_dataset_pt <- data.table(codcnuc = character(), pa_name = character(), pa_start_views = character(), pa_end_views = character(), page_creation = character())
 
+# Get Pages that have different Wikidata IDs between them
+diff_wiki_pages_ids <- pa_original %>%
+  subset(as.character(idPtWikiData) != as.character(idEnWikiData))
+# Rename codCnuc column to codcnuc
+names(diff_wiki_pages_ids)[names(diff_wiki_pages_ids) == "codCnuc"] <- "codcnuc"
+
 # ---- Read CSV Eng Files and extract information from filenames ----
 pa_eng_files <- list.files("./data/eng/")
 
@@ -80,7 +86,11 @@ for (i in 1:length(pa_pt_files)) {
   )
   
   pa_info_pt <- rbind(pa_info_pt, new_row)
+  
 }
+
+# Maintain only Pt Pages that have not Eng Pages
+pa_info_pt <- anti_join(pa_info_pt, diff_wiki_pages_ids, by="codcnuc")
 
 
 # ----ENG PAGE CREATION: Read all CSV ENG names and get page creation from Wikipedia ----
@@ -200,7 +210,7 @@ for (i in 1:length(pa_info_pt$codcnuc)) {
   pa_start_views <- pa_info_pt$pa_start_views[i]
   pa_end_views <- pa_info_pt$pa_end_views[i]
   
-  # Get PA Eng Name from PA Original Dataset
+  # Get PA Pt Name from PA Original Dataset
   pa_name <- pa_original %>%
     filter(pa_original$codCnuc == pa_cod_cnuc) %>%
     select(ptNameWiki)
