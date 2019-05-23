@@ -48,7 +48,7 @@ for(i in 1:nrow(PA_DB)){
   # This first line defines the link
   #### Very important to define view dates
   # If statement to control errors from non-existent pages
-  if (is.na(PA_DB[i,7]) == FALSE) {
+  if (is.na(PA_DB$idEnWikiData[i]) == FALSE) {
     print(paste(PA_DB$enNameWiki[i]," - ",PA_DB$nomeUC[i]))
     
     enWikiPage <- gsub("^.*?wiki/","", PA_DB$enWikiPage[i])
@@ -93,15 +93,16 @@ for(i in 1:nrow(PA_DB)){
 # Running loop to extract from Portuguese Pages that is not exist in English or the ID Wikidata is different
 # Verify pages by Name: in ptNameWiki without page in enNameWiki
 pt_names <- PA_DB %>%
-  subset(is.na(enNameWiki)) %>%
-  subset(!is.na(ptNameWiki))
+  subset(is.na(idEnWikiData)) %>%
+  subset(!is.na(idPtWikiData))
 
 for(i in 1:nrow(pt_names)){
   # This first line defines the link
   #### Very important to define view dates
   # If statement to control errors from non-existent pages
-    print(paste(pt_names[i,10]," - ",pt_names[i,2]))
-    
+    print(paste(pt_names$ptNameWiki[i]," - ",pt_names$nomeUC[i]))
+  print(paste("PT ID ", pt_names$idPtWikiData[i]," - EN ID ",pt_names$idEnWikiData[i]))
+  
     ptWikiPage <- gsub("^.*?wiki/","", pt_names$ptWikiPage[i])
     
     codCnuc <- pt_names$codCnuc
@@ -153,7 +154,7 @@ for(i in 1:nrow(dif_id)){
   # This first line defines the link
   #### Very important to define view dates
   # If statement to control errors from non-existent pages
-  print(paste(dif_id[i,10]," - ",dif_id[i,2]))
+  print(paste(dif_id$ptNameWiki[i]," - ",dif_id$nomeUC[i]))
   
   ptWikiPage <- gsub("^.*?wiki/","", dif_id$ptWikiPage[i])
   
