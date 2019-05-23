@@ -283,6 +283,8 @@ for (i in 1:length(files)) {
     filter(codcnuc == cod_cnuc_pageview) %>%
     select(page_creation)
   
+  ### ! É importante verificar se a página tá na lista de NA tb
+  
   # Test if pt language exists in CSV Eng File
   pt_verify <- pa_pageviews %>%
     subset(pa_pageviews$Language == "pt")
@@ -342,39 +344,4 @@ for (i in 1:length(files)) {
 today <- Sys.Date()
 
 write_csv(month_mean_pt_pageviews, paste0("./data/BPA_Wiki_Pt_Month_", today, ".csv"))
-
-
-# ---- IMPORTANT TO VERIFY ----
-# Some PAs that have PT data, but is not listed in the CNUC Dataset
-# It is important to make a comparison between CNUC Name and WikiNAme (engs and portuguese)
-# For example: Floresta Nacional de Brasília (0000.00.0086) está vinculada a uma PA que não é a correta
-for (i in 1:length(files)) {
-  pa_pageviews <- read_csv(paste0("./data/eng/",files[i]), col_types = cols()) # col_types = cols() supress output information when reading CSV
-  
-  # Extract CNUC code from CSV filename
-  cod_cnuc_pageview <- substr(files[i], 0, 12)
-  
-  # Extract page creation 
-  page_creation <- page_creation_data_pt %>%
-    filter(codcnuc == cod_cnuc_pageview) %>%
-    select(page_creation)
-  
-  print(cod_cnuc_pageview)
-  print(page_creation$page_creation)
-  
-  # Test if pt language exists in CSV Eng File
-  pt_verify <- pa_pageviews %>%
-    subset(pa_pageviews$Language == "pt")
-  
-  if (length(pt_verify$Language) > 0) {
-    verify_pgcreation <- page_creation_data_pt %>%
-      subset(page_creation_data_pt$codcnuc == cod_cnuc_pageview)
-    
-    if (length(verify_pgcreation$page_creation) < 1) {
-      print(cod_cnuc_pageview)
-    }
-    
-  }
-
-}
 

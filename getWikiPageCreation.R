@@ -12,7 +12,7 @@ rm(list = ls())
 library(tidyverse)
 library(rvest)
 library(data.table)
-
+library(lubridate)
 
 # Read PA Dataset
 pa_original <- read_csv("./data/BrazilianProtectedAreas_2019-05-13.csv")
@@ -134,11 +134,15 @@ for (i in 1:length(pa_eng_files)) {
   page_creation_year <- page_creation[4]
   
   # Set locale to work with dates
-  Sys.setlocale("LC_TIME", "en_US.UTF-8")
+  #Sys.setlocale("LC_TIME", "en_US.UTF-8")
   
-  page_creation <- paste(page_creation_day, page_creation_month, page_creation_year)
-  page_creation <- as.Date(page_creation, tryFormats = c("%d %B %Y"))
+  #page_creation <- paste(page_creation_day, page_creation_month, page_creation_year)
+  #page_creation <- as.Date(page_creation, tryFormats = c("%d %B %Y"))
+  page_creation <- ymd(paste(page_creation_year, page_creation_month, page_creation_day))
+  print(paste("P1:", page_creation))
+  #page_creation <- as.Date(page_creation, tryFormats = c("%d %B %Y"))
   page_creation <- as.character(page_creation)
+  print(paste("P2:", page_creation))
 
   
   # Add information to the dataset
@@ -187,10 +191,10 @@ for (i in 1:length(pa_info_eng$codcnuc)) {
     page_creation_year <- page_creation[4]
     
     # Set locale to work with dates
-    Sys.setlocale("LC_TIME", "pt_BR.UTF-8")
+    #Sys.setlocale("LC_TIME", "pt_BR.UTF-8")
     
-    page_creation <- paste(page_creation_day, page_creation_month, page_creation_year)
-    page_creation <- as.Date(page_creation, tryFormats = c("%d %B %Y"))
+    page_creation <- ymd(paste(page_creation_year, page_creation_month, page_creation_day))
+    #page_creation <- as.Date(page_creation, tryFormats = c("%d %B %Y"))
     page_creation <- as.character(page_creation)
     
     
@@ -238,10 +242,10 @@ for (i in 1:length(pa_info_pt$codcnuc)) {
   page_creation_year <- page_creation[4]
   
   # Set locale to work with dates
-  Sys.setlocale("LC_TIME", "pt_BR.UTF-8")
+  #Sys.setlocale("LC_TIME", "pt_BR.UTF-8")
   
-  page_creation <- paste(page_creation_day, page_creation_month, page_creation_year)
-  page_creation <- as.Date(page_creation, tryFormats = c("%d %B %Y"))
+  page_creation <- ymd(paste(page_creation_year, page_creation_month, page_creation_day))
+  #page_creation <- as.Date(page_creation, tryFormats = c("%d %B %Y"))
   page_creation <- as.character(page_creation)
   
   
