@@ -14,11 +14,11 @@ rm(list = ls())
 library(tidyverse)
 
 # Read CSV files
-pa_dataset <- read_csv('./data/BrazilianProtectedAreas_2019-03-07_reviewed.csv')
-eng_means <- read_csv('./data/BPA_Wiki_Eng_2019-03-10.csv')
-eng_month_means <- read_csv('./data/BPA_Wiki_Eng_Month_2019-03-10.csv')
-pt_means <- read_csv('./data/BPA_Wiki_Pt_2019-03-10.csv')
-pt_month_means <- read_csv('./data/BPA_Wiki_Pt_Month_2019-03-10.csv')
+pa_dataset <- read_csv('./data/BrazilianProtectedAreas_2019-05-13.csv')
+eng_means <- read_csv('./data/BPA_Wiki_Eng_2019-05-23.csv')
+eng_month_means <- read_csv('./data/BPA_Wiki_Eng_Month_2019-05-23.csv')
+pt_means <- read_csv('./data/BPA_Wiki_Pt_2019-05-23.csv')
+pt_month_means <- read_csv('./data/BPA_Wiki_Pt_Month_2019-05-23.csv')
 
 # Define functions
 # Return Brazilian Protected Area Original Name
