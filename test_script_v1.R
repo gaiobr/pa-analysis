@@ -8,19 +8,20 @@ setwd(choose.dir())
 
 ####Load data
 #Pa data from EI paper
-pa_df<-read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+##pa_df<-read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+pa_df<-read.table("/home/gaio/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 summary(pa_df)
 
 #Wiki data with PT and EN
-wiki_all_df<-read.table("BPA_Wiki_Means_2019-03-19.csv",sep=",",dec=".", header=T)
+wiki_all_df<-read.table("./data/BPA_Wiki_Means_2019-05-24.csv",sep=",",dec=".", header=T)
 summary(wiki_all_df)
 
 #Wiki data PT only
-wiki_pt_df<-read.table("BPA_Wiki_Pt_2019-03-10.csv",sep=",",dec=".", header=T)
+wiki_pt_df<-read.table("./data/BPA_Wiki_Pt_2019-05-23.csv",sep=",",dec=".", header=T)
 summary(wiki_pt_df)
 
 #Wiki data EN only
-wiki_en_df<-read.table("BPA_Wiki_Eng_2019-03-10.csv",sep=",",dec=".", header=T)
+wiki_en_df<-read.table("./data/BPA_Wiki_Eng_2019-05-23.csv",sep=",",dec=".", header=T)
 summary(wiki_en_df)
 
 
@@ -40,6 +41,7 @@ merge_pa_df<-inner_join(pa_df,
 head(merge_pa_df)
 
 ####Merge PT and EN langviews
+# Was this used?
 merge_lang_df<-rbind(wiki_pt_df,wiki_en_df)
 head(merge_lang_df)
 dups<-merge_lang_df[duplicated(merge_lang_df$cod_cnuc),1]
@@ -175,7 +177,7 @@ mod3_pt<-hurdle(mean.pt ~ area_km2_mod+pop_50k_mod+alt_r_mod+acc_50k_mod+tot_div
              data = model_df,
              dist = "geometric",
              na.action = "na.fail")
-AICc(mod1,mod2,mod3)
+AICc(mod1_pt,mod2_pt,mod3_pt)
 
 #Negative binomial seems to be the best choice based on AICc - Let's keep it and run all model combinations
 dd_views_pt <- dredge(mod2_pt,evaluate=TRUE, rank = "AICc", REML = F)
@@ -210,3 +212,10 @@ gmod_views_eng <- get.models(dd_views_eng,subset = delta < 4)
 gmod_views_eng
 mod_avg_eng<-model.avg(gmod_views_eng)
 summary(mod_avg_eng)
+
+
+out <- capture.output(summary(mod_avg_pt))
+cat("Hurdle Model PT", out, file='Hurdle_Model_PT.txt', sep = '\n', append = FALSE)
+
+out <- capture.output(summary(mod_avg_eng))
+cat("Hurdle Model ENG", out, file='Hurdle_Model_ENG.txt', sep = '\n', append = FALSE)
