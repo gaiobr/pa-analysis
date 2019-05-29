@@ -52,6 +52,7 @@ for (i in 1:length(files)) {
   pa_pageviews <- cbind(rownames(pa_pageviews), pa_pageviews)
   colnames(pa_pageviews) <- c("Dates", "Views")
 
+  print(paste(i, "in", length(files)))
   print(cod_cnuc_pageview)
 
   # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
@@ -124,6 +125,9 @@ for (i in 1:length(files)) {
   
   pa_pageviews <- cbind(rownames(pa_pageviews), pa_pageviews)
   colnames(pa_pageviews) <- c("Dates", "Views")
+  
+  print("______________________________________")
+  print(paste(i, "in", length(files)))
   
   # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
   if (page_creation$page_creation >= as.Date("2015-07-01")) {
@@ -201,7 +205,9 @@ for (i in 1:length(files)) {
         filter(codcnuc == cod_cnuc_pageview) %>%
         select(page_creation)
       
-      print(paste("i:", i))
+      print("______________________________________")
+      print(paste(i, "in", length(files)))
+      
       print(paste("CNUC:", cod_cnuc_pageview, "| Page Creation:", page_creation))
       
       # Test if pt language exists in CSV Eng File
@@ -254,6 +260,76 @@ for (i in 1:length(files)) {
   }  
 }
 
+## Add list pt
+files <- list.files("./data/pt/")
+for (i in 1:length(files)) {
+  pa_pageviews <- read_csv(paste0("./data/pt/",files[i]), col_types = cols()) # col_types = cols() supress output information when reading CSV
+  
+  # Extract CNUC code from CSV filename
+  cod_cnuc_pageview <- substr(files[i], 0, 12)
+  
+    # Extract page creation 
+    page_creation <- page_creation_data_pt %>%
+      filter(codcnuc == cod_cnuc_pageview) %>%
+      select(page_creation)
+    
+    print("______________________________________")
+    print(paste(i, "in", length(files)))
+    
+    print(paste("CNUC:", cod_cnuc_pageview, "| Page Creation:", page_creation))
+    
+    # Test if pt language exists in CSV Eng File
+    pt_verify <- pa_pageviews %>%
+      subset(pa_pageviews$Language == "pt")
+    
+    if (length(pt_verify$Language) > 0) {
+      # Rearrange CSV Pageviews Dataset
+      pa_pageviews <- pa_pageviews %>%
+        filter(Language == "pt") %>%
+        select(4:ncol(pa_pageviews)) %>%
+        t()
+      
+      pa_pageviews <- as.data.frame(pa_pageviews)
+      
+      pa_pageviews <- cbind(rownames(pa_pageviews), pa_pageviews)
+      colnames(pa_pageviews) <- c("Dates", "Views")
+      
+      print(cod_cnuc_pageview)
+      
+      # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
+      if (page_creation$page_creation >= as.Date("2015-07-01")) {
+        row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
+      } else {
+        row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
+      }
+      
+      print(nrow(pa_pageviews))
+      
+      # Select a subset when necessary
+      pa_pageviews <- pa_pageviews %>%
+        slice(row_num:nrow(pa_pageviews))
+      
+      # Calculate mean
+      pa_mean <- mean(as.integer(pa_pageviews$Views), na.rm = TRUE)
+      print(pa_mean)
+      
+      # Count how many rows contains data filled with NA
+      na_rows <- pa_pageviews %>%
+        filter(is.na(Views)) %>%
+        count()
+      
+      na_rows <- as.integer(na_rows)
+      
+      # Add information to the dataset
+      new_row <- data.table(cod_cnuc = cod_cnuc_pageview, mean = pa_mean, na_rows = na_rows, total_days = nrow(pa_pageviews))
+      
+      mean_pt_pageviews <- rbind(mean_pt_pageviews, new_row)  
+    }
+  
+}
+
+## Add diff
+
 # Save PA Dataset
 today <- Sys.Date()
 
@@ -270,7 +346,7 @@ month_mean_pt_pageviews <- data.table(
   )
 )
 
-
+files <- list.files("./data/eng/")
 for (i in 1:length(files)) {
   # Read CSV
   pa_pageviews <- read_csv(paste0("./data/eng/",files[i]), col_types = cols()) # col_types = cols() supress output information when reading CSV
@@ -278,65 +354,138 @@ for (i in 1:length(files)) {
   # Extract CNUC code from CSV filename
   cod_cnuc_pageview <- substr(files[i], 0, 12)
   
-  # Extract page creation 
-  page_creation <- page_creation_data_pt %>%
-    filter(codcnuc == cod_cnuc_pageview) %>%
-    select(page_creation)
+  # Exclude Wikipages that has different Wikidata IDs
+  if (!(cod_cnuc_pageview %in% diff_wiki_pages_ids$codCnuc)) {  
   
-  ### ! É importante verificar se a página tá na lista de NA tb
-  
-  # Test if pt language exists in CSV Eng File
-  pt_verify <- pa_pageviews %>%
-    subset(pa_pageviews$Language == "pt")
-  
-  if (length(pt_verify$Language) > 0) {
-   
-     # Transform data
-    # Rearrange CSV Pageviews Dataset
-    pa_pageviews <- pa_pageviews %>%
-      filter(Language == "pt") %>%
-      select(4:ncol(pa_pageviews)) %>%
-      t()
+    # Extract page creation 
+    page_creation <- page_creation_data_pt %>%
+      filter(codcnuc == cod_cnuc_pageview) %>%
+      select(page_creation)
     
-    pa_pageviews <- as.data.frame(pa_pageviews)
+    ### ! É importante verificar se a página tá na lista de NA tb
     
-    pa_pageviews <- cbind(rownames(pa_pageviews), pa_pageviews)
-    colnames(pa_pageviews) <- c("Dates", "Views")
+    # Test if pt language exists in CSV Eng File
+    pt_verify <- pa_pageviews %>%
+      subset(pa_pageviews$Language == "pt")
     
-    # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
-    if (page_creation$page_creation >= as.Date("2015-07-01")) {
-      row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
-      print("Depois#############################")
-      print(cod_cnuc_pageview)
-      print(row_num)
-      print(page_creation$page_creation)
-    } else {
-      row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
-      print("Antes$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-      print(cod_cnuc_pageview)
-      print(row_num)
-      print(page_creation$page_creation)
+    if (length(pt_verify$Language) > 0) {
+     
+       # Transform data
+      # Rearrange CSV Pageviews Dataset
+      pa_pageviews <- pa_pageviews %>%
+        filter(Language == "pt") %>%
+        select(4:ncol(pa_pageviews)) %>%
+        t()
+      
+      pa_pageviews <- as.data.frame(pa_pageviews)
+      
+      pa_pageviews <- cbind(rownames(pa_pageviews), pa_pageviews)
+      colnames(pa_pageviews) <- c("Dates", "Views")
+      
+      # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
+      if (page_creation$page_creation >= as.Date("2015-07-01")) {
+        row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
+        print("Depois#############################")
+        print(cod_cnuc_pageview)
+        print(row_num)
+        print(page_creation$page_creation)
+      } else {
+        row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
+        print("Antes$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+        print(cod_cnuc_pageview)
+        print(row_num)
+        print(page_creation$page_creation)
+      }
+      
+      # Select a subset when necessary
+      pa_pageviews <- pa_pageviews %>%
+        slice(row_num:nrow(pa_pageviews))
+      
+      # Filter by month and calculate means
+      month_pt_means <- pa_pageviews %>%
+        arrange(as.Date(Dates)) %>%
+        mutate(Month_Year = substr(Dates, 1,7)) %>%
+        group_by(Month_Year) %>%
+        summarise(mean(as.numeric(Views, na.rm = TRUE))) 
+      
+      colnames(month_pt_means) <- c("month", cod_cnuc_pageview)
+      month_pt_means$month <- as.Date(paste0(month_pt_means$month, "-01"))
+      
+      # Populate data table
+      month_mean_pt_pageviews <- merge(x = month_mean_pt_pageviews, y = month_pt_means, by = "month", all = TRUE)
+      
     }
-    
-    # Select a subset when necessary
-    pa_pageviews <- pa_pageviews %>%
-      slice(row_num:nrow(pa_pageviews))
-    
-    # Filter by month and calculate means
-    month_pt_means <- pa_pageviews %>%
-      arrange(as.Date(Dates)) %>%
-      mutate(Month_Year = substr(Dates, 1,7)) %>%
-      group_by(Month_Year) %>%
-      summarise(mean(as.numeric(Views, na.rm = TRUE))) 
-    
-    colnames(month_pt_means) <- c("month", cod_cnuc_pageview)
-    month_pt_means$month <- as.Date(paste0(month_pt_means$month, "-01"))
-    
-    # Populate data table
-    month_mean_pt_pageviews <- merge(x = month_mean_pt_pageviews, y = month_pt_means, by = "month", all = TRUE)
-    
   }
   
+}
+
+files <- list.files("./data/pt/")
+for (i in 1:length(files)) {
+  # Read CSV
+  pa_pageviews <- read_csv(paste0("./data/pt/",files[i]), col_types = cols()) # col_types = cols() supress output information when reading CSV
+  
+  # Extract CNUC code from CSV filename
+  cod_cnuc_pageview <- substr(files[i], 0, 12)
+  
+    # Extract page creation 
+    page_creation <- page_creation_data_pt %>%
+      filter(codcnuc == cod_cnuc_pageview) %>%
+      select(page_creation)
+    
+    ### ! É importante verificar se a página tá na lista de NA tb
+    
+    # Test if pt language exists in CSV Eng File
+    pt_verify <- pa_pageviews %>%
+      subset(pa_pageviews$Language == "pt")
+    
+    if (length(pt_verify$Language) > 0) {
+      
+      # Transform data
+      # Rearrange CSV Pageviews Dataset
+      pa_pageviews <- pa_pageviews %>%
+        filter(Language == "pt") %>%
+        select(4:ncol(pa_pageviews)) %>%
+        t()
+      
+      pa_pageviews <- as.data.frame(pa_pageviews)
+      
+      pa_pageviews <- cbind(rownames(pa_pageviews), pa_pageviews)
+      colnames(pa_pageviews) <- c("Dates", "Views")
+      
+      # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
+      if (page_creation$page_creation >= as.Date("2015-07-01")) {
+        row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
+        print("Depois#############################")
+        print(cod_cnuc_pageview)
+        print(row_num)
+        print(page_creation$page_creation)
+      } else {
+        row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
+        print("Antes$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+        print(cod_cnuc_pageview)
+        print(row_num)
+        print(page_creation$page_creation)
+      }
+      
+      # Select a subset when necessary
+      pa_pageviews <- pa_pageviews %>%
+        slice(row_num:nrow(pa_pageviews))
+      
+      # Filter by month and calculate means
+      month_pt_means <- pa_pageviews %>%
+        arrange(as.Date(Dates)) %>%
+        mutate(Month_Year = substr(Dates, 1,7)) %>%
+        group_by(Month_Year) %>%
+        summarise(mean(as.numeric(Views, na.rm = TRUE))) 
+      
+      colnames(month_pt_means) <- c("month", cod_cnuc_pageview)
+      month_pt_means$month <- as.Date(paste0(month_pt_means$month, "-01"))
+      
+      # Populate data table
+      month_mean_pt_pageviews <- merge(x = month_mean_pt_pageviews, y = month_pt_means, by = "month", all = TRUE)
+      
+    }
+ 
   
 }
 
