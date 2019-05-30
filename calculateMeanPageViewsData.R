@@ -52,7 +52,9 @@ for (i in 1:length(files)) {
   pa_pageviews <- cbind(rownames(pa_pageviews), pa_pageviews)
   colnames(pa_pageviews) <- c("Dates", "Views")
 
+  print(paste("\n", "__________________________________________"))
   print(paste(i, "in", length(files)))
+  
   print(cod_cnuc_pageview)
 
   # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
@@ -132,16 +134,14 @@ for (i in 1:length(files)) {
   # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
   if (page_creation$page_creation >= as.Date("2015-07-01")) {
     row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
-    print("Depois#############################")
     print(cod_cnuc_pageview)
-    print(row_num)
-    print(page_creation$page_creation)
+    print(paste("Start row: ", row_num))
+    print(paste(page_creation$page_creation, "- After - ###"))
   } else {
     row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
-    print("Antes$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
     print(cod_cnuc_pageview)
-    print(row_num)
-    print(page_creation$page_creation)
+    print(paste("Start row: ", row_num))
+    print(paste(page_creation$page_creation, "- Before - $$$"))
   }
   
   # Select a subset when necessary
@@ -185,10 +185,6 @@ mean_pt_pageviews <- data.table(
 # Get Pages that have different Wikidata IDs between them
 diff_wiki_pages_ids <- cnuc_data %>%
   subset(as.character(idPtWikiData) != as.character(idEnWikiData))
-
-
-### ! É preciso adicionar as que não têm em inglẽs mas sim em pt
-
 
 
 for (i in 1:length(files)) {
@@ -328,8 +324,6 @@ for (i in 1:length(files)) {
   
 }
 
-## Add diff
-
 # Save PA Dataset
 today <- Sys.Date()
 
@@ -385,16 +379,14 @@ for (i in 1:length(files)) {
       # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
       if (page_creation$page_creation >= as.Date("2015-07-01")) {
         row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
-        print("Depois#############################")
         print(cod_cnuc_pageview)
-        print(row_num)
-        print(page_creation$page_creation)
+        print(paste("Start row: ", row_num))
+        print(paste(page_creation$page_creation, "- After - ###"))
       } else {
         row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
-        print("Antes$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
         print(cod_cnuc_pageview)
-        print(row_num)
-        print(page_creation$page_creation)
+        print(paste("Start row: ", row_num))
+        print(paste(page_creation$page_creation, "- Before - $$$"))
       }
       
       # Select a subset when necessary
@@ -455,16 +447,14 @@ for (i in 1:length(files)) {
       # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
       if (page_creation$page_creation >= as.Date("2015-07-01")) {
         row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
-        print("Depois#############################")
         print(cod_cnuc_pageview)
-        print(row_num)
-        print(page_creation$page_creation)
+        print(paste("Start row: ", row_num))
+        print(paste(page_creation$page_creation, "- After - ###"))
       } else {
         row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
-        print("Antes$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
         print(cod_cnuc_pageview)
-        print(row_num)
-        print(page_creation$page_creation)
+        print(paste("Start row: ", row_num))
+        print(paste(page_creation$page_creation, "- Before - $$$"))
       }
       
       # Select a subset when necessary
@@ -493,4 +483,18 @@ for (i in 1:length(files)) {
 today <- Sys.Date()
 
 write_csv(month_mean_pt_pageviews, paste0("./data/BPA_Wiki_Pt_Month_", today, ".csv"))
+
+### Exploring some data
+length(na.omit(cnuc_data$idPtWikiData)) ## How many pages are there in Portuguese with Wikidata ID?
+length(na.omit(cnuc_data$idEnWikiData)) ## How many pages are there in English with Wikidata ID?
+
+duplicated(na.omit(cnuc_data$idEnWikiData))
+
+WikiData <- na.omit(cnuc_data$idEnWikiData)
+WikiData[duplicated(WikiData)]
+WikiData
+
+
+
+
 
