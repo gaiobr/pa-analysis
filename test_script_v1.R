@@ -17,11 +17,11 @@ wiki_all_df<-read.table("./data/BPA_Wiki_Means_2019-05-24.csv",sep=",",dec=".", 
 summary(wiki_all_df)
 
 #Wiki data PT only
-wiki_pt_df<-read.table("./data/BPA_Wiki_Pt_2019-05-23.csv",sep=",",dec=".", header=T)
+wiki_pt_df<-read.table("./data/BPA_Wiki_Pt_2019-05-29.csv",sep=",",dec=".", header=T)
 summary(wiki_pt_df)
 
 #Wiki data EN only
-wiki_en_df<-read.table("./data/BPA_Wiki_Eng_2019-05-23.csv",sep=",",dec=".", header=T)
+wiki_en_df<-read.table("./data/BPA_Wiki_Eng_2019-05-29.csv",sep=",",dec=".", header=T)
 summary(wiki_en_df)
 
 

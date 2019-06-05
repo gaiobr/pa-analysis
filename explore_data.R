@@ -34,6 +34,15 @@ pa_excluded2 <- anti_join(pa_correia,
                          by = c("id" = "codCnuc")
 )
 
+#PAs with means of pageviews
+pa_means <- read_csv("./data/BPA_Wiki_Means_2019-05-24.csv")
+
+#Merge means and variables
+pa_means_merge <- left_join (x = pa_merge,
+                             y = pa_means,
+                             by = c("id" = "cod_cnuc"))
+
+
 # ---- Explore Data ----------
 
 #______________________________
@@ -69,8 +78,9 @@ n_eng_unpair <- nrow(eng_unpair)
 
 # Number of PT and ENG Wikipages
 n_pt_mpages <- length(na.omit(pa_merge$idPtWikiData))
+n_pt_mpages
 n_eng_mpages <- length(na.omit(pa_merge$idEnWikiData))
-
+n_eng_mpages
 
 # Number of Wikipages in both languages
 pa_mboth <- pa_merge %>%
@@ -78,6 +88,7 @@ pa_mboth <- pa_merge %>%
 pa_mboth <- pa_mboth  %>%
   filter(!is.na(pa_mboth$idEnWikiData))
 n_pa_mboth <- nrow(pa_mboth)
+n_pa_mboth
 
 # Number of PT and ENG Wikipages without a pair
 pt_munpair <- pa_merge %>%
@@ -85,12 +96,14 @@ pt_munpair <- pa_merge %>%
 pt_munpair <- pt_munpair %>%
   filter(!is.na(pt_munpair$idPtWikiData))
 n_pt_munpair <- nrow(pt_munpair)
+n_pt_munpair
 
 eng_munpair <- pa_merge %>%
   filter(is.na(pa_merge$idPtWikiData))
 eng_munpair <- eng_munpair %>%
   filter(!is.na(eng_munpair$idEnWikiData))
 n_eng_munpair <- nrow(eng_munpair)
+n_eng_munpair
 
 #______________________________
 # ### Biomes ###
@@ -131,3 +144,34 @@ table(pa_mboth$paddd_status)
 table(pa_mboth$paddd_enacted)
 
 table(pa_mboth$paddd_events)
+
+
+# ---- Tests ----------
+
+#______________________________
+# ### Normality tests ###
+hist(pa_means_merge$mean.pt)
+qqnorm(pa_means_merge$mean.pt)
+qqline(pa_means_merge$mean.pt)
+
+shapiro.test(pa_means_merge$mean.pt)
+
+hist(pa_means_merge$mean.eng)
+qqnorm(pa_means_merge$mean.eng)
+qqline(pa_means_merge$mean.eng)
+
+shapiro.test(pa_means_merge$mean.eng)
+
+#______________________________
+# ### Kruskal-Wallis ###
+# Categories
+kruskal.test(mean.eng ~ cat.y, data = pa_means_merge)
+kruskal.test(mean.pt ~ cat.x, data = pa_means_merge)
+
+# Biomes
+kruskal.test(mean.eng ~ bioma, data = pa_means_merge)
+kruskal.test(mean.pt ~ bioma, data = pa_means_merge)
+
+#______________________________
+# ### ANOVA ###
+
