@@ -50,8 +50,9 @@ pa_means_merge <- left_join (x = pa_merge,
 
 # Number of PT and ENG Wikipages
 n_pt_pages <- length(na.omit(pa_dataset$idPtWikiData))
+n_pt_pages
 n_eng_pages <- length(na.omit(pa_dataset$idEnWikiData))
-
+n_eng_pages
 
 # Number of Wikipages in both languages
 pa_both <- pa_dataset %>%
@@ -120,7 +121,7 @@ pa_biomes
 categories <- unique(pa_mboth$cat.y)
 categories
 
-pa_categories <- table(pa_mboth$cat.y)
+pa_categories <- table(pa_mboth$cat2)
 pa_categories
 
 #______________________________
@@ -174,4 +175,59 @@ kruskal.test(mean.pt ~ bioma, data = pa_means_merge)
 
 #______________________________
 # ### ANOVA ###
+dplyr::sample_n(pa_means, 10)
+levels(pa_means[ ,3])
+lapply(pa_means, levels)
 
+group_by(pa_means, esfera) %>%
+  summarise(
+    count = n(),
+    mean = mean(mean.eng, na.rm = TRUE),
+    sd = sd(mean.eng, na.rm = TRUE)
+  )
+
+# Box plots
+# ++++++++++++++++++++
+# Plot weight by group and color by group
+library("ggpubr")
+ggboxplot(pa_means, x = "esfera", y = "mean.eng", 
+          color = "esfera", palette = c("#00AFBB", "#E7B800", "#FC4E07"),
+          order = c("Federal", "Estadual", "Municipal"),
+          ylab = "Médias Inglês", xlab = "Esfera de Governo")
+
+# Mean plots
+# ++++++++++++++++++++
+# Plot weight by group
+# Add error bars: mean_se
+# (other values include: mean_sd, mean_ci, median_iqr, ....)
+library("ggpubr")
+ggline(pa_means, x = "esfera", y = "mean.eng", 
+       add = c("mean_se", "jitter"), 
+       ylab = "Médias Inglês", xlab = "Esfera de Governo")
+
+
+
+# Box plot
+boxplot(mean.eng ~ esfera, data = pa_means,
+        xlab = "Esfera de Governo", ylab = "Médias Inglês",
+        frame = FALSE, col = c("#00AFBB", "#E7B800", "#FC4E07"))
+
+# plotmeans
+library("gplots")
+plotmeans(mean.eng ~ esfera, data = pa_means, frame = FALSE,
+          xlab = "Esfera de Governo", ylab = "Médias Inglês",
+          main="Mean Plot with 95% CI") 
+
+summary(pa_means)
+
+names(pa_means_merge)
+# Compute the analysis of variance
+reseng.aov <- aov(mean.eng ~ bioma, data = pa_means_merge)
+respt.aov <- aov(mean.pt ~ bioma, data = pa_means_merge)
+# Summary of the analysis
+summary(reseng.aov)
+summary(respt.aov)
+
+TukeyHSD(reseng.aov)
+
+table(pa_means_merge$esfera.y)

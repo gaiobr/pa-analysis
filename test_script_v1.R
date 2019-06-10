@@ -14,7 +14,11 @@ summary(pa_df)
 
 #Wiki data with PT and EN
 wiki_all_df<-read.table("./data/BPA_Wiki_Means_2019-05-24.csv",sep=",",dec=".", header=T)
+#Uncomment below to consider only Federal PAs
+#wiki_all_df <- wiki_all_df %>% filter(wiki_all_df$esfera == "Federal")
+#EndTests
 summary(wiki_all_df)
+
 
 #Wiki data PT only
 wiki_pt_df<-read.table("./data/BPA_Wiki_Pt_2019-05-29.csv",sep=",",dec=".", header=T)
