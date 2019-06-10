@@ -15,8 +15,9 @@ library(tidyverse)
 #PA Dataset (CNUC)
 pa_dataset <- read_csv("./data/BrazilianProtectedAreas_2019-05-13.csv")
 #PA data from Correia et al paper (Ecological Indicators - Correia, R.A. et al. 2019)
-pa_correia <- read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+#pa_correia <- read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_correia <- read.table("/home/gaio/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+pa_correia <- read.table("Z:/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #PA Dataset Merge from CNUC PA Dataset and Correia PA Dataset 
 pa_merge <- inner_join(pa_correia,
                        pa_dataset,
@@ -193,7 +194,28 @@ library("ggpubr")
 ggboxplot(pa_means, x = "esfera", y = "mean.eng", 
           color = "esfera", palette = c("#00AFBB", "#E7B800", "#FC4E07"),
           order = c("Federal", "Estadual", "Municipal"),
-          ylab = "Médias Inglês", xlab = "Esfera de Governo")
+          scale_y_continuous(trans = "log10"),
+          ylab = "Médias Inglês", xlab = "Esfera de Governo"
+          )
+
+boxplot(mean.eng ~ esfera, data = pa_means,
+        log = "y", col = "yellow")
+
+
+boxplot(mean.pt ~ esfera, data = pa_means,
+        log = "y", col = "yellow")
+
+boxplot(mean.eng ~ bioma, data = pa_means_merge,
+        log = "y", col = "yellow")
+
+boxplot(mean.pt ~ bioma, data = pa_means_merge,
+        log = "y", col = "yellow")
+
+boxplot(mean.eng ~ cat2, data = pa_means_merge,
+        log = "y", col = "yellow")
+
+boxplot(mean.pt ~ cat2, data = pa_means_merge,
+        log = "y", col = "yellow")
 
 # Mean plots
 # ++++++++++++++++++++
