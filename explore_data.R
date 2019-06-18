@@ -185,6 +185,52 @@ sum(pt_means$mean < 1)
 sum(eng_means$mean > 1)
 
 
+## DELETE ##
+pa_month_analysis <- read_csv("./data/pt/0000.00.0037_Área de Relevante Interesse Ecológico Ilhas Queimada Grande e Queimada Pequena_2015-07-01_2019-05-21.csv")
+# Rearrange CSV Pageviews Dataset
+pa_month_analysis <- pa_month_analysis %>%
+  filter(Language == "pt") %>%
+  select(4:ncol(pa_month_analysis)) %>%
+  t()
+
+pa_month_analysis <- as.data.frame(pa_month_analysis)
+
+pa_month_analysis <- cbind(rownames(pa_month_analysis), pa_month_analysis)
+colnames(pa_month_analysis) <- c("Dates", "Views")
+
+summary(pa_month_analysis)
+
+pa_month_analysis$Dates <- as.Date(pa_month_analysis$Dates) 
+plot(pa_month_analysis)
+library(stats)
+library(scales)
+library(ggplot2)
+library(Hmisc)
+str(pa_month_analysis)
+pa_month_analysis$Month <- as.Date(cut(pa_month_analysis$Dates, breaks = "month"))
+pa_month_analysis$Week <- as.Date(cut(pa_month_analysis$Dates, breaks = "week", start.on.monday = FALSE))
+ggplot(data = pa_month_analysis, 
+       aes(Month, Views)) +
+       stat_summary(fun.y = sum,
+                    geom = "line") +
+       scale_x_date(
+         labels = date_format("%Y-%m"),
+         breaks = "1 month"
+       ) 
+
+ggplot(data = pa_month_analysis, 
+       aes(Month, Views)) +
+  stat_summary(fun.data = mean_cl_normal) + 
+#  geom_point(color = "red") + 
+  geom_smooth(method = 'lm', formula = y ~ x)
+
+fit <- lm(as.Date(Dates)~Views, data = pa_month_analysis)
+abline(fit, col="red")
+lines(pa_month_analysis$Views, fitted(fit), col="blue")
+fit
+
+## END DELETE ##
+
 # ---- Tests ----------
 
 #______________________________
