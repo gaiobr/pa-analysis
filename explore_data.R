@@ -10,14 +10,14 @@
 rm(list = ls())
 
 library(tidyverse)
-
+pa <- read.csv("./data/BPA_Wiki_Eng_2019-05-29.csv")
 # ---- Load datasets ----------
 #PA Dataset (CNUC)
 pa_dataset <- read_csv("./data/BrazilianProtectedAreas_2019-05-13.csv")
 #PA data from Correia et al paper (Ecological Indicators - Correia, R.A. et al. 2019)
-#pa_correia <- read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+pa_correia <- read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_correia <- read.table("/home/gaio/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
-pa_correia <- read.table("Z:/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+#pa_correia <- read.table("Z:/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #PA Dataset Merge from CNUC PA Dataset and Correia PA Dataset 
 pa_merge <- inner_join(pa_correia,
                        pa_dataset,
@@ -147,6 +147,43 @@ table(pa_mboth$paddd_enacted)
 
 table(pa_mboth$paddd_events)
 
+#______________________________
+# ### Most visualized PAs ###
+# Define functions
+# Return Brazilian Protected Area Original Name
+pa_name <- function(dataset, cod_cnuc) {
+  # This function is based in PA_Dataset: BrazilianProtectedAreas_[date]>_reviewed.csv
+  name <- dataset %>%
+    filter(codCnuc == cod_cnuc) %>%
+    select(nomeUC)
+  return(name$nomeUC)
+}
+
+pa_pt_descending <- pt_means[with(pt_means, order(-mean)),]
+head(pa_pt_descending)  
+
+pa_eng_descending <- eng_means[with(eng_means, order(-mean)),]
+head(pa_eng_descending)  
+
+for (i in 1:10) {
+  print(pa_name(pa_dataset, pa_pt_descending$cod_cnuc[i]))
+  print(pa_pt_descending$cod_cnuc[i])
+  print(pa_pt_descending$mean[i])
+}
+
+for (i in 1:10) {
+  print(pa_name(pa_dataset, pa_eng_descending$cod_cnuc[i]))
+  print(pa_eng_descending$mean[i])
+}
+
+# Number of PAs with pageviews greater than 10
+sum(pt_means$mean > 10)
+sum(eng_means$mean > 10)
+
+# Number of PAs with pageviews less than 10
+sum(pt_means$mean < 1)
+sum(eng_means$mean > 1)
+
 
 # ---- Tests ----------
 
@@ -189,14 +226,79 @@ group_by(pa_means, esfera) %>%
 
 # Box plots
 # ++++++++++++++++++++
-# Plot weight by group and color by group
-library("ggpubr")
+# Plot means by government levels and color by gov levels
+library(ggpubr)
 ggboxplot(pa_means, x = "esfera", y = "mean.eng", 
           color = "esfera", palette = c("#00AFBB", "#E7B800", "#FC4E07"),
           order = c("Federal", "Estadual", "Municipal"),
-          scale_y_continuous(trans = "log10"),
-          ylab = "Médias Inglês", xlab = "Esfera de Governo"
-          )
+          ylab = "Protected Area Interest (English)", xlab = "Level of Government",
+          yscale = "log10",
+          add = "mean_sd", error.plot = "errorbar",
+          add.params = list(binwidth = 0.1, dotsize = 0.3)
+)
+
+ggboxplot(pa_means, x = "esfera", y = "mean.pt", 
+          color = "esfera", palette = c("#00AFBB", "#E7B800", "#FC4E07"),
+          order = c("Federal", "Estadual", "Municipal"),
+          ylab = "Protected Area Interest (Portuguese)", xlab = "Level of Government",
+          yscale = "log10",
+          add = "mean_sd", error.plot = "errorbar",
+          add.params = list(binwidth = 0.1, dotsize = 0.3)
+)
+
+# Plot means by biomes and color by biomes
+ggboxplot(pa_means_merge, x = "bioma", y = "mean.pt", 
+          color = "bioma",
+          ylab = "Protected Area Interest (Portuguese)", xlab = "Biomes",
+          yscale = "log10",
+          add = "mean_sd", error.plot = "errorbar",
+          add.params = list(binwidth = 0.1, dotsize = 0.3)
+)
+
+ggboxplot(pa_means_merge, x = "bioma", y = "mean.eng", 
+          color = "bioma",
+          ylab = "Protected Area Interest (English)", xlab = "Biomes",
+          yscale = "log10",
+          add = "mean_sd", error.plot = "errorbar",
+          add.params = list(binwidth = 0.1, dotsize = 0.3)
+)
+
+# Plot means by biomes and color by biomes
+ggboxplot(pa_means_merge, x = "cat2", y = "mean.pt", 
+          color = "cat2",
+          ylab = "Protected Area Interest (Portuguese)", xlab = "Categories",
+          yscale = "log10",
+          add = "mean_sd", error.plot = "errorbar",
+          add.params = list(binwidth = 0.1, dotsize = 0.3)
+)
+
+ggboxplot(pa_means_merge, x = "cat2", y = "mean.eng", 
+          color = "cat2",
+          ylab = "Protected Area Interest (English)", xlab = "Categories",
+          yscale = "log10",
+          add = "mean_sd", error.plot = "errorbar",
+          add.params = list(binwidth = 0.1, dotsize = 0.3)
+)
+
+tmp <- pa_means_merge %>%
+  filter(pa_means_merge$cat2 == "PARNA")
+
+ggboxplot(tmp, x = "year", y = "mean.eng", 
+          color = "year",
+          ylab = "Protected Area Interest (English)", xlab = "Year",
+          yscale = "log10",
+          add = "mean_sd", error.plot = "errorbar",
+          add.params = list(binwidth = 0.1, dotsize = 0.3)
+)
+
+
+
+
+ggbarplot(pa_means, x = "esfera", y = "mean.pt", 
+          add = "mean_se", error.plot = "errorbar",
+          order = c("Federal", "Estadual", "Municipal"),
+          ylab = "Médias Português", xlab = "Esfera de Governo"
+)
 
 boxplot(mean.eng ~ esfera, data = pa_means,
         log = "y", col = "yellow")
@@ -253,3 +355,8 @@ summary(respt.aov)
 TukeyHSD(reseng.aov)
 
 table(pa_means_merge$esfera.y)
+
+pt_means
+date_tmp <- "2015-07-01"
+date_tmp <- as.Date(date_tmp)
+date_tmp + pt_means$total_days[1]
