@@ -1,5 +1,8 @@
 # ---- Head ------------------- 
+# Project: Protected Areas Social Interest
+#
 # Explore Data
+#
 # Created in 2019-05-30
 #
 # Guedes-Santos, J
@@ -9,8 +12,13 @@
 # Clean environment
 rm(list = ls())
 
+# ---- Import functions -----
+source("./functions.R")
+
+
+# ---- Load libraries ----
 library(tidyverse)
-pa <- read.csv("./data/BPA_Wiki_Eng_2019-05-29.csv")
+
 # ---- Load datasets ----------
 #PA Dataset (CNUC)
 pa_dataset <- read_csv("./data/BrazilianProtectedAreas_2019-05-13.csv")
@@ -19,6 +27,12 @@ pa_correia <- read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualifica
 #pa_correia <- read.table("/home/gaio/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_correia <- read.table("Z:/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #PA Dataset Merge from CNUC PA Dataset and Correia PA Dataset 
+eng_means <- read_csv('./data/BPA_Wiki_Eng_2019-05-29.csv')
+eng_month_means <- read_csv('./data/BPA_Wiki_Eng_Month_2019-05-29.csv')
+pt_means <- read_csv('./data/BPA_Wiki_Pt_2019-05-29.csv')
+pt_month_means <- read_csv('./data/BPA_Wiki_Pt_Month_2019-05-29.csv')
+
+# ---- Transform datasets ----
 pa_merge <- inner_join(pa_correia,
                        pa_dataset,
                        by = c("id" = "codCnuc")
@@ -45,6 +59,21 @@ pa_means_merge <- left_join (x = pa_merge,
 
 
 # ---- Explore Data ----------
+
+# ---- Number of pageviews ---- 
+# Protected Areas with mean pageviews greater than 10
+pt_10 <- pt_means %>%
+  filter(pt_means$mean >= 10)
+print("PT Pageviews >= 10")
+print(paste("Quantidade:", count(pt_10)))
+pa_list_names(pa_dataset, pt_10$cod_cnuc)
+
+eng_10 <- eng_means %>%
+  filter(eng_means$mean >= 10)
+print("ENG Pageviews >= 10")
+print(paste("Quantidade:", count(eng_10)))
+pa_list_names(pa_dataset, eng_10$cod_cnuc)
+
 
 #______________________________
 # ### CNUC Dataset ###
@@ -148,16 +177,8 @@ table(pa_mboth$paddd_enacted)
 table(pa_mboth$paddd_events)
 
 #______________________________
-# ### Most visualized PAs ###
-# Define functions
-# Return Brazilian Protected Area Original Name
-pa_name <- function(dataset, cod_cnuc) {
-  # This function is based in PA_Dataset: BrazilianProtectedAreas_[date]>_reviewed.csv
-  name <- dataset %>%
-    filter(codCnuc == cod_cnuc) %>%
-    select(nomeUC)
-  return(name$nomeUC)
-}
+# ---- Most visualized PAs ----
+
 
 pa_pt_descending <- pt_means[with(pt_means, order(-mean)),]
 head(pa_pt_descending)  
