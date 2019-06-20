@@ -18,6 +18,8 @@ source("./functions.R")
 
 # ---- Load libraries ----
 library(tidyverse)
+library(ggplot2)
+library(scales)
 
 # ---- Load datasets ----------
 #PA Dataset (CNUC)
@@ -50,25 +52,170 @@ pa_excluded2 <- anti_join(pa_correia,
 )
 
 #PAs with means of pageviews
-pa_means <- read_csv("./data/BPA_Wiki_Means_2019-05-24.csv")
+pa_means <- read_csv("./data/BPA_Wiki_Means_2019-06-20.csv")
 
 #Merge means and variables
 pa_means_merge <- left_join (x = pa_merge,
                              y = pa_means,
                              by = c("id" = "cod_cnuc"))
 
+#Merge PT and ENG datasets adding LANG column
+pt_means$lang <- "pt" 
+eng_means$lang <- "eng" 
+pa_means_vertical <- rbind(pt_means, eng_means)
 
-# ---- Explore Data ----------
+# ---- _____ Explore Data ----------
+
+# ---- Boxplot: Pageviews by Language ----
+# All PAs with Pages #
+names(pa_means_vertical)
+p <- ggplot(pa_means_vertical, 
+            aes(x = lang, y = mean, color = lang)) +
+  geom_boxplot(outlier.color = "red",
+               outlier.size = 1) +
+  #geom_jitter(shape = 1, position = position_jitter(0.2)) +
+  stat_summary(fun.y = mean, # Add a mean point
+               geom = "point") +
+  coord_trans(y = "log10") + # Transforms axes without changing values
+  scale_color_discrete(name = "Language", labels = c("English", "Portuguese")) +
+  scale_x_discrete(labels = c("English", "Portuguese")) +
+  scale_y_continuous(breaks=c(1, 2, 10, 50, 100, 200, 300)) + # Manually controls tick marks in y axis
+  labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews",
+       x = "Languages",
+       y = "PA Pageviews \n (Means)") +
+  theme(plot.title = element_text(size = 14)) +
+  theme(plot.title = element_text(hjust = 0.5))
+
+p
+  # scale_y_log10() # Scale Y axys into a Log scale: base 10
+svg("PA_Pageviews_Boxplot.svg")
+p
+dev.off()  
+
+png("PA_Pageviews_Boxplot.png")
+p
+dev.off()
+
+# ---- Scatterplot: PT vs ENG Pageviews ----
+# Only PAs with pages in both languages
+names(pa_means)
+p <- ggplot(pa_means,
+            aes(x = mean.eng, y = mean.pt)) +
+  scale_y_log10(labels = comma) + # Forces R to plot in long format instead abbreviated
+  scale_x_log10() +
+#  coord_trans(x = "log10", y = "log10") + # Transforms axes without changing values
+#  scale_y_continuous(labels = comma) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews",
+       x = "English PA \nPageviews",
+       y = "Portuguese PA \nPageviews") +
+  theme(plot.title = element_text(size = 14)) +
+  theme(plot.title = element_text(hjust = 0.5))
+  
+p
+svg("PA_Pageviews_Scatterplot.svg")
+p
+dev.off()  
+
+png("PA_Pageviews_Scatterplot.png")
+p
+dev.off()
+
+
+# ---- Boxplot: Pageviews by Biomes ----
+pa_means_melted <- melt(data = pa_means_merge, id.vars = c("id", "bioma"), measure.vars = c("mean.eng", "mean.pt"))
+names(pa_means_melted)
+
+p <- ggplot(data = subset(pa_means_melted, !is.na(bioma)), # Subset to remove NA biome values
+            aes(x = bioma, y = value, color = variable)) +
+  geom_boxplot(outlier.size = 0.3) +
+  coord_trans(y = "log10") + # Transforms axes without changing values
+  scale_color_discrete(name = "Languages", labels = c("English", "Portuguese")) +
+  scale_x_discrete() +
+  scale_y_continuous(breaks=c(1, 2, 10, 50, 100, 200, 300)) + # Manually controls tick marks in y axis
+  labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Biomes",
+     x = "Biomes",
+     y = "PA Pageviews \n (Means)") +
+  theme(plot.title = element_text(size = 14)) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(axis.text.x = element_text(size = 10))
+
+p
+svg("PA_Biomes_Pageviews_Boxplot.svg", width = 1000, height = 500)
+p
+dev.off()  
+
+png("PA_Biomes_Pageviews_Boxplot.png", width = 1000, height = 500)
+p
+dev.off()
+
+# ---- Boxplot: Pageviews by Level of Government ----
+pa_means_melted <- melt(data = pa_means_merge, id.vars = c("id", "govern"), measure.vars = c("mean.eng", "mean.pt"))
+names(pa_means_melted)
+
+p <- ggplot(data = pa_means_melted,
+            aes(x = govern, y = value, color = variable)) +
+  geom_boxplot(outlier.size = 0.3) +
+  coord_trans(y = "log10") + # Transforms axes without changing values
+  scale_color_discrete(name = "Languages", labels = c("English", "Portuguese")) +
+  scale_x_discrete(labels = c("State", "Federal", "Municipality")) +
+  scale_y_continuous(breaks=c(1, 2, 10, 50, 100, 200, 300)) + # Manually controls tick marks in y axis
+  labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Levels of Government",
+       x = "Levels of Government",
+       y = "PA Pageviews \n (Means)") +
+  theme(plot.title = element_text(size = 14)) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(axis.text.x = element_text(size = 10))
+
+p
+svg("PA_Government_Pageviews_Boxplot.svg", width = 1000, height = 500)
+p
+dev.off()  
+
+png("PA_Government_Pageviews_Boxplot.png", width = 1000, height = 500)
+p
+dev.off()
+
+# ---- Boxplot: Pageviews by Categories ----
+pa_means_melted <- melt(data = pa_means_merge, id.vars = c("id", "cat2"), measure.vars = c("mean.eng", "mean.pt"))
+names(pa_means_melted)
+
+p <- ggplot(data = pa_means_melted,
+            aes(x = cat2, y = value, color = variable)) +
+  geom_boxplot(outlier.size = 0.3) +
+  coord_trans(y = "log10") + # Transforms axes without changing values
+  scale_color_discrete(name = "Languages", labels = c("English", "Portuguese")) +
+#  scale_x_discrete(labels = c("State", "Federal", "Municipality")) +
+  scale_y_continuous(breaks=c(1, 2, 10, 50, 100, 200, 300)) + # Manually controls tick marks in y axis
+  labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Categories",
+       x = "Categories",
+       y = "PA Pageviews \n (Means)") +
+  theme(plot.title = element_text(size = 14)) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(axis.text.x = element_text(size = 10))
+
+p
+svg("PA_Categories_Pageviews_Boxplot.svg", width = 1000, height = 500)
+p
+dev.off()  
+
+png("PA_Categories_Pageviews_Boxplot.png", width = 1000, height = 500)
+p
+dev.off()
+
+# ---- _____ End Explore Data ----
+
 
 # ---- Number of pageviews ---- 
 # Protected Areas with mean pageviews greater than 10
-pt_10 <- pt_means %>%
-  filter(pt_means$mean >= 10)
-print("PT Pageviews >= 10")
-print(paste("Quantidade:", count(pt_10)))
-pa_list_names(pa_dataset, pt_10$cod_cnuc)
+pt_pv <- pt_means %>%
+  filter(pt_means$mean >= 20)
+print("PT Pageviews >= 20")
+print(paste("Quantidade:", count(pt_pv)))
+pa_list_names(pa_dataset, pt_pv$cod_cnuc)
 
-eng_10 <- eng_means %>%
+eng_pv <- eng_means %>%
   filter(eng_means$mean >= 10)
 print("ENG Pageviews >= 10")
 print(paste("Quantidade:", count(eng_10)))
@@ -424,3 +571,4 @@ pt_means
 date_tmp <- "2015-07-01"
 date_tmp <- as.Date(date_tmp)
 date_tmp + pt_means$total_days[1]
+
