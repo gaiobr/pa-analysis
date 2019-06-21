@@ -183,19 +183,23 @@ for (i in 1:length(pa_info_eng$codcnuc)) {
       xml_contents() %>%
       html_text()
     
+    print(paste("PA PAGE CONTENT:", pa_page_content[2]))
+    
     # Split character variable and standardize date
     page_creation <- unlist(strsplit(pa_page_content[2], " de "))
     
     page_creation_day <- page_creation[2]
-    page_creation_month <- page_creation[3]
+    page_creation_month <- translate_month(page_creation[3])
     page_creation_year <- page_creation[4]
     
     # Set locale to work with dates
     #Sys.setlocale("LC_TIME", "pt_BR.UTF-8")
     
     page_creation <- ymd(paste(page_creation_year, page_creation_month, page_creation_day))
+    print(paste("P1:", page_creation))
     #page_creation <- as.Date(page_creation, tryFormats = c("%d %B %Y"))
     page_creation <- as.character(page_creation)
+    print(paste("P2:", page_creation))
     
     
     # Add information to the dataset
