@@ -7,7 +7,7 @@ This project aims to scrape and analyze data from Brazilian Protected Areas avai
 
 Order:
 1. getWikiLangviewsData.R
-2. getWikiPageCreation.R
+2. get_page_creation.R
 When there are two pages for the same PA, it is necessary to define which page will be prioritized
 Suggestion: add the values of the two pages
 3. calculateMeanPageViewsData.R

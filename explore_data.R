@@ -20,6 +20,8 @@ source("./functions.R")
 library(tidyverse)
 library(ggplot2)
 library(scales)
+library(reshape2)
+
 
 # ---- Load datasets ----------
 #PA Dataset (CNUC)
@@ -29,10 +31,10 @@ pa_correia <- read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualifica
 #pa_correia <- read.table("/home/gaio/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_correia <- read.table("Z:/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #PA Dataset Merge from CNUC PA Dataset and Correia PA Dataset 
-eng_means <- read_csv('./data/BPA_Wiki_Eng_2019-05-29.csv')
-eng_month_means <- read_csv('./data/BPA_Wiki_Eng_Month_2019-05-29.csv')
-pt_means <- read_csv('./data/BPA_Wiki_Pt_2019-05-29.csv')
-pt_month_means <- read_csv('./data/BPA_Wiki_Pt_Month_2019-05-29.csv')
+eng_means <- read_csv('./data/BPA_Wiki_Eng_2019-06-21.csv')
+eng_month_means <- read_csv('./data/BPA_Wiki_Eng_Month_2019-06-21.csv')
+pt_means <- read_csv('./data/BPA_Wiki_Pt_2019-06-21.csv')
+pt_month_means <- read_csv('./data/BPA_Wiki_Pt_Month_2019-06-21.csv')
 
 # ---- Transform datasets ----
 pa_merge <- inner_join(pa_correia,
@@ -52,7 +54,7 @@ pa_excluded2 <- anti_join(pa_correia,
 )
 
 #PAs with means of pageviews
-pa_means <- read_csv("./data/BPA_Wiki_Means_2019-06-20.csv")
+pa_means <- read_csv("./data/BPA_Wiki_Means_2019-06-21.csv")
 
 #Merge means and variables
 pa_means_merge <- left_join (x = pa_merge,
@@ -83,18 +85,25 @@ p <- ggplot(pa_means_vertical,
   labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews",
        x = "Languages",
        y = "PA Pageviews \n (Means)") +
-  theme(plot.title = element_text(size = 14)) +
-  theme(plot.title = element_text(hjust = 0.5))
+  theme(plot.title = element_text(size = 20,
+                                hjust = 0.5),
+      axis.text.x = element_text(size = 12, 
+                                 angle = 45, 
+                                 hjust = 1),
+      axis.text.y = element_text(size = 12),
+      axis.title = element_text(size = 16),
+      legend.title = element_text(size = 14),
+      legend.text = element_text(size = 12))
 
 p
   # scale_y_log10() # Scale Y axys into a Log scale: base 10
-svg("PA_Pageviews_Boxplot.svg")
+today <- Sys.Date()
+
+#svg(paste0("./figures/PA_Pageviews_Boxplot", today,".svg"))
+png(paste0("./figures/PA_Pageviews_Boxplot", today,".png"))
 p
 dev.off()  
 
-png("PA_Pageviews_Boxplot.png")
-p
-dev.off()
 
 # ---- Scatterplot: PT vs ENG Pageviews ----
 # Only PAs with pages in both languages
@@ -110,17 +119,22 @@ p <- ggplot(pa_means,
   labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews",
        x = "English PA \nPageviews",
        y = "Portuguese PA \nPageviews") +
-  theme(plot.title = element_text(size = 14)) +
-  theme(plot.title = element_text(hjust = 0.5))
-  
+  theme(plot.title = element_text(size = 22,
+                                  hjust = 0.5),
+        axis.text.x = element_text(size = 12, 
+                                   angle = 45, 
+                                   hjust = 1),
+        axis.text.y = element_text(size = 12),
+        axis.title = element_text(size = 14),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12))
+
 p
-svg("PA_Pageviews_Scatterplot.svg")
+#svg(paste0("./figures/PA_Pageviews_Scatterplot", today,".svg"))
+png(paste0("./figures/PA_Pageviews_Scatterplot", today,".png"))
 p
 dev.off()  
 
-png("PA_Pageviews_Scatterplot.png")
-p
-dev.off()
 
 
 # ---- Boxplot: Pageviews by Biomes ----
@@ -129,7 +143,7 @@ names(pa_means_melted)
 
 p <- ggplot(data = subset(pa_means_melted, !is.na(bioma)), # Subset to remove NA biome values
             aes(x = bioma, y = value, color = variable)) +
-  geom_boxplot(outlier.size = 0.3) +
+  geom_boxplot(outlier.size = 1, lwd = 1) +
   coord_trans(y = "log10") + # Transforms axes without changing values
   scale_color_discrete(name = "Languages", labels = c("English", "Portuguese")) +
   scale_x_discrete() +
@@ -137,18 +151,24 @@ p <- ggplot(data = subset(pa_means_melted, !is.na(bioma)), # Subset to remove NA
   labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Biomes",
      x = "Biomes",
      y = "PA Pageviews \n (Means)") +
-  theme(plot.title = element_text(size = 14)) +
-  theme(plot.title = element_text(hjust = 0.5)) +
-  theme(axis.text.x = element_text(size = 10))
+  theme(plot.title = element_text(size = 32,
+                                  hjust = 0.5),
+        axis.text.x = element_text(size = 12, 
+                                   angle = 45, 
+                                   hjust = 1),
+        axis.text.y = element_text(size = 12),
+        axis.title = element_text(size = 20),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12))
 
 p
-svg("PA_Biomes_Pageviews_Boxplot.svg", width = 1000, height = 500)
+
+today <- Sys.Date()
+  
+#svg(paste0("./figures/PA_Biomes_Pageviews_Boxplot", today,".svg"), width = 500, height = 400)
+png(paste0("./figures/PA_Biomes_Pageviews_Boxplot", today,".png"), width = 1000, height = 800)
 p
 dev.off()  
-
-png("PA_Biomes_Pageviews_Boxplot.png", width = 1000, height = 500)
-p
-dev.off()
 
 # ---- Boxplot: Pageviews by Level of Government ----
 pa_means_melted <- melt(data = pa_means_merge, id.vars = c("id", "govern"), measure.vars = c("mean.eng", "mean.pt"))
@@ -164,18 +184,22 @@ p <- ggplot(data = pa_means_melted,
   labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Levels of Government",
        x = "Levels of Government",
        y = "PA Pageviews \n (Means)") +
-  theme(plot.title = element_text(size = 14)) +
-  theme(plot.title = element_text(hjust = 0.5)) +
-  theme(axis.text.x = element_text(size = 10))
+  theme(plot.title = element_text(size = 22,
+                                  hjust = 0.5),
+        axis.text.x = element_text(size = 12, 
+                                   angle = 45, 
+                                   hjust = 1),
+        axis.text.y = element_text(size = 12),
+        axis.title = element_text(size = 14),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12))
 
 p
-svg("PA_Government_Pageviews_Boxplot.svg", width = 1000, height = 500)
+#svg(paste0("./figures/PA_Government_Pageviews_Boxplot", today,".svg"), width = 1000, height = 500)
+png(paste0("./figures/PA_Government_Pageviews_Boxplot", today,".png"), width = 1000, height = 500)
 p
 dev.off()  
 
-png("PA_Government_Pageviews_Boxplot.png", width = 1000, height = 500)
-p
-dev.off()
 
 # ---- Boxplot: Pageviews by Categories ----
 pa_means_melted <- melt(data = pa_means_merge, id.vars = c("id", "cat2"), measure.vars = c("mean.eng", "mean.pt"))
@@ -191,22 +215,95 @@ p <- ggplot(data = pa_means_melted,
   labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Categories",
        x = "Categories",
        y = "PA Pageviews \n (Means)") +
-  theme(plot.title = element_text(size = 14)) +
-  theme(plot.title = element_text(hjust = 0.5)) +
-  theme(axis.text.x = element_text(size = 10))
+  theme(plot.title = element_text(size = 22,
+                                  hjust = 0.5),
+        axis.text.x = element_text(size = 12, 
+                                   angle = 45, 
+                                   hjust = 1),
+        axis.text.y = element_text(size = 12),
+        axis.title = element_text(size = 14),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12))
 
 p
-svg("PA_Categories_Pageviews_Boxplot.svg", width = 1000, height = 500)
+#svg(paste0("./figures/PA_Categories_Pageviews_Boxplot", today,".svg"), width = 1000, height = 500)
+png(paste0("./figures/PA_Categories_Pageviews_Boxplot", today,".png"), width = 1000, height = 500)
 p
 dev.off()  
 
-png("PA_Categories_Pageviews_Boxplot.png", width = 1000, height = 500)
+
+# ---- Table: Dataset with means and names ----
+names(pa_means)
+names(pa_dataset)
+pa_means$pa_name <- pa_dataset$nomeUC[match(pa_means$cod_cnuc, pa_dataset$codCnuc)]
+
+today <- Sys.Date()
+
+write_csv(pa_means, paste0("./data/BPA_Means_", today, ".csv"))
+
+# ---- Scatterplot: Pageviews vs Page Creation ----
+pg_eng_creation <- read_csv("./data/BPA_WikipediaPages_eng_2019-06-21.csv")
+pg_pt_creation <- read_csv("./data/BPA_WikipediaPages_pt_2019-06-21.csv")
+
+pa_means$pg_creation.eng <- pg_eng_creation$page_creation[match(pa_means$cod_cnuc, pg_eng_creation$codcnuc)]
+pa_means$pg_creation.pt <- pg_pt_creation$page_creation[match(pa_means$cod_cnuc, pg_pt_creation$codcnuc)]
+
+p <- ggplot(pa_means,
+            aes(x = pg_creation.eng, y = mean.eng)) +
+  scale_y_log10(labels = comma) + # Forces R to plot in long format instead abbreviated
+  #  coord_trans(x = "log10", y = "log10") + # Transforms axes without changing values
+  #  scale_y_continuous(labels = comma) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Page Creation",
+       x = "Year of Page Creation",
+       y = "English PA \nPageviews") +
+  theme(plot.title = element_text(size = 22,
+                                  hjust = 0.5),
+        axis.text.x = element_text(size = 12, 
+                                   angle = 45, 
+                                   hjust = 1),
+        axis.text.y = element_text(size = 12),
+        axis.title = element_text(size = 14),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12))
+
 p
-dev.off()
+#svg(paste0("./figures/PA_Eng_PageCreation_Pageviews_Scatterplot", today,".svg"), width = 1000, height = 500)
+png(paste0("./figures/PA_Eng_PageCreation_Pageviews_Scatterplot", today,".png"), width = 1000, height = 500)
+p
+dev.off()  
+
+p <- ggplot(pa_means,
+            aes(x = pg_creation.pt, y = mean.pt)) +
+  scale_y_log10(labels = comma) + # Forces R to plot in long format instead abbreviated
+  #  coord_trans(x = "log10", y = "log10") + # Transforms axes without changing values
+  #  scale_y_continuous(labels = comma) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Page Creation",
+       x = "Year of Page Creation",
+       y = "Portuguese PA \nPageviews") +
+  theme(plot.title = element_text(size = 22,
+                                  hjust = 0.5),
+        axis.text.x = element_text(size = 12, 
+                                   angle = 45, 
+                                   hjust = 1),
+        axis.text.y = element_text(size = 12),
+        axis.title = element_text(size = 14),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12))
+
+p
+#svg(paste0("./figures/PA_Pt_PageCreation_Pageviews_Scatterplot", today,".svg"), width = 1000, height = 500)
+png(paste0("./figures/PA_Pt_PageCreation_Pageviews_Scatterplot", today,".png"), width = 1000, height = 500)
+p
+dev.off()  
+
 
 # ---- _____ End Explore Data ----
 
-
+# ---- _____ Another explorations ----
 # ---- Number of pageviews ---- 
 # Protected Areas with mean pageviews greater than 10
 pt_pv <- pt_means %>%
@@ -415,8 +512,8 @@ shapiro.test(pa_means_merge$mean.eng)
 #______________________________
 # ### Kruskal-Wallis ###
 # Categories
-kruskal.test(mean.eng ~ cat.y, data = pa_means_merge)
-kruskal.test(mean.pt ~ cat.x, data = pa_means_merge)
+kruskal.test(mean.eng ~ cat2, data = pa_means_merge)
+kruskal.test(mean.pt ~ cat2, data = pa_means_merge)
 
 # Biomes
 kruskal.test(mean.eng ~ bioma, data = pa_means_merge)

@@ -13,7 +13,7 @@ pa_df<-read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação I
 summary(pa_df)
 
 #Wiki data with PT and EN
-wiki_all_df<-read.table("./data/BPA_Wiki_Means_2019-05-24.csv",sep=",",dec=".", header=T)
+wiki_all_df<-read.table("./data/BPA_Wiki_Means_2019-06-21.csv",sep=",",dec=".", header=T)
 #Uncomment below to consider only Federal PAs
 #wiki_all_df <- wiki_all_df %>% filter(wiki_all_df$esfera == "Federal")
 #EndTests
@@ -21,11 +21,11 @@ summary(wiki_all_df)
 
 
 #Wiki data PT only
-wiki_pt_df<-read.table("./data/BPA_Wiki_Pt_2019-05-29.csv",sep=",",dec=".", header=T)
+wiki_pt_df<-read.table("./data/BPA_Wiki_Pt_2019-06-21.csv",sep=",",dec=".", header=T)
 summary(wiki_pt_df)
 
 #Wiki data EN only
-wiki_en_df<-read.table("./data/BPA_Wiki_Eng_2019-05-29.csv",sep=",",dec=".", header=T)
+wiki_en_df<-read.table("./data/BPA_Wiki_Eng_2019-06-21.csv",sep=",",dec=".", header=T)
 summary(wiki_en_df)
 
 
@@ -66,7 +66,8 @@ p1_pt<-ggplot(wiki_pt_df,
            aes(x = mean))+
        geom_histogram(fill = "red")+
        scale_x_continuous(trans = "log10",
-                          name = "Mean views per page")+
+                          name = "Mean views per page",
+                          labels = comma)+
        scale_y_continuous(name = "Number of PAs",
                           limits = c(0,40))+
        theme_classic()+
@@ -114,7 +115,8 @@ p2<-ggplot(merge_pa_df, aes(x=mean.pt, y=mean.eng))+
                                  colour = "black"),
           axis.title = element_text(size = 14))+
     scale_x_continuous(trans = "log10",
-                       name = "Mean views per page in Portuguese")+
+                       name = "Mean views per page in Portuguese",
+                       labels = comma)+
     scale_y_continuous(trans = "log10",
                        name = "Mean views per page in English")+
     geom_hline(yintercept = median(merge_pa_df$mean.eng),
@@ -123,7 +125,7 @@ p2<-ggplot(merge_pa_df, aes(x=mean.pt, y=mean.eng))+
                linetype = "dashed")
 p2
 p2<-ggMarginal(p2, type="boxplot", size = 8, fill="gray")
-
+p2
 ggsave("Fig1.tiff",
        p2,
        units = "cm",

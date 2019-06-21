@@ -1,0 +1,567 @@
+codcnuc,pa_name,pa_start_views,pa_end_views,page_creation
+0000.00.0001,Anhatomirim Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0002,Cavernas do Peruaçu Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0007,Barra do Rio Mamanguape Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0010,Petrópolis Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0011,Serra da Mantiqueira Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0012,Serra de Tabatinga Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0013,Cairuçu Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0016,Guapimirim Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0017,Guaraqueçaba Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0018,Piaçabuçu Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0019,Delta do Parnaíba Environmental Protection Area,2015-07-01,2019-06-20,2017-02-09
+0000.00.0020,Carste de Lagoa Santa Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0021,Ibirapuitã Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0022,Igarapé Gelado Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0027,Morro da Pedreira Environmental Protection Area,2015-07-01,2019-06-20,2008-03-21
+0000.00.0029,Serra da Ibiapaba Environmental Protection Area,2015-07-01,2019-06-20,2017-02-10
+0000.00.0030,Buriti de Vassununga Area of Relevant Ecological Interest,2015-07-01,2019-06-20,2016-05-11
+0000.00.0032,Cerrado Pé de Gigante Area of Relevant Ecological Interest,2015-07-01,2019-06-20,2016-05-11
+0000.00.0034,Ilhas Cagarras,2015-07-01,2019-06-20,2004-12-03
+0000.00.0036,Ilha do Ameixal Area of Relevant Ecological Interest,2015-07-01,2019-06-20,2016-07-23
+0000.00.0037,Ilhas Queimada Pequena e Queimada Grande Area of Relevant Ecological Interest,2015-07-01,2019-06-20,2016-11-20
+0000.00.0038,Javari-Buriti Area of Relevant Ecological Interest,2015-07-01,2019-06-20,2016-10-19
+0000.00.0040,Mata de Santa Genebra,2015-07-01,2019-06-20,2016-05-08
+0000.00.0043,Biological Dynamics of Forest Fragments Project Area of Relevant Ecological Interest,2015-07-01,2019-06-20,2016-10-19
+0000.00.0047,Terra do Meio Ecological Station,2015-07-01,2019-06-20,2016-05-29
+0000.00.0048,Aiuaba Ecological Station,2015-07-01,2019-06-20,2016-05-08
+0000.00.0049,Anavilhanas National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0050,Aracuri-Esmeralda Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0052,Carijós Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0053,Cuniã Ecological Station,2015-07-01,2019-06-20,2016-05-16
+0000.00.0054,Guaraqueçaba Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0055,Iquê Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0056,Jutaí-Solimões Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0057,Maracá Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0058,Maracá-Jipioca Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0059,Murici Ecological Station,2015-07-01,2019-06-20,2016-11-06
+0000.00.0060,Niquiá Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0061,Pirapitinga Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0062,Taiamã Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0063,Tamoios Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0064,Tupinambás Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0065,Uruçui-Una Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0066,Castanhão Ecological Station,2015-07-01,2019-06-20,2017-02-21
+0000.00.0067,Jari Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0068,Rio Acre Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0069,Seridó Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0070,Taim Ecological Station,2015-07-01,2019-06-20,2006-04-16
+0000.00.0071,Tupiniquins Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0072,Juami-Japurá Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0073,Mico Leão Preto Ecological Station,2015-07-01,2019-06-20,2016-11-06
+0000.00.0074,Raso da Catarina Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0075,Serra das Araras Ecological Station,2015-07-01,2019-06-20,2008-03-21
+0000.00.0076,Serra Geral do Tocantins Ecological Station,2015-07-01,2019-06-20,2016-05-28
+0000.00.0082,Açu National Forest,2015-07-01,2019-06-20,2016-06-01
+0000.00.0083,Altamira National Forest,2015-07-01,2019-06-20,2016-05-29
+0000.00.0085,Balata-Tufari National Forest,2015-07-01,2019-06-20,2016-06-03
+0000.00.0088,Carajás National Forest,2015-07-01,2019-06-20,2016-05-30
+0000.00.0089,Caxiuanã National Forest,2015-07-01,2019-06-20,2014-07-29
+0000.00.0091,Goytacazes National Forest,2015-07-01,2019-06-20,2016-10-23
+0000.00.0092,Humaitá National Forest,2015-07-01,2019-06-20,2016-06-03
+0000.00.0095,Itaituba I National Forest,2015-07-01,2019-06-20,2016-05-29
+0000.00.0096,Itaituba II National Forest,2015-07-01,2019-06-20,2016-05-29
+0000.00.0097,Jacundá National Forest,2015-07-01,2019-06-20,2016-05-16
+0000.00.0098,Lorena National Forest,2015-07-01,2019-06-20,2016-10-02
+0000.00.0099,Mulata National Forest,2015-07-01,2019-06-20,2016-06-01
+0000.00.0100,Nísia Floresta National Forest,2015-07-01,2019-06-20,2016-06-02
+0000.00.0101,Pacotuba National Forest,2015-07-01,2019-06-20,2016-10-27
+0000.00.0104,Pau-Rosa National Forest,2015-07-01,2019-06-20,2016-10-29
+0000.00.0105,Ritápolis National Forest,2015-07-01,2019-06-20,2016-05-20
+0000.00.0106,Roraima National Forest,2015-07-01,2019-06-20,2016-05-19
+0000.00.0107,Santa Rosa do Purus National Forest,2015-07-01,2019-06-20,2016-06-21
+0000.00.0108,São Francisco National Forest,2015-07-01,2019-06-20,2016-06-21
+0000.00.0109,Saracá-Taquera National Forest,2015-07-01,2019-06-20,2016-06-01
+0000.00.0112,Tefé National Forest,2015-07-01,2019-06-20,2016-10-19
+0000.00.0113,Amapá National Forest,2015-07-01,2019-06-20,2016-07-06
+0000.00.0114,Amazonas National Forest,2015-07-01,2019-06-20,2016-05-20
+0000.00.0116,Bom Futuro National Forest,2015-07-01,2019-06-20,2016-10-30
+0000.00.0120,Macauã National Forest,2015-07-01,2019-06-20,2016-06-19
+0000.00.0121,Purus National Forest,2015-07-01,2019-06-20,2016-09-08
+0000.00.0122,Rio Preto National Forest,2015-07-01,2019-06-20,2016-05-21
+0000.00.0123,Tapajós National Forest,2015-07-01,2019-06-20,2009-09-11
+0000.00.0124,Tapirapé-Aquiri National Forest,2015-07-01,2019-06-20,2016-05-30
+0000.00.0126,Mapiá-Inauini National Forest,2015-07-01,2019-06-20,2016-09-08
+0000.00.0129,Passa Quatro National Forest,2015-07-01,2019-06-20,2016-09-29
+0000.00.0132,Restinga de Cabedelo National Forest,2015-07-01,2019-06-20,2017-03-22
+0000.00.0133,São Francisco de Paula National Forest,2015-07-01,2019-06-20,2016-04-25
+0000.00.0134,Três Barras National Forest,2015-07-01,2019-06-20,2017-02-17
+0000.00.0135,Cavernas do Peruaçu National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0136,Amazônia National Park,2015-07-01,2019-06-20,2006-02-20
+0000.00.0137,Chapada Diamantina National Park,2015-07-01,2019-06-20,2004-09-25
+0000.00.0138,Chapada dos Guimarães National Park,2015-07-01,2019-06-20,2006-02-20
+0000.00.0139,Chapada dos Veadeiros National Park,2015-07-01,2019-06-20,2006-02-20
+0000.00.0140,Lagoa do Peixe National Park,2015-07-01,2019-06-20,2007-06-01
+0000.00.0141,Jurubatiba Sandbank National Park,2015-07-01,2019-06-20,2005-07-02
+0000.00.0142,Serra da Bocaina National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0143,Serra da Bodoquena National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0144,Serra da Canastra National Park,2015-07-01,2019-06-20,2006-02-21
+0000.00.0145,Serra da Capivara National Park,2015-07-01,2019-06-20,2005-02-12
+0000.00.0146,Serra das Confusões National Park,2015-07-01,2019-06-20,2016-06-09
+0000.00.0147,Serra de Itabaiana National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0148,Serra do Cipó National Park,2015-07-01,2019-06-20,2006-02-21
+0000.00.0149,Serra do Divisor National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0150,Serra do Itajaí National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0151,Serra do Pardo National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0152,Serra dos Órgãos National Park,2015-07-01,2019-06-20,2004-03-15
+0000.00.0153,Serra Geral National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0154,Tijuca Forest,2015-07-01,2019-06-20,2003-10-21
+0000.00.0155,Emas National Park,2015-07-01,2019-06-20,2006-02-20
+0000.00.0156,Nascentes do Rio Parnaíba National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0157,Sempre Vivas National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0158,Aparados da Serra National Park,2015-07-01,2019-06-20,2006-02-20
+0000.00.0159,Brasília National Park,2015-07-01,2019-06-20,2006-02-20
+0000.00.0160,Caparaó National Park,2015-07-01,2019-06-20,2006-02-20
+0000.00.0161,Ilha Grande National Park,2015-07-01,2019-06-20,2006-02-21
+0000.00.0162,Jericoacoara National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0163,Pacaás Novos National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0164,Saint-Hilaire/Lange National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0165,São Joaquim National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0166,Sete Cidades National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0167,Ubajara National Park,2015-07-01,2019-06-20,2007-03-12
+0000.00.0168,Araguaia National Park,2015-07-01,2019-06-20,2006-02-20
+0000.00.0169,Cabo Orange National Park,2015-07-01,2019-06-20,2006-02-20
+0000.00.0170,Catimbau National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0171,Descobrimento National Park,2015-07-01,2019-06-20,2016-06-08
+0000.00.0172,Iguaçu National Park,2015-07-01,2019-06-20,2004-11-27
+0000.00.0173,Jaú National Park,2015-07-01,2019-06-20,2003-11-14
+0000.00.0174,Monte Roraima National Park,2015-07-01,2019-06-20,2016-06-07
+0000.00.0175,Pantanal Matogrossense National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0176,Pau Brasil National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0177,Pico da Neblina National Park,2015-07-01,2019-06-20,2005-11-21
+0000.00.0178,Superagüi National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0179,Viruá National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0180,Lençóis Maranhenses National Park,2015-07-01,2019-06-20,2006-02-21
+0000.00.0181,Pontões Capixabas Natural Monument,2015-07-01,2019-06-20,2008-03-21
+0000.00.0182,Monte Pascoal National Park,2015-07-01,2019-06-20,2016-05-04
+0000.00.0183,Grande Sertão Veredas National Park,2015-07-01,2019-06-20,2006-02-20
+0000.00.0184,Itatiaia National Park,2015-07-01,2019-06-20,2004-05-11
+0000.00.0185,Abrolhos Marine National Park,2015-07-01,2019-06-20,2006-02-20
+0000.00.0186,Fernando de Noronha Marine National Park,2015-07-01,2019-06-20,2006-06-01
+0000.00.0187,Tumucumaque Mountains National Park,2015-07-01,2019-06-20,2002-08-24
+0000.00.0188,Serra da Cutia National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0189,Serra da Mocidade National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0190,Ilha dos Lobos,2015-07-01,2019-06-20,2006-06-20
+0000.00.0191,Augusto Ruschi Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0192,Contagem Biological Reserve,2015-07-01,2019-06-20,2016-05-26
+0000.00.0193,Mata Escura Biological Reserve,2015-07-01,2019-06-20,2017-02-23
+0000.00.0194,Abufari Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0195,Comboios Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0196,Guaribas Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0197,Pedra Talhada Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0198,Saltinho Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0199,Santa Isabel Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0200,Serra Negra Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0201,Sooretama,2015-07-01,2019-06-20,2004-10-31
+0000.00.0202,Una Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0203,Atol das Rocas Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0204,Córrego do Veado Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0205,Córrego Grande Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0206,Guaporé Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0207,Gurupi Biological Reserve,2015-07-01,2019-06-20,2010-02-26
+0000.00.0208,Jaru Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0209,Lago Piratuba Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0210,Rio Trombetas Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0211,Tapirapé Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0212,Tinguá Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0213,Uatumã Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0214,Arvoredo Marine Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0215,Poço das Antas Biological Reserve,2015-07-01,2019-06-20,2008-03-21
+0000.00.0216,Nascentes da Serra do Cachimbo Biological Reserve,2015-07-01,2019-06-20,2016-05-27
+0000.00.0217,União Biological Reserve,2015-07-01,2019-06-20,2016-05-14
+0000.00.0220,Auatí-Paraná Extractive Reserve,2015-07-01,2019-06-20,2016-10-21
+0000.00.0222,Chico Mendes Extractive Reserve,2015-07-01,2019-06-20,2016-06-04
+0000.00.0223,Chocoaré - Mato Grosso Extractive Reserve,2015-07-01,2019-06-20,2016-09-12
+0000.00.0225,Delta do Parnaíba Marine Extractive Reserve,2015-07-01,2019-06-20,2016-09-13
+0000.00.0227,Maracanã Marine Extractive Reserve,2015-07-01,2019-06-20,2016-08-08
+0000.00.0228,São João da Ponta Extractive Reserve,2015-07-01,2019-06-20,2016-09-10
+0000.00.0230,Baixo Juruá Extractive Reserve,2015-07-01,2019-06-20,2016-10-22
+0000.00.0231,Batoque Extractive Reserve,2015-07-01,2019-06-20,2016-09-13
+0000.00.0232,Cazumbá-Iracema Extractive Reserve,2015-07-01,2019-06-20,2016-06-16
+0000.00.0233,Lago do Cuniã Extractive Reserve,2015-07-01,2019-06-20,2016-09-03
+0000.00.0234,Mandira Extractive Reserve,2015-07-01,2019-06-20,2016-09-19
+0000.00.0235,Médio Juruá Extractive Reserve,2015-07-01,2019-06-20,2016-06-16
+0000.00.0238,Rio Cautário Federal Extractive Reserve,2015-07-01,2019-06-20,2016-09-15
+0000.00.0239,Rio Jutaí Extractive Reserve,2015-07-01,2019-06-20,2016-10-21
+0000.00.0240,Extremo Norte do Tocantins Extractive Reserve,2015-07-01,2019-06-20,2016-08-31
+0000.00.0242,Lago do Capanã Grande Extractive Reserve,2015-07-01,2019-06-20,2016-08-29
+0000.00.0243,Mãe Grande de Curuçá Extractive Reserve,2015-07-01,2019-06-20,2016-09-11
+0000.00.0244,Mapuá Extractive Reserve,2015-07-01,2019-06-20,2016-06-30
+0000.00.0245,Baía do Iguape Marine Extractive Reserve,2015-07-01,2019-06-20,2016-07-24
+0000.00.0246,Lagoa do Jequiá Marine Extractive Reserve,2015-07-01,2019-06-20,2016-09-12
+0000.00.0247,Araí-Peroba Marine Extractive Reserve,2015-07-01,2019-06-20,2016-09-12
+0000.00.0248,Caeté-Taperaçu Marine Extractive Reserve,2015-07-01,2019-06-20,2016-09-12
+0000.00.0249,Gurupi-Piriá Marine Extractive Reserve,2015-07-01,2019-06-20,2016-09-12
+0000.00.0250,Tracuateua Marine Extractive Reserve,2015-07-01,2019-06-20,2016-06-04
+0000.00.0251,Arraial do Cabo Marine Extractive Reserve,2015-07-01,2019-06-20,2016-09-13
+0000.00.0252,Corumbau Marine Extractive Reserve,2015-07-01,2019-06-20,2016-06-06
+0000.00.0253,Canavieiras Extractive Reserve,2015-07-01,2019-06-20,2016-09-14
+0000.00.0254,Soure Marine Extractive Reserve,2015-07-01,2019-06-20,2016-06-29
+0000.00.0255,Pirajubaé Marine Extractive Reserve,2015-07-01,2019-06-20,2016-06-04
+0000.00.0256,Rio Ouro Preto Extractive Reserve,2015-07-01,2019-06-20,2016-07-31
+0000.00.0259,Tapajós-Arapiuns Extractive Reserve,2015-07-01,2019-06-20,2016-09-13
+0000.00.0260,Verde para Sempre Extractive Reserve,2015-07-01,2019-06-20,2016-06-06
+0000.00.0261,Mata Preta Ecological Station,2015-07-01,2019-06-20,2016-07-18
+0000.00.0262,Araucárias National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0263,Guanabara Ecological Station,2015-07-01,2019-06-20,2016-10-05
+0000.00.0264,Rio Novo National Park,2015-07-01,2019-06-20,2016-05-27
+0000.00.0265,Trairão National Forest,2015-07-01,2019-06-20,2016-05-19
+0000.00.0266,Jamanxim National Forest,2015-07-01,2019-06-20,2016-05-30
+0000.00.0267,Jamanxim National Park,2015-07-01,2019-06-20,2016-05-19
+0000.00.0268,Tapajós Environmental Protection Area,2015-07-01,2019-06-20,2017-02-11
+0000.00.0270,Crepori National Forest,2015-07-01,2019-06-20,2017-02-14
+0000.00.0271,Amaná National Forest,2015-07-01,2019-06-20,2016-05-30
+0000.00.0272,Chapada das Mesas National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0274,Alto Tarauacá Extractive Reserve,2015-07-01,2019-06-20,2016-08-08
+0000.00.0275,Perobas Biological Reserve,2015-07-01,2019-06-20,2010-02-27
+0000.00.0276,Araucárias Biological Reserve,2015-07-01,2019-06-20,2016-04-19
+0000.00.0277,Campos Gerais National Park,2015-07-01,2019-06-20,2008-03-21
+0000.00.0281,Juruena National Park,2015-07-01,2019-06-20,2011-06-12
+0000.00.0282,Terra Grande-Pracuúba Extractive Reserve,2015-07-01,2019-06-20,2016-06-29
+0000.00.0283,Rio Unini Extractive Reserve,2015-07-01,2019-06-20,2016-09-14
+0000.00.0284,Campos Amazônicos National Park,2015-07-01,2019-06-20,2016-06-03
+0000.00.0285,Arapixi Extractive Reserve,2015-07-01,2019-06-20,2016-09-09
+0000.00.1078,Rio das Furnas Private Natural Heritage Reserve,2015-07-01,2019-06-20,2017-03-14
+0000.00.1102,Rio das Lontras Private Natural Heritage Reserve,2015-07-01,2019-06-20,2016-05-18
+0000.00.1137,Mata da Estrela Private Natural Heritage Reserve,2015-07-01,2019-06-20,2016-05-18
+0000.00.1197,Cantidiano Valqueiro Barros Private Natural Heritage Reserve,2015-07-01,2019-06-20,2016-11-03
+0000.00.1203,Maurício Dantas Private Natural Heritage Ecological Reserve,2015-07-01,2019-06-20,2016-11-03
+0000.00.1206,Engenho Gargaú Private Natural Heritage Reserve,2015-07-01,2019-06-20,2016-05-17
+0000.00.1211,Fazenda Pacatuba Private Natural Heritage Reserve,2015-07-01,2019-06-20,2017-03-14
+0000.00.1254,Feliciano Miguel Abdala Private Natural Heritage Reserve,2015-07-01,2019-06-20,2016-05-09
+0000.00.1267,Sossego Forest Biological Station,2015-07-01,2019-06-20,2017-03-15
+0000.00.1376,Serra das Almas Private Natural Heritage Reserve,2015-07-01,2019-06-20,2016-05-18
+0000.00.1517,Alto Juruá Extractive Reserve,2015-07-01,2019-06-20,2016-06-22
+0000.00.1518,Rio Cajari Extractive Reserve,2015-07-01,2019-06-20,2016-11-06
+0000.00.1521,Mananciais do Rio Paraíba do Sul Environmental Protection Area,2015-07-01,2019-06-20,2016-10-02
+0000.00.1563,Acaú-Goiana Extractive Reserve,2015-07-01,2019-06-20,2016-06-06
+0000.00.1564,Chapada Limpa Extractive Reserve,2015-07-01,2019-06-20,2016-08-31
+0000.00.1606,Médio Purus Extractive Reserve,2015-07-01,2019-06-20,2016-09-03
+0000.00.1612,Iquiri National Forest,2015-07-01,2019-06-20,2016-06-02
+0000.00.1626,Nascentes do Lago Jari National Park,2015-07-01,2019-06-20,2016-06-02
+0000.00.1628,Ituxi Extractive Reserve,2015-07-01,2019-06-20,2016-08-30
+0000.00.1633,Mapinguari National Park,2015-07-01,2019-06-20,2016-06-03
+0000.00.1808,Cassurubá Extractive Reserve,2015-07-01,2019-06-20,2016-06-23
+0000.00.1809,Prainha do Canto Verde Extractive Reserve,2015-07-01,2019-06-20,2016-09-10
+0000.00.1812,Rio São Francisco Natural Monument,2015-07-01,2019-06-20,2016-05-21
+0000.00.1813,Rio dos Frades Wildlife Refuge,2015-07-01,2019-06-20,2016-10-23
+0000.00.1880,Una Wildlife Refuge,2015-07-01,2019-06-20,2016-10-23
+0000.00.1907,Boa Nova Wildlife Refuge,2015-07-01,2019-06-20,2016-10-23
+0000.00.1908,Boa Nova National Park,2015-07-01,2019-06-20,2016-06-10
+0000.00.1909,Serra das Lontras National Park,2015-07-01,2019-06-20,2016-06-09
+0000.00.1910,Alto Cariri National Park,2015-07-01,2019-06-20,2016-06-10
+0000.00.1911,Santa Cruz Wildlife Refuge,2015-07-01,2019-06-20,2016-10-23
+0000.00.1912,Costa das Algas Environmental Protection Area,2015-07-01,2019-06-20,2016-10-28
+0000.00.2075,Buraco das Araras Private Natural Heritage Reserve,2015-07-01,2019-06-20,2016-05-09
+0000.00.2093,Santa Cruz do Sul University Private Natural Heritage Reserve,2015-07-01,2019-06-20,2011-06-23
+0000.00.2311,Sebuí Private Natural Heritage Reserve,2015-07-01,2019-06-20,2016-11-16
+0000.00.2633,Furna Feia National Park,2015-07-01,2019-06-20,2012-06-06
+0000.00.2634,Bom Jesus Biological Reserve,2015-07-01,2019-06-20,2016-06-06
+0000.00.2874,Ilhas dos Currais Marine National Park,2015-07-01,2019-06-20,2016-06-22
+0000.00.3131,Alto Maués Ecological Station,2015-07-01,2019-06-20,2016-05-22
+0000.00.3132,Mocapajuba Marine Extractive Reserve,2015-07-01,2019-06-20,2016-09-10
+0000.00.3133,Mestre Lucindo Marine Extractive Reserve,2015-07-01,2019-06-20,2016-09-11
+0000.00.3134,Cuinarana Marine Extractive Reserve,2015-07-01,2019-06-20,2016-09-11
+0000.00.3135,Nascentes Geraizeiras Sustainable Development Reserve,2015-07-01,2019-06-20,2016-06-16
+0000.00.3136,Serra do Gandarela National Park,2015-07-01,2019-06-20,2016-06-12
+0000.00.3137,Guaricana National Park,2015-07-01,2019-06-20,2016-06-16
+0000.00.3407,Campos de Manicoré Environmental Protection Area,2015-07-01,2019-06-20,2016-06-13
+0000.00.3408,Urupadi National Forest,2015-07-01,2019-06-20,2016-07-06
+0000.00.3409,Aripuanã National Forest,2015-07-01,2019-06-20,2016-06-15
+0000.00.3410,Acari National Park,2015-07-01,2019-06-20,2016-06-12
+0000.00.3411,Manicoré Biological Reserve,2015-07-01,2019-06-20,2016-06-14
+0000.11.0751,Massaranduba Extractive Reserve,2015-07-01,2019-06-20,2016-08-30
+0000.11.0754,Aquariquara Extractive Reserve,2015-07-01,2019-06-20,2016-08-31
+0000.11.0756,Seringueira Extractive Reserve,2015-07-01,2019-06-20,2016-06-07
+0000.11.0758,Rio Madeira Sustainable Yield Forest,2015-07-01,2019-06-20,2016-09-05
+0000.11.0760,Tucano State Forest,2015-07-01,2019-06-20,2016-10-13
+0000.11.0764,Samuel Ecological Station,2015-07-01,2019-06-20,2016-05-15
+0000.11.0765,Guajará-Mirim State Park,2015-07-01,2019-06-20,2016-07-31
+0000.11.0767,Rio Ouro Preto Biological Reserve,2015-07-01,2019-06-20,2016-07-31
+0000.11.0768,Serra dos Três Irmãos Ecological Station,2015-07-01,2019-06-20,2016-05-24
+0000.11.0770,Traçadal Biological Reserve,2015-07-01,2019-06-20,2016-06-05
+0000.11.0774,Serra dos Reis State Park,2015-07-01,2019-06-20,2016-08-07
+0000.11.0775,Rio Cautário State Extractive Reserve,2015-07-01,2019-06-20,2016-09-15
+0000.11.0776,Jaci Paraná Extractive Reserve,2015-07-01,2019-06-20,2016-10-30
+0000.11.1495,Corumbiara State Park,2015-07-01,2019-06-20,2016-10-31
+0000.12.0939,Chandless State Park,2015-07-01,2019-06-20,2016-06-18
+0000.12.2041,Rio Liberdade State Forest,2015-07-01,2019-06-20,2016-07-01
+0000.12.2044,Rio Gregório State Forest,2015-07-01,2019-06-20,2016-07-01
+0000.12.2046,Mogno State Forest,2015-07-01,2019-06-20,2016-07-01
+0000.12.2048,Antimary State Forest,2015-07-01,2019-06-20,2016-07-02
+0000.13.0981,Amanã Sustainable Development Reserve,2015-07-01,2019-06-20,2016-05-05
+0000.13.0982,Aripuanã Sustainable Development Reserve,2015-07-01,2019-06-20,2016-07-12
+0000.13.0983,Bararati Sustainable Development Reserve,2015-07-01,2019-06-20,2016-10-13
+0000.13.0985,Cujubim Sustainable Development Reserve,2015-07-01,2019-06-20,2016-07-25
+0000.13.0986,Mamirauá Sustainable Development Reserve,2015-07-01,2019-06-20,2008-04-03
+0000.13.0987,Piagaçu-Purus Sustainable Development Reserve,2015-07-01,2019-06-20,2016-08-20
+0000.13.0988,Rio Amapá Sustainable Development Reserve,2015-07-01,2019-06-20,2016-09-02
+0000.13.0989,Uacari Sustainable Development Reserve,2015-07-01,2019-06-20,2016-09-06
+0000.13.0990,Uatumã Sustainable Development Reserve,2015-07-01,2019-06-20,2016-07-25
+0000.13.0991,Catuá-Ipixuna Extractive Reserve,2015-07-01,2019-06-20,2016-08-30
+0000.13.0992,Guariba Extractive Reserve,2015-07-01,2019-06-20,2016-07-24
+0000.13.0993,Caverna do Maroaga Environmental Protection Area,2015-07-01,2019-06-20,2016-10-20
+0000.13.0994,Rio Negro Right Bank Environmental Protection Area,2015-07-01,2019-06-20,2016-06-26
+0000.13.0995,Rio Negro Left Bank Environmental Protection Area,2015-07-01,2019-06-20,2016-06-28
+0000.13.0996,Rio Negro Left Bank Environmental Protection Area,2015-07-01,2019-06-20,2016-06-28
+0000.13.0998,Apuí State Forest,2015-07-01,2019-06-20,2016-10-13
+0000.13.0999,Aripuanã State Forest,2015-07-01,2019-06-20,2016-07-13
+0000.13.1000,Manicoré State Forest,2015-07-01,2019-06-20,2016-07-12
+0000.13.1001,Sucunduri State Forest,2015-07-01,2019-06-20,2016-07-11
+0000.13.1002,Rio Urubu State Forest,2015-07-01,2019-06-20,2016-10-20
+0000.13.1003,Maués State Forest,2015-07-01,2019-06-20,2016-10-29
+0000.13.1004,Guariba State Park,2015-07-01,2019-06-20,2016-07-23
+0000.13.1006,Rio Negro State Park South Section,2015-07-01,2019-06-20,2016-06-24
+0000.13.1007,Rio Negro State Park North Section,2015-07-01,2019-06-20,2016-06-25
+0000.13.1008,Serra do Aracá State Park,2015-07-01,2019-06-20,2016-06-23
+0000.13.1009,Sucunduri State Park,2015-07-01,2019-06-20,2016-07-10
+0000.13.1010,Sumaúma State Park,2015-07-01,2019-06-20,2016-06-27
+0000.13.1011,Morro dos Seis Lagos Biological Reserve,2015-07-01,2019-06-20,2017-02-24
+0000.13.1506,Rio Gregório Extractive Reserve,2015-07-01,2019-06-20,2016-08-28
+0000.13.1573,Juma Sustainable Development Reserve,2015-07-01,2019-06-20,2016-06-15
+0000.13.1730,Rio Negro Sustainable Development Reserve,2015-07-01,2019-06-20,2016-06-27
+0000.13.1731,Tapauá State Forest,2015-07-01,2019-06-20,2016-09-02
+0000.13.1732,Igapó-Açu Sustainable Development Reserve,2015-07-01,2019-06-20,2016-09-02
+0000.13.1733,Canutama Extractive Reserve,2015-07-01,2019-06-20,2016-09-02
+0000.13.1735,Matupiri Sustainable Development Reserve,2015-07-01,2019-06-20,2016-09-01
+0000.13.1736,Matupiri State Park,2015-07-01,2019-06-20,2016-09-01
+0000.13.1737,Canutama State Forest,2015-07-01,2019-06-20,2016-09-02
+0000.13.1977,Rio Madeira Sustainable Development Reserve,2015-07-01,2019-06-20,2016-09-01
+0000.13.3182,Puranga Conquista Sustainable Development Reserve,2015-07-01,2019-06-20,2016-06-29
+0000.15.1021,Serra dos Martírios/Andorinhas State Park,2015-07-01,2019-06-20,2016-12-18
+0000.15.1022,Utinga State Park,2015-07-01,2019-06-20,2016-12-05
+0000.15.1023,Marajó Archipelago Environmental Protection Area,2015-07-01,2019-06-20,2016-06-28
+0000.15.1024,Algodoal-Maiandeua Environmental Protection Area,2015-07-01,2019-06-20,2017-02-11
+0000.15.1026,São Geraldo do Araguaia Environmental Protection Area,2015-07-01,2019-06-20,2017-02-09
+0000.15.1032,Monte Alegre State Park,2015-07-01,2019-06-20,2016-12-13
+0000.15.1033,Maicuru Biological Reserve,2015-07-01,2019-06-20,2016-05-14
+0000.15.1034,Grão-Pará Ecological Station,2015-07-01,2019-06-20,2016-05-12
+0000.15.1037,Trombetas State Forest,2015-07-01,2019-06-20,2016-09-07
+0000.15.2042,Charapucu State Park,2015-07-01,2019-06-20,2016-06-30
+0000.16.0291,Parazinho Biological Reserve,2015-07-01,2019-06-20,2016-11-05
+0000.16.0292,Rio Iratapuru Sustainable Development Reserve,2015-07-01,2019-06-20,2016-11-05
+0000.16.0293,Rio Curiaú Environmental Protection Area,2015-07-01,2019-06-20,2016-11-06
+0000.16.0885,Amapá State Forest,2015-07-01,2019-06-20,2016-07-06
+0000.16.0886,Fazendinha Environmental Protection Area,2015-07-01,2019-06-20,2016-11-05
+0000.17.1486,Jalapão State Park,2015-07-01,2019-06-20,2008-11-27
+0000.17.1487,Cantão State Park,2015-07-01,2019-06-20,2016-10-31
+0000.17.1488,Lajeado State Park,2015-07-01,2019-06-20,2016-08-06
+0000.17.1489,Tocantins Fossil Trees Natural Monument,2015-07-01,2019-06-20,2016-05-06
+0000.17.1493,Lago de Santa Isabel Environmental Protection Area,2015-07-01,2019-06-20,2017-02-08
+0000.17.1501,Ilha do Bananal / Cantão Environmental Protection Area,2015-07-01,2019-06-20,2016-10-31
+0000.21.1882,Bacanga State Park,2015-07-01,2019-06-20,2016-08-03
+0000.21.1886,Parcel de Manuel Luís Marine State Park,2015-07-01,2019-06-20,2016-08-03
+0000.21.1887,Baixada Maranhense Environmental Protection Area,2015-07-01,2019-06-20,2016-06-13
+0000.21.1888,Upaon-Açu/Miritiba/Alto Preguiças Environmental Protection Area,2015-07-01,2019-06-20,2017-02-09
+0000.21.1891,Sítio Rangedor State Park,2015-07-01,2019-06-20,2016-05-17
+0000.21.1963,Mirador State Park,2015-07-01,2019-06-20,2016-08-04
+0000.23.0947,Pedra da Risca do Meio Marine State Park,2015-07-01,2019-06-20,2016-11-28
+0000.23.0960,Quixadá Monoliths Natural Monument,2015-07-01,2019-06-20,2016-05-21
+0000.23.0961,Beberibe Cliffs Natural Monument,2015-07-01,2019-06-20,2016-05-06
+0000.23.0963,Cocó Park,2015-07-01,2019-06-20,2011-01-02
+0000.24.1475,Natal Dunes State Park,2015-07-01,2019-06-20,2009-06-08
+0000.25.0483,Pedra da Boca State Park,2015-07-01,2019-06-20,2016-12-20
+0000.25.0484,Areia Vermelha Marine State Park,2015-07-01,2019-06-20,2017-01-07
+0000.25.0904,"Valley of the Dinosaurs, Paraíba",2015-07-01,2019-06-20,2016-05-12
+0000.25.2309,IBGE Ecological Reserve,2015-07-01,2019-06-20,2016-03-06
+0000.25.2331,Pau-Brasil Ecological Station (Paraíba),2015-07-01,2019-06-20,2016-05-28
+0000.25.2336,Pico do Jabre State Park,2015-07-01,2019-06-20,2017-01-11
+0000.26.0966,Zoo Botanical Park Dois Irmãos,2015-07-01,2019-06-20,2009-07-14
+0000.29.0294,Wenceslau Guimarães Ecological Station,2015-07-01,2019-06-20,2016-10-25
+0000.29.0296,Morro do Chapéu State Park,2015-07-01,2019-06-20,2017-01-21
+0000.29.0297,Sete Passagens State Park,2015-07-01,2019-06-20,2016-12-29
+0000.29.0301,Caminhos Ecológicos da Boa Esperança Environmental Protection Area,2015-07-01,2019-06-20,2016-10-26
+0000.29.0312,Lagoa Encantada e Rio Almada Environmental Protection Area,2015-07-01,2019-06-20,2016-10-27
+0000.29.0322,Serra Branca / Raso da Catarina Environmental Protection Area,2015-07-01,2019-06-20,2016-11-03
+0000.29.0325,Serra do Conduru State Park,2015-07-01,2019-06-20,2016-10-26
+0000.29.0328,Baía de Camamu Environmental Protection Area,2015-07-01,2019-06-20,2016-10-28
+0000.31.0360,Gruta Rei do Mato,2015-07-01,2019-06-20,2004-12-01
+0000.31.0362,Rio Preto State Park,2015-07-01,2019-06-20,2017-01-19
+0000.31.0363,Mata dos Ausentes Ecological Station,2015-07-01,2019-06-20,2010-02-27
+0000.31.0368,Sumidouro State Park,2015-07-01,2019-06-20,2016-12-12
+0000.31.0387,Grão Mogol State Park,2015-07-01,2019-06-20,2017-01-17
+0000.31.0388,Biribiri State Park,2015-07-01,2019-06-20,2016-11-30
+0000.31.0393,Serra Negra State Park,2015-07-01,2019-06-20,2017-01-18
+0000.31.0394,Rio Doce State Park,2015-07-01,2019-06-20,2017-02-06
+0000.31.0395,Nova Baden State Park,2015-07-01,2019-06-20,2016-12-04
+0000.31.0398,Serra do Rola-Moça State Park,2015-07-01,2019-06-20,2017-01-16
+0000.31.0402,Fernão Dias Environmental Protection Area,2015-07-01,2019-06-20,2016-10-02
+0000.31.0404,Pico do Itambé State Park,2015-07-01,2019-06-20,2016-12-20
+0000.31.0406,Serra do Papagaio State Park,2015-07-01,2019-06-20,2016-09-28
+0000.31.0415,Jaíba Biological Reserve,2015-07-01,2019-06-20,2010-02-27
+0000.31.0888,Serra Nova State Park,2015-07-01,2019-06-20,2017-01-30
+0000.31.0890,Serra do Cabral State Park,2015-07-01,2019-06-20,2017-01-12
+0000.31.1756,Acauã Ecological Station,2015-07-01,2019-06-20,2010-02-27
+0000.31.1776,Caminho dos Gerais State Park,2015-07-01,2019-06-20,2017-01-18
+0000.32.0331,Itaúnas State Park,2015-07-01,2019-06-20,2016-10-27
+0000.32.0332,Paulo César Vinha State Park,2015-07-01,2019-06-20,2016-10-26
+0000.32.1533,Frade e a Freira Natural Monument,2015-07-01,2019-06-20,2016-05-06
+0000.32.1534,Forno Grande State Park,2015-07-01,2019-06-20,2016-10-25
+0000.32.1667,Duas Bocas Biological Reserve,2015-07-01,2019-06-20,2016-10-25
+0000.32.1673,Pedra Azul State Park,2015-07-01,2019-06-20,2008-03-21
+0000.32.1831,Cachoeira da Fumaça State Park,2015-07-01,2019-06-20,2016-10-25
+0000.32.1832,Concha D'Ostra Sustainable Development Reserve,2015-07-01,2019-06-20,2016-10-27
+0000.32.1833,Mata das Flores State Park,2015-07-01,2019-06-20,2016-10-26
+0000.32.2319,Serra das Torres Natural Monument,2015-07-01,2019-06-20,2016-10-27
+0000.33.0723,Aventureiro Sustainable Development Reserve,2015-07-01,2019-06-20,2016-09-23
+0000.33.0728,Praia do Sul Biological Reserve,2015-07-01,2019-06-20,2010-02-26
+0000.33.0731,Tamoios Environmental Protection Area,2015-07-01,2019-06-20,2016-09-25
+0000.33.0736,Bacia dos Frades Environmental Protection Area,2015-07-01,2019-06-20,2016-10-03
+0000.33.0737,Bacia do Rio Macacu Environmental Protection Area,2015-07-01,2019-06-20,2016-10-07
+0000.33.0738,Macaé de Cima Environmental Protection Area,2015-07-01,2019-06-20,2016-10-11
+0000.33.1476,Serra da Tiririca State Park,2015-07-01,2019-06-20,2017-02-07
+0000.33.1477,Ilha Grande State Park,2015-07-01,2019-06-20,2016-09-23
+0000.33.1478,Pedra Branca State Park,2015-07-01,2019-06-20,2017-01-12
+0000.33.1479,Desengano State Park,2015-07-01,2019-06-20,2017-01-12
+0000.33.1480,Serra da Concórdia State Park,2015-07-01,2019-06-20,2017-01-18
+0000.33.1482,Guaratiba Biological Reserve,2015-07-01,2019-06-20,2010-02-26
+0000.33.1483,Araras State Biological Reserve,2015-07-01,2019-06-20,2016-04-19
+0000.33.1485,Três Picos State Park,2015-07-01,2019-06-20,2016-10-03
+0000.33.2722,Pedra Selada State Park,2015-07-01,2019-06-20,2016-10-01
+0000.33.2732,Costa do Sol State Park,2015-07-01,2019-06-20,2011-06-02
+0000.33.2904,Mendanha State Park,2015-07-01,2019-06-20,2017-01-15
+0000.35.0798,Serra do Mar State Park,2015-07-01,2019-06-20,2010-04-27
+0000.35.0800,Campos do Jordão State Park,2015-07-01,2019-06-20,2016-09-27
+0000.35.0801,Jurupará State Park,2015-07-01,2019-06-20,2017-02-04
+0000.35.0808,Jataí Ecological Station,2015-07-01,2019-06-20,2017-02-19
+0000.35.0810,Carlos Botelho State Park,2015-07-01,2019-06-20,2016-12-07
+0000.35.0816,Morro do Diabo State Park,2015-07-01,2019-06-20,2016-11-07
+0000.35.0817,Chauás Ecological Station,2015-07-01,2019-06-20,2016-11-17
+0000.35.0818,Mata do Jacaré Ecological Station,2015-07-01,2019-06-20,2016-05-12
+0000.35.0820,Bananal Ecological Station,2015-07-01,2019-06-20,2016-09-22
+0000.35.0823,Porto Ferreira State Park,2015-07-01,2019-06-20,2017-01-22
+0000.35.0825,Furnas do Bom Jesus State Park,2015-07-01,2019-06-20,2017-02-03
+0000.35.0826,Alto Ribeira Tourist State Park,2015-07-01,2019-06-20,2011-12-30
+0000.35.0831,Juqueri State Park,2015-07-01,2019-06-20,2017-01-10
+0000.35.0833,Xixová-Japuí State Park,2015-07-01,2019-06-20,2016-11-28
+0000.35.0834,Laje de Santos Marine State Park,2015-07-01,2019-06-20,2017-01-21
+0000.35.0836,Mananciais de Campos do Jordão State Park,2015-07-01,2019-06-20,2016-10-01
+0000.35.0841,Ilha do Cardoso State Park,2015-07-01,2019-06-20,2016-11-17
+0000.35.0844,Cantareira State Park,2015-07-01,2019-06-20,2016-12-10
+0000.35.0845,Aguapeí State Park,2015-07-01,2019-06-20,2016-11-08
+0000.35.0853,Vassununga State Park,2015-07-01,2019-06-20,2016-11-29
+0000.35.0854,Campina do Encantado State Park,2015-07-01,2019-06-20,2016-09-21
+0000.35.0855,Ilhabela State Park,2015-07-01,2019-06-20,2016-12-23
+0000.35.0856,Ilha Anchieta State Park,2015-07-01,2019-06-20,2016-09-22
+0000.35.0857,Caetetus Ecological Station,2015-07-01,2019-06-20,2017-02-21
+0000.35.0862,Juréia-Itatins Ecological Station,2015-07-01,2019-06-20,2016-07-19
+0000.35.0870,Rio do Peixe State Park,2015-07-01,2019-06-20,2016-11-13
+0000.35.0911,Xitué Ecological Station,2015-07-01,2019-06-20,2016-12-07
+0000.35.1672,Barreiro Rico Ecological Station,2015-07-01,2019-06-20,2016-07-17
+0000.35.1675,Caverna do Diabo State Park,2015-07-01,2019-06-20,2016-11-21
+0000.35.1676,Intervales State Park,2015-07-01,2019-06-20,2016-12-06
+0000.35.1677,Itinguçu State Park,2015-07-01,2019-06-20,2016-07-21
+0000.35.1678,Lagamar de Cananéia State Park,2015-07-01,2019-06-20,2016-11-24
+0000.35.1679,Prelado State Park,2015-07-01,2019-06-20,2016-07-20
+0000.35.1681,Ilhas do Abrigo e Guararitama Wildlife Refuge,2015-07-01,2019-06-20,2016-07-21
+0000.35.1685,Ilha do Tumba Extractive Reserve,2015-07-01,2019-06-20,2016-11-25
+0000.35.1686,Taquari Extractive Reserve,2015-07-01,2019-06-20,2016-11-22
+0000.35.1687,Barra do Una Sustainable Development Reserve,2015-07-01,2019-06-20,2016-07-23
+0000.35.1688,Barreiro/Anhemas Sustainable Development Reserve,2015-07-01,2019-06-20,2016-11-25
+0000.35.1689,Despraiado Sustainable Development Reserve,2015-07-01,2019-06-20,2016-07-21
+0000.35.1690,Lavras Sustainable Development Reserve,2015-07-01,2019-06-20,2016-11-23
+0000.35.1691,Pinheirinhos Sustainable Development Reserve,2015-07-01,2019-06-20,2016-11-25
+0000.35.1692,Quilombos de Barra do Turvo Sustainable Development Reserve,2015-07-01,2019-06-20,2016-11-25
+0000.35.1693,Itapanhapima Sustainable Development Reserve,2015-07-01,2019-06-20,2016-11-25
+0000.35.1697,Cajati Environmental Protection Area,2015-07-01,2019-06-20,2016-11-26
+0000.35.1698,Campos do Jordão Environmental Protection Area,2015-07-01,2019-06-20,2016-09-29
+0000.35.1702,Ilha Comprida Environmental Protection Area,2015-07-01,2019-06-20,2016-11-20
+0000.35.1709,Planalto do Turvo Environmental Protection Area,2015-07-01,2019-06-20,2016-11-26
+0000.35.1710,Quilombos do Médio Ribeira Environmental Protection Area,2015-07-01,2019-06-20,2016-11-21
+0000.35.1713,Rio Pardinho e Rio Vermelho Environmental Protection Area,2015-07-01,2019-06-20,2016-11-27
+0000.35.1714,São Francisco Xavier Environmental Protection Area,2015-07-01,2019-06-20,2016-10-01
+0000.35.1715,Sapucaí Mirim Environmental Protection Area,2015-07-01,2019-06-20,2016-10-02
+0000.35.1716,Serra do Mar Environmental Protection Area,2015-07-01,2019-06-20,2016-12-08
+0000.35.1725,Guará Area of Relevant Ecological Interest,2015-07-01,2019-06-20,2016-11-26
+0000.35.1964,Restinga de Bertioga State Park,2015-07-01,2019-06-20,2017-01-17
+0000.35.1968,Pedra do Baú,2015-07-01,2019-06-20,2012-03-22
+0000.35.1969,Rio Turvo State Park,2015-07-01,2019-06-20,2016-11-21
+0000.35.2559,Albert Löfgren State Park,2015-07-01,2019-06-20,2016-12-09
+0000.35.2589,Andradina Biological Reserve,2015-07-01,2019-06-20,2010-02-27
+0000.35.2701,Itirapina Ecological Station,2015-07-01,2019-06-20,2017-02-19
+0000.35.2839,Nascentes do Paranapanema State Park,2015-07-01,2019-06-20,2016-12-06
+0000.35.2867,Fontes do Ipiranga Biological Reserve,2015-07-01,2019-06-20,2010-02-27
+0000.35.2936,Angatuba Ecological Station,2015-07-01,2019-06-20,2016-06-30
+0000.41.0499,Cerrado State Park,2015-07-01,2019-06-20,2016-12-17
+0000.41.0500,Guaratuba Environmental Protection Area,2015-07-01,2019-06-20,2016-11-19
+0000.41.0504,Ibiporã State Park,2015-07-01,2019-06-20,2016-12-30
+0000.41.0512,Rio da Onça State Park,2015-07-01,2019-06-20,2016-11-18
+0000.41.0513,Campinhos State Park,2015-07-01,2019-06-20,2017-02-06
+0000.41.0514,Boguaçu State Park,2015-07-01,2019-06-20,2016-09-21
+0000.41.0518,Pau Oco State Park,2015-07-01,2019-06-20,2016-11-20
+0000.41.0524,Roberto Ribas Lange State Park,2015-07-01,2019-06-20,2016-11-17
+0000.41.0528,Ilha do Mel Ecological Station,2015-07-01,2019-06-20,2016-09-21
+0000.41.0529,Ilha do Mel State Park,2015-07-01,2019-06-20,2016-09-21
+0000.41.0531,Serra da Baitaca State Park,2015-07-01,2019-06-20,2016-09-20
+0000.41.0532,Pico Paraná State Park,2015-07-01,2019-06-20,2016-11-19
+0000.41.0539,São Camilo State Park,2015-07-01,2019-06-20,2010-02-27
+0000.41.0540,Pico do Marumbi State Park,2015-07-01,2019-06-20,2016-11-19
+0000.41.0541,Graciosa State Park,2015-07-01,2019-06-20,2016-11-16
+0000.41.0549,Guartelá State Park,2015-07-01,2019-06-20,2016-12-04
+0000.41.0550,Vila Velha State Park,2015-07-01,2019-06-20,2015-05-04
+0000.41.3047,Caiuá Ecological Station,2015-07-01,2019-06-20,2016-11-14
+0000.42.0780,Serra Furada State Park,2015-07-01,2019-06-20,2017-02-04
+0000.42.0786,Serra do Tabuleiro State Park,2015-07-01,2019-06-20,2016-06-11
+0000.42.0789,Fritz Plaumann State Park,2015-07-01,2019-06-20,2016-12-14
+0000.42.0791,Acaraí State Park,2015-07-01,2019-06-20,2016-11-29
+0000.42.1844,Rio Vermelho State Park,2015-07-01,2019-06-20,2017-01-21
+0000.43.1018,Turvo State Park,2015-07-01,2019-06-20,2016-11-11
+0000.43.1019,Espigão Alto State Park,2015-07-01,2019-06-20,2017-01-17
+0000.43.1863,Itapeva State Park,2015-07-01,2019-06-20,2016-12-05
+0000.43.1994,Itapuã State Park,2015-07-01,2019-06-20,2016-12-21
+0000.43.2000,Banhados do Delta Biological Reserve,2015-07-01,2019-06-20,2010-02-27
+0000.43.2004,Quarta Colônia State Park,2015-07-01,2019-06-20,2017-01-20
+0000.43.2005,Tainhas State Park,2015-07-01,2019-06-20,2016-12-09
+0000.43.2007,Ibirapuitã Biological Reserve,2015-07-01,2019-06-20,2010-02-27
+0000.43.2008,Mata Paludosa Biological Reserve,2015-07-01,2019-06-20,2010-02-27
+0000.43.2009,São Donato Biological Reserve,2015-07-01,2019-06-20,2010-02-27
+0000.43.3736,Camaquã State Park,2015-07-01,2019-06-20,2017-01-22
+0000.50.0419,Prosa State Park,2015-07-01,2019-06-20,2017-02-04
+0000.50.0420,Rio Ivinhema State Park,2015-07-01,2019-06-20,2016-11-13
+0000.50.0421,Nascentes do Rio Taquari State Park,2015-07-01,2019-06-20,2016-12-13
+0000.50.0422,Matas do Segredo State Park,2015-07-01,2019-06-20,2016-11-30
+0000.50.1515,Gruta do Lago Azul Natural Monument,2015-07-01,2019-06-20,2016-02-12
+0000.51.0448,Serra Ricardo Franco State Park,2015-07-01,2019-06-20,2016-12-03
+0000.51.0451,Rio Ronuro Ecological Station,2015-07-01,2019-06-20,2016-05-25
+0000.51.0455,Igarapés do Juruena State Park,2015-07-01,2019-06-20,2016-07-11
+0000.51.0456,Tucumã State Park,2015-07-01,2019-06-20,2016-07-12
+0000.51.0457,Culuene Biological Reserve,2015-07-01,2019-06-20,2017-02-22
+0000.51.0460,Dom Osório Stoffel State Park,2015-07-01,2019-06-20,2016-12-22
+0000.51.0462,Serra de Santa Bárbara State Park,2015-07-01,2019-06-20,2016-08-04
+0000.51.0463,Guariba-Roosevelt Extractive Reserve,2015-07-01,2019-06-20,2016-06-07
+0000.51.0464,Mãe Bonifácia State Park,2015-07-01,2019-06-20,2016-12-09
+0000.51.0465,Gruta da Lagoa Azul State Park,2015-07-01,2019-06-20,2016-08-02
+0000.51.0470,Xingu State Park,2015-07-01,2019-06-20,2016-06-12
+0000.51.0472,Serra Azul State Park,2015-07-01,2019-06-20,2016-12-11
+0000.51.0477,Guirá State Park,2015-07-01,2019-06-20,2016-12-09
+0000.51.1467,Águas Quentes State Park,2015-07-01,2019-06-20,2016-08-01
+0000.51.1899,Rio Roosevelt Ecological Station,2015-07-01,2019-06-20,2016-05-26
+0000.51.1901,Cristalino State Park,2015-07-01,2019-06-20,2016-11-01
+0000.51.1902,Cristalino II State Park,2015-07-01,2019-06-20,2016-12-17
+0000.51.1903,Zé Bolo Flô State Park,2015-07-01,2019-06-20,2016-12-12
+0000.51.1916,Encontro das Águas State Park,2015-07-01,2019-06-20,2016-08-02
+0000.51.1918,Rio Madeirinha Ecological Station,2015-07-01,2019-06-20,2016-06-05
+0000.51.1919,Rio Flor do Prado Ecological Station,2015-07-01,2019-06-20,2016-06-05
+0000.52.0899,Altamiro de Moura Pacheco State Park,2015-07-01,2019-06-20,2016-12-12
+0000.52.1738,Caldas Novas State Park,2015-07-01,2019-06-20,2017-01-16
+0000.52.1739,Pirineus State Park,2015-07-01,2019-06-20,2016-12-18
+0000.52.1740,Terra Ronca State Park,2015-07-01,2019-06-20,2011-12-31
+0000.52.1744,Araguaia State Park,2015-07-01,2019-06-20,2016-12-03
+0000.52.1745,Serra Dourada State Park,2015-07-01,2019-06-20,2017-01-11
+0000.53.1634,Águas Emendadas Ecological Station,2015-07-01,2019-06-20,2016-05-25
+0120.32.3116,Itabira Natural Monument,2015-07-01,2019-06-20,2016-10-24
+0250.33.2801,Suruí Environmental Protection Area,2015-07-01,2019-06-20,2016-10-10
+0260.13.2556,Tupé Sustainable Development Reserve,2015-07-01,2019-06-20,2016-10-12
+0332.32.2879,Falésias de Marataízes Natural Monument,2015-07-01,2019-06-20,2016-10-24
+0350.33.1878,Jaceruba Environmental Protection Area,2015-07-01,2019-06-20,2016-10-11
+0390.33.1516,Petrópolis Municipal Nature Park,2015-07-01,2019-06-20,2016-10-04
+0390.33.2043,Pedra do Elefante Natural Monument,2015-07-01,2019-06-20,2016-10-07
+0420.33.3166,Cachoeira da Fumaça e Jacuba Natural Park,2015-07-01,2019-06-20,2016-09-28
+0455.33.1788,Reserva de Marapendi (Rio de Janeiro),2015-07-01,2019-06-20,2016-03-01
+0455.33.1789,Marapendi Municipal Nature Park,2015-07-01,2019-06-20,2016-03-10
+0455.33.1811,Sugarloaf Mountain and Urca Hill Natural Monument,2015-07-01,2019-06-20,2017-01-15
+0520.32.2778,Jacarenema Ecological Reserve,2015-07-01,2019-06-20,2016-06-05
+0530.32.2644,Fonte Grande State Park,2015-07-01,2019-06-20,2017-01-29
+0580.33.1895,Montanhas de Teresópolis Municipal Nature Park,2015-07-01,2019-06-20,2016-10-04
+0810.24.1851,Natal City Park,2015-07-01,2019-06-20,2009-07-28
+4730.35.2799,Tamboré Biological Reserve,2015-07-01,2019-06-20,2010-02-27

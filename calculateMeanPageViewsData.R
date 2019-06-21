@@ -16,7 +16,7 @@ library(lubridate)
 
 # Load datasets
 cnuc_data <- read_csv("./data/BrazilianProtectedAreas_2019-05-13.csv")
-page_creation_data_eng <- read_csv("./data/BPA_WikipediaPages_eng_2019-05-23.csv")
+page_creation_data_eng <- read_csv("./data/BPA_WikipediaPages_eng_2019-06-21.csv")
 
 # Create a Mean Eng dataset
 mean_eng_pageviews <- data.table(
@@ -171,7 +171,7 @@ write_csv(month_mean_eng_pageviews, paste0("./data/BPA_Wiki_Eng_Month_", today, 
 
 # ---- MEAN PT PAGEVIEWS: Calculate mean values for all PT pageviews ----
 files_pt <- list.files("./data/pt/")
-page_creation_data_pt <- read_csv("./data/BPA_WikipediaPages_pt_2019-05-23.csv")
+page_creation_data_pt <- read_csv("./data/BPA_WikipediaPages_pt_2019-06-21.csv")
 
 # Create a Mean Pt dataset
 mean_pt_pageviews <- data.table(
@@ -204,7 +204,7 @@ for (i in 1:length(files)) {
       print("______________________________________")
       print(paste(i, "in", length(files)))
       
-      print(paste("CNUC:", cod_cnuc_pageview, "| Page Creation:", page_creation))
+      print(paste("CNUC:", cod_cnuc_pageview, "| Page Creation:", page_creation$page_creation[1]))
       
       # Test if pt language exists in CSV Eng File
       pt_verify <- pa_pageviews %>%
@@ -225,10 +225,12 @@ for (i in 1:length(files)) {
         print(cod_cnuc_pageview)
     
         # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
-        if (page_creation$page_creation >= as.Date("2015-07-01")) {
-          row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
-        } else {
-          row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
+        if (length(page_creation$page_creation) > 0) {
+          if (page_creation$page_creation >= as.Date("2015-07-01")) {
+            row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
+          } else {
+            row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
+          }
         }
         
         print(nrow(pa_pageviews))
@@ -272,7 +274,7 @@ for (i in 1:length(files)) {
     print("______________________________________")
     print(paste(i, "in", length(files)))
     
-    print(paste("CNUC:", cod_cnuc_pageview, "| Page Creation:", page_creation))
+    print(paste("CNUC:", cod_cnuc_pageview, "| Page Creation:", page_creation$page_creation[1]))
     
     # Test if pt language exists in CSV Eng File
     pt_verify <- pa_pageviews %>%
@@ -376,18 +378,22 @@ for (i in 1:length(files)) {
       pa_pageviews <- cbind(rownames(pa_pageviews), pa_pageviews)
       colnames(pa_pageviews) <- c("Dates", "Views")
       
-      # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
-      if (page_creation$page_creation >= as.Date("2015-07-01")) {
-        row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
-        print(cod_cnuc_pageview)
-        print(paste("Start row: ", row_num))
-        print(paste(page_creation$page_creation, "- After - ###"))
-      } else {
-        row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
-        print(cod_cnuc_pageview)
-        print(paste("Start row: ", row_num))
-        print(paste(page_creation$page_creation, "- Before - $$$"))
+      if(length(page_creation$page_creation) > 0) {
+        # Define start row based in the date of page creation (after 2015-07-01, row will be greater than 1)
+        if (page_creation$page_creation >= as.Date("2015-07-01")) {
+          row_num <- which(as.Date(pa_pageviews$Dates) == page_creation$page_creation)
+          print(cod_cnuc_pageview)
+          print(paste("Start row: ", row_num))
+          print(paste(page_creation$page_creation, "- After - ###"))
+        } else {
+          row_num <- which(as.Date(pa_pageviews$Dates) == as.Date("2015-07-01"))
+          print(cod_cnuc_pageview)
+          print(paste("Start row: ", row_num))
+          print(paste(page_creation$page_creation, "- Before - $$$"))
+        }
+        
       }
+      
       
       # Select a subset when necessary
       pa_pageviews <- pa_pageviews %>%
