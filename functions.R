@@ -29,4 +29,20 @@ pa_list_names <- function(dataset, pa_list) {
   }
   return(pa_names)
 }
+month.list <- NA
+# ---- Return English month name from Portuguese
+translate_month <- function(month.pt) {
+  month.list <- matrix(
+    c(01:12, 
+      "janeiro", "fevereiro", "março", "abril", "maio", "junho", 
+      "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"),
+      ncol = 2
+      )
+  colnames(month.list) <- c("month.n", "month.t")
+  #month.list <- as.table(month.list)
+
+  month.pt <- month.list[which(month.list[,2] == month.pt), ]
+  
+  return(as.numeric(month.pt[1]))
+}
 
