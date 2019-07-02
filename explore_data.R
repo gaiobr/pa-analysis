@@ -21,13 +21,15 @@ library(tidyverse)
 library(ggplot2)
 library(scales)
 library(reshape2)
+library(ggExtra)
+library(ggpubr)
 
 
 # ---- Load datasets ----------
 #PA Dataset (CNUC)
 pa_dataset <- read_csv("./data/BrazilianProtectedAreas_2019-05-13.csv")
 #PA data from Correia et al paper (Ecological Indicators - Correia, R.A. et al. 2019)
-pa_correia <- read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+pa_correia <- read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416_raw.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_correia <- read.table("/home/gaio/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_correia <- read.table("Z:/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #PA Dataset Merge from CNUC PA Dataset and Correia PA Dataset 
@@ -119,7 +121,7 @@ p <- ggplot(pa_means,
   labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews",
        x = "English PA \nPageviews",
        y = "Portuguese PA \nPageviews") +
-  theme(plot.title = element_text(size = 22,
+  theme(plot.title = element_text(size = 20,
                                   hjust = 0.5),
         axis.text.x = element_text(size = 12, 
                                    angle = 45, 
@@ -130,9 +132,15 @@ p <- ggplot(pa_means,
         legend.text = element_text(size = 12))
 
 p
+
+p2 <- ggMarginal(p, type="boxplot", size = 8, fill="gray") # Add a boxplot in margins to Lang Pageviews
+p2
+
+today <- Sys.Date()
+
 #svg(paste0("./figures/PA_Pageviews_Scatterplot", today,".svg"))
 png(paste0("./figures/PA_Pageviews_Scatterplot", today,".png"))
-p
+p2
 dev.off()  
 
 
@@ -141,51 +149,59 @@ dev.off()
 pa_means_melted <- melt(data = pa_means_merge, id.vars = c("id", "bioma"), measure.vars = c("mean.eng", "mean.pt"))
 names(pa_means_melted)
 
-p <- ggplot(data = subset(pa_means_melted, !is.na(bioma)), # Subset to remove NA biome values
+p_b <- ggplot(data = subset(pa_means_melted, !is.na(bioma)), # Subset to remove NA biome values
             aes(x = bioma, y = value, color = variable)) +
   geom_boxplot(outlier.size = 1, lwd = 1) +
   coord_trans(y = "log10") + # Transforms axes without changing values
   scale_color_discrete(name = "Languages", labels = c("English", "Portuguese")) +
   scale_x_discrete() +
-  scale_y_continuous(breaks=c(1, 2, 10, 50, 100, 200, 300)) + # Manually controls tick marks in y axis
-  labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Biomes",
-     x = "Biomes",
-     y = "PA Pageviews \n (Means)") +
-  theme(plot.title = element_text(size = 32,
+  scale_y_continuous(breaks=c(1, 2, 10, 50, 500)) + # Manually controls tick marks in y axis
+#  scale_y_continuous(breaks=c(1, 2, 10, 50, 100, 200, 300)) + # Manually controls tick marks in y axis
+  labs(
+    title = "Brazilian Protected Areas on Wikipedia",
+    subtitle = "a)",
+    x = "Biomes",
+    y = "PA Pageviews \n (Means)") +
+  theme(plot.title = element_text(size = 22,
                                   hjust = 0.5),
+        plot.subtitle = element_text(size = 14,
+                                  hjust = 0),
         axis.text.x = element_text(size = 12, 
                                    angle = 45, 
                                    hjust = 1),
         axis.text.y = element_text(size = 12),
-        axis.title = element_text(size = 20),
+        axis.title = element_text(size = 14),
         legend.title = element_text(size = 14),
         legend.text = element_text(size = 12))
 
-p
+p_b
 
 today <- Sys.Date()
   
 #svg(paste0("./figures/PA_Biomes_Pageviews_Boxplot", today,".svg"), width = 500, height = 400)
 png(paste0("./figures/PA_Biomes_Pageviews_Boxplot", today,".png"), width = 1000, height = 800)
-p
+p_b
 dev.off()  
 
 # ---- Boxplot: Pageviews by Level of Government ----
 pa_means_melted <- melt(data = pa_means_merge, id.vars = c("id", "govern"), measure.vars = c("mean.eng", "mean.pt"))
 names(pa_means_melted)
 
-p <- ggplot(data = pa_means_melted,
+p_g <- ggplot(data = pa_means_melted,
             aes(x = govern, y = value, color = variable)) +
   geom_boxplot(outlier.size = 0.3) +
   coord_trans(y = "log10") + # Transforms axes without changing values
   scale_color_discrete(name = "Languages", labels = c("English", "Portuguese")) +
   scale_x_discrete(labels = c("State", "Federal", "Municipality")) +
-  scale_y_continuous(breaks=c(1, 2, 10, 50, 100, 200, 300)) + # Manually controls tick marks in y axis
-  labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Levels of Government",
-       x = "Levels of Government",
-       y = "PA Pageviews \n (Means)") +
-  theme(plot.title = element_text(size = 22,
-                                  hjust = 0.5),
+  scale_y_continuous(breaks=c(1, 2, 10, 50, 500)) + # Manually controls tick marks in y axis
+#  scale_y_continuous(breaks=c(1, 2, 10, 50, 100, 200, 300)) + # Manually controls tick marks in y axis
+  labs(
+#    title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Levels of Government",
+    title = "b)",
+    x = "Levels of Government",
+    y = "PA Pageviews \n (Means)") +
+  theme(plot.title = element_text(size = 14,
+                                  hjust = 0),
         axis.text.x = element_text(size = 12, 
                                    angle = 45, 
                                    hjust = 1),
@@ -194,29 +210,47 @@ p <- ggplot(data = pa_means_melted,
         legend.title = element_text(size = 14),
         legend.text = element_text(size = 12))
 
-p
+p_g
 #svg(paste0("./figures/PA_Government_Pageviews_Boxplot", today,".svg"), width = 1000, height = 500)
 png(paste0("./figures/PA_Government_Pageviews_Boxplot", today,".png"), width = 1000, height = 500)
-p
+p_g
 dev.off()  
 
 
 # ---- Boxplot: Pageviews by Categories ----
-pa_means_melted <- melt(data = pa_means_merge, id.vars = c("id", "cat2"), measure.vars = c("mean.eng", "mean.pt"))
-names(pa_means_melted)
+pa_means_melted <- melt(data = pa_means_merge, id.vars = c("id", "cat.y", "esfera.x"), measure.vars = c("mean.eng", "mean.pt"))
+head(pa_means_melted)
 
-p <- ggplot(data = pa_means_melted,
-            aes(x = cat2, y = value, color = variable)) +
+# Rename category values
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Área de Proteção Ambiental"] <- "APA"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Área de Relevante Interesse Ecológico"] <- "ARIE"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Estação Ecológica"] <- "ESEC"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Floresta"] <- "FLO"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Monumento Natural"] <- "MONAT"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Parque"] <- "PAR"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Refúgio de Vida Silvestre"] <- "RVS"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva Biológica"] <- "REBIO"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva de Desenvolvimento Sustentável"] <- "RDS"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva Extrativista"] <- "RESEX"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva Particular do Patrimônio Natural"] <- "RPPN"
+table(pa_means_melted$cat.y)
+
+
+
+p_c <- ggplot(data = subset(pa_means_melted, !is.na(cat.y) & cat.y != "Reserva Particular do Patrimônio Natural"),
+            aes(x = cat.y, y = value, color = variable)) +
   geom_boxplot(outlier.size = 0.3) +
   coord_trans(y = "log10") + # Transforms axes without changing values
   scale_color_discrete(name = "Languages", labels = c("English", "Portuguese")) +
 #  scale_x_discrete(labels = c("State", "Federal", "Municipality")) +
-  scale_y_continuous(breaks=c(1, 2, 10, 50, 100, 200, 300)) + # Manually controls tick marks in y axis
-  labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Categories",
-       x = "Categories",
-       y = "PA Pageviews \n (Means)") +
-  theme(plot.title = element_text(size = 22,
-                                  hjust = 0.5),
+  scale_y_continuous(breaks=c(1, 2, 10, 50, 500)) + # Manually controls tick marks in y axis
+  labs(
+#    title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Categories",
+    title = "c)",
+    x = "Categories",
+    y = "PA Pageviews \n (Means)") +
+  theme(plot.title = element_text(size = 14,
+                                  hjust = 0),
         axis.text.x = element_text(size = 12, 
                                    angle = 45, 
                                    hjust = 1),
@@ -225,9 +259,22 @@ p <- ggplot(data = pa_means_melted,
         legend.title = element_text(size = 14),
         legend.text = element_text(size = 12))
 
-p
+p_c
+today = Sys.Date()
 #svg(paste0("./figures/PA_Categories_Pageviews_Boxplot", today,".svg"), width = 1000, height = 500)
-png(paste0("./figures/PA_Categories_Pageviews_Boxplot", today,".png"), width = 1000, height = 500)
+png(paste0("./figures/PA_All_Categories_Pageviews_Boxplot", today,".png"), width = 1000, height = 500)
+p_c
+dev.off()  
+
+# Print Boxplots together
+p <- ggarrange(p_b, p_g, p_c,
+          ncol = 1,
+          nrow = 3,
+          heights = c(1,1,1))
+
+today = Sys.Date()
+#svg(paste0("./figures/PA_Categories_Pageviews_Boxplot", today,".svg"), width = 1000, height = 500)
+png(paste0("./figures/PA_All_Pageviews_Boxplot", today,".png"), width = 1000, height = 1200)
 p
 dev.off()  
 

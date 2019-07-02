@@ -8,7 +8,7 @@ setwd(choose.dir())
 
 ####Load data
 #Pa data from EI paper
-pa_df<-read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+pa_df<-read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416_raw.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_df<-read.table("/home/gaio/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 summary(pa_df)
 
@@ -36,6 +36,7 @@ library(ggExtra)
 library(ggpubr)
 library(pscl)
 library(MuMIn)
+library(scales)
 
 
 ####Merge Wiki_all and PA_EI datasets
@@ -148,6 +149,7 @@ merge_model_df<-left_join(x = pa_df,
 head(merge_model_df)
 
 #Let's use the same variables as used for the EI paper
+#  Z standardization
 merge_model_df$area_km2_mod<-scale(log10(merge_model_df$area_km2+1))
 merge_model_df$pop_50k_mod<-scale(log10(merge_model_df$pop_50k+1))
 merge_model_df$alt_r_mod<-scale(log10(merge_model_df$alt_r+1))
@@ -162,7 +164,7 @@ merge_model_df$mean.eng<-ifelse(is.na(merge_model_df$mean.eng),0,ceiling(merge_m
 
 #let's create a data.frame only with the modelling data
 names(merge_model_df)
-model_df<-merge_model_df[,c(2,5,7,9:10,14,27,31,34,39:45)]
+model_df<-merge_model_df[,c(2,5,6,7,8,9:10,14,22,27,31,34,39:45)]
 summary(model_df)
 model_df<-na.exclude(model_df)
 cor(model_df[,c(10:16)])
@@ -173,8 +175,8 @@ mod1_pt<-hurdle(mean.pt ~ area_km2_mod+pop_50k_mod+alt_r_mod+acc_50k_mod+tot_div
              data = model_df,
              dist = "poisson",
              na.action = "na.fail")
-mod2_pt<-hurdle(mean.pt ~ area_km2_mod+pop_50k_mod+alt_r_mod+acc_50k_mod+tot_div_mod+year_mod|
-               area_km2_mod+pop_50k_mod+alt_r_mod+acc_50k_mod+tot_div_mod+year_mod,
+mod2_pt<-hurdle(mean.pt ~ area_km2_mod+pop_50k_mod+alt_r_mod+acc_50k_mod+tot_div_mod+year_mod+bioma+group+govern|
+               area_km2_mod+pop_50k_mod+alt_r_mod+acc_50k_mod+tot_div_mod+year_mod+bioma+group+govern,
              data = model_df,
              dist = "negbin",
              na.action = "na.fail")
