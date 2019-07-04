@@ -148,6 +148,8 @@ merge_model_df<-left_join(x = pa_df,
                           by = c("id" = "cod_cnuc"))
 head(merge_model_df)
 
+write_csv(merge_model_df, "data.csv")
+
 #Let's use the same variables as used for the EI paper
 #  Z standardization
 merge_model_df$area_km2_mod<-scale(log10(merge_model_df$area_km2+1))
