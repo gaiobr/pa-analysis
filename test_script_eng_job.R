@@ -1,16 +1,16 @@
 ####Clear R memory
 rm(list=ls())
 
-
 ####Set working directory
 setwd(choose.dir())
 
-
 ####Load data
 #Pa data from EI paper
-pa_df<-read.table("./data/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+#pa_df<-read.table("C:/Users/LACOS21/Documents/tmp_gaio/tmp/data/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+pa_df<-read.table("Z:/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416_raw.csv",sep=";",dec=".", header=T, quote = "\"")
+#pa_df<-read.table("./data/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_df<-read.table("/home/gaio/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
-summary(pa_df)
+print(summary(pa_df))
 
 #Wiki data with PT and EN
 wiki_all_df<-read.table("./data/BPA_Wiki_Means_2019-06-21.csv",sep=",",dec=".", header=T)
@@ -74,7 +74,11 @@ names(merge_model_df)
 model_df<-merge_model_df[,c(2,5,6,7,8,9:10,14,22,27,31,34,39:45)]
 summary(model_df)
 model_df<-na.exclude(model_df)
+summary(model_df)
+model_df$bioma <- relevel(model_df$bioma, "Caatinga")
+model_df$govern <- relevel(model_df$govern, "federal")
 
+write_csv(model_df, "model_df_hurdle_eng.csv")
 
 #And now let's try in EN
 mod1_eng<-hurdle(mean.eng ~ area_km2_mod+pop_50k_mod+alt_r_mod+acc_50k_mod+bir_div+year_mod+bioma+group+govern|
