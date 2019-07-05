@@ -110,4 +110,23 @@ summary(mod_avg_pt)
 out <- capture.output(summary(mod_avg_pt))
 cat("Hurdle Model PT", out, file='Hurdle_Model_PT.txt', sep = '\n', append = FALSE)
 
+out2 <- capture.output(confint(mod_avg_pt))
+cat("Confint Hurdle Model PT Avg Model", out2, file='Confint_Hurdle_Avg_Model_PT.txt', sep = '\n', append = FALSE)
 
+model <- read.table("./data/Hurdle Average Confit PT_count.csv", sep=",", dec=".", header=T)
+names(model)
+p <- ggplot(model, aes(x = var, y = estimate, ymin = inferior, ymax = superior)) +
+  geom_pointrange() +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype="dotted") +
+  xlab('Variavel')
+p
+
+model <- read.table("./data/Hurdle Average Confit PT_zeros.csv", sep=",", dec=".", header=T)
+names(model)
+p2 <- ggplot(model, aes(x = var, y = estimate, ymin = inferior, ymax = superior)) +
+  geom_pointrange() +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype="dotted") +
+  xlab('Variavel')
+p2
