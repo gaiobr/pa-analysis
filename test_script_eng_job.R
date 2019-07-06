@@ -109,4 +109,25 @@ summary(mod_avg_eng)
 out <- capture.output(summary(mod_avg_eng))
 cat("Hurdle Model ENG", out, file='Hurdle_Model_ENG.txt', sep = '\n', append = FALSE)
 
+out2 <- capture.output(confint(mod_avg_eng))
+cat("Confint Hurdle Model ENG Avg Model", out2, file='Confint_Hurdle_Avg_Model_ENG.txt', sep = '\n', append = FALSE)
+
+model <- read.table("./data/Hurdle Average Confit ENG_count.csv", sep=",", dec=".", header=T)
+names(model)
+p <- ggplot(model, aes(x = var, y = estimate, ymin = inferior, ymax = superior)) +
+  geom_pointrange() +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype="dotted") +
+  xlab('Variavel')
+p
+
+model <- read.table("./data/Hurdle Average Confit ENG_zeros.csv", sep=",", dec=".", header=T)
+names(model)
+p2 <- ggplot(model, aes(x = var, y = estimate, ymin = inferior, ymax = superior)) +
+  geom_pointrange() +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype="dotted") +
+  xlab('Variavel')
+p2
+
 
