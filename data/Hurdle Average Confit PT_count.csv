@@ -1,16 +1,16 @@
-order,var_output,var,inferior,superior,estimate,std_error,z,p
-15,count_biomaPantanal,Pantanal,-3.839777139,-0.045537235,-1.9426572,0.9679361,2007,0.044749 *
-14,count_biomaPampa,Pampas,-3.0413188563,0.134694634,-1.4533121,0.8102224,1794,0.072858 .
-13,count_biomaMata Atlantica,Atlantic Forest,-3.2836403765,-1.486706817,-2.3851736,0.4584098,5203,2.00e-07 ***
-12,count_biomaMarinho,Marine,-3.1948138905,-1.135648539,-2.1652312,0.5253069,4122,3.76e-05 ***
-11,count_biomaCerrado,Cerrado,-2.6345777473,-0.868616066,-1.7515969,0.4505087,3888,0.000101 ***
-10,count_biomaAmazonia,Amazonia,-3.9635037224,-2.005784426,-2.9846441,0.4994274,5976, < 2e-16 ***
-9,count_bir_div,Bird Diversity,-0.0009644179,0.004146033,0.0015908,0.0013037,1220,0.222383
-8,count_groupUS,Sustainable Use,-2.1437159031,-1.175429291,-1.6595726,0.2470164,6718, < 2e-16 ***
-7,count_governmunicipal,Municipal Government,-1.7095878079,2.618212709,0.4543125,1.104051,411,0.680709
-6,count_governestadual,State Government,-0.0810464952,0.704297539,0.3116255,0.2003465,1555,0.119843
-5,count_year_mod,Year of Establishment,0.2172645215,0.513540028,0.3654023,0.0755819,4835,1.30e-06 ***
-4,count_pop_50k_mod,Population (50 Km),-0.1845330507,0.362268625,0.0888678,0.1394928,637,0.524074
-3,count_acc_50k_mod,Accessibility (50 Km),-0.7292438216,-0.290917744,-0.5100808,0.1118199,4562,5.10e-06 ***
-2,count_alt_r_mod,Altitudinal Range,-0.0032824052,0.465758383,0.231238,0.1196555,1933,0.053294 .
-1,count_area_km2_mod,Area (Km²),0.3088331336,0.896113579,0.6024734,0.1498192,4021,5.79e-05 ***
+order,var_output,var,cat,inferior,superior,estimate,std_error,z,p
+15,count_biomaPantanal,Pantanal,biological,-3.839777139,-0.045537235,-1.9426572,0.9679361,2007,0.044749 *
+14,count_biomaPampa,Pampas,biological,-3.0413188563,0.134694634,-1.4533121,0.8102224,1794,0.072858 .
+13,count_biomaMata Atlantica,Atlantic Forest,biological,-3.2836403765,-1.486706817,-2.3851736,0.4584098,5203,2.00e-07 ***
+12,count_biomaMarinho,Marine,biological,-3.1948138905,-1.135648539,-2.1652312,0.5253069,4122,3.76e-05 ***
+11,count_biomaCerrado,Cerrado,biological,-2.6345777473,-0.868616066,-1.7515969,0.4505087,3888,0.000101 ***
+10,count_biomaAmazonia,Amazonia,biological,-3.9635037224,-2.005784426,-2.9846441,0.4994274,5976, < 2e-16 ***
+9,count_bir_div,Bird Diversity,biological,-0.0009644179,0.004146033,0.0015908,0.0013037,1220,0.222383
+8,count_groupUS,Sustainable Use,governance,-2.1437159031,-1.175429291,-1.6595726,0.2470164,6718, < 2e-16 ***
+7,count_governmunicipal,Municipal Government,governance,-1.7095878079,2.618212709,0.4543125,1.104051,411,0.680709
+6,count_governestadual,State Government,governance,-0.0810464952,0.704297539,0.3116255,0.2003465,1555,0.119843
+5,count_year_mod,Year of Establishment,governance,0.2172645215,0.513540028,0.3654023,0.0755819,4835,1.30e-06 ***
+4,count_pop_50k_mod,Population (50 Km),geographical,-0.1845330507,0.362268625,0.0888678,0.1394928,637,0.524074
+3,count_acc_50k_mod,Accessibility (50 Km),geographical,-0.7292438216,-0.290917744,-0.5100808,0.1118199,4562,5.10e-06 ***
+2,count_alt_r_mod,Altitudinal Range,geographical,-0.0032824052,0.465758383,0.231238,0.1196555,1933,0.053294 .
+1,count_area_km2_mod,Area (Km²),geographical,0.3088331336,0.896113579,0.6024734,0.1498192,4021,5.79e-05 ***
