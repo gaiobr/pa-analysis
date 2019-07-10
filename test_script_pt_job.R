@@ -113,24 +113,48 @@ cat("Hurdle Model PT", out, file='Hurdle_Model_PT.txt', sep = '\n', append = FAL
 out2 <- capture.output(confint(mod_avg_pt))
 cat("Confint Hurdle Model PT Avg Model", out2, file='Confint_Hurdle_Avg_Model_PT.txt', sep = '\n', append = FALSE)
 
+library(ggplot2)
+
 model <- read.table("./data/Hurdle Average Confit PT_count.csv", sep=",", dec=".", header=T)
 model$var <- factor(model$var, levels=unique(as.character(model$var)) )
 names(model)
-p <- ggplot(model, aes(x = var, y = estimate, ymin = inferior, ymax = superior)) +
+p_pt_count <- ggplot(model, aes(x = var, y = estimate, ymin = inferior, ymax = superior, color = estimate)) +
   geom_pointrange() +
   coord_flip() +
   geom_hline(yintercept = 0, linetype="dotted") +
-  xlab('Variables') +
-  ylab('Estimate')
-p
+  xlab('Model Parameters') +
+  ylab('Estimate') +
+  labs(
+    title = "Portuguese Protected Area Page views",
+    subtitle = "Count Model"
+  ) +
+  theme(legend.position = "none")
+p_pt_count
+
+svg(paste0("./figures/PA_Pt_Count_Model_", Sys.Date(),".svg"))
+#png(paste0("./figures/PA_Eng_Zero_Model", today,".png"))
+p_pt_count
+dev.off()  
+
 
 model <- read.table("./data/Hurdle Average Confit PT_zeros.csv", sep=",", dec=".", header=T)
+model2 <- read.table("./data/Hurdle Average Confit ENG_zeros.csv", sep=",", dec=".", header = T)
 model$var <- factor(model$var, levels=unique(as.character(model$var)) )
 names(model)
-p2 <- ggplot(model, aes(x = var, y = estimate, ymin = inferior, ymax = superior)) +
+p_pt_zero <- ggplot(model, aes(x = var, y = estimate, ymin = inferior, ymax = superior, color = estimate)) +
   geom_pointrange() +
   coord_flip() +
   geom_hline(yintercept = 0, linetype="dotted") +
-  xlab('Variables') +
-  ylab('Estimate')
-p2
+  xlab('Model Parameters') +
+  ylab('Estimate') +
+  labs(
+    title = "Portuguese Protected Area Page views",
+    subtitle = "Zero Model"
+  ) +
+  theme(legend.position = "none")
+p_pt_zero
+
+svg(paste0("./figures/PA_Pt_Zero_Model_", Sys.Date(),".svg"))
+#png(paste0("./figures/PA_Eng_Zero_Model", today,".png"))
+p_pt_zero
+dev.off()  

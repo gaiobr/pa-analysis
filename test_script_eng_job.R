@@ -113,37 +113,49 @@ out2 <- capture.output(confint(mod_avg_eng))
 cat("Confint Hurdle Model ENG Avg Model", out2, file='Confint_Hurdle_Avg_Model_ENG.txt', sep = '\n', append = FALSE)
 
 library(ggplot2)
+library(ggpubr)
 
 model <- read.table("./data/Hurdle Average Confit ENG_count.csv", sep=",", dec=".", header=T)
 model$var <- factor(model$var, levels=unique(as.character(model$var)) )
 names(model)
-p <- ggplot(model, aes(x = var, y = estimate, ymin = inferior, ymax = superior, color = cat)) +
+p_eng_count <- ggplot(model, aes(x = var, y = estimate, ymin = inferior, ymax = superior, color = estimate)) +
   geom_pointrange() +
   coord_flip() +
   geom_hline(yintercept = 0, linetype="dotted") +
-  xlab('Variables') +
+  xlab('Model Parameters') +
   ylab('Estimate') +
   labs(
-    title = "English",
-    subtitle = "Count"
-  )
-p 
+    title = "English Protected Area Page views",
+    subtitle = "Count Model"
+  ) +
+  theme(legend.position = "none")
+p_eng_count
 
+svg(paste0("./figures/PA_Eng_Count_Model_", Sys.Date(),".svg"))
+#png(paste0("./figures/PA_Eng_Zero_Model", today,".png"))
+p_eng_count
+dev.off()  
 
 
 
 model <- read.table("./data/Hurdle Average Confit ENG_zeros.csv", sep=",", dec=".", header=T)
 model$var <- factor(model$var, levels=unique(as.character(model$var)) )
 names(model)
-p2 <- ggplot(model, aes(x = var, y = estimate, ymin = inferior, ymax = superior)) +
+p_eng_zero <- ggplot(model, aes(x = var, y = estimate, ymin = inferior, ymax = superior, color = estimate)) +
   geom_pointrange() +
   coord_flip() +
   geom_hline(yintercept = 0, linetype="dotted") +
-  xlab('Variables') +
+  xlab('Model Parameters') +
   ylab('Estimate') +
   labs(
-    title = "English",
-    subtitle = "Zero"
-  )
-p2
+    title = "English Protected Area Page views",
+    subtitle = "Zero Model"
+  ) +
+  theme(legend.position = "none")
+p_eng_zero
+
+svg(paste0("./figures/PA_Eng_Zero_Model_", Sys.Date(),".svg"))
+#png(paste0("./figures/PA_Eng_Zero_Model", today,".png"))
+p_eng_zero
+dev.off()  
 
