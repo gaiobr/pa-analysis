@@ -6,10 +6,11 @@ setwd(choose.dir())
 
 ####Load data
 #Pa data from EI paper
-pa_df<-read.table("C:/Users/LACOS21/Documents/tmp_gaio/tmp/data/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+#pa_df<-read.table("C:/Users/LACOS21/Documents/tmp_gaio/tmp/data/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_df<-read.table("Z:/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416_raw.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_df<-read.table("./data/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
-#pa_df<-read.table("/home/gaio/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+# Mint
+pa_df<-read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 print(summary(pa_df))
 
 #Wiki data with PT and EN
@@ -37,8 +38,8 @@ library(ggExtra)
 library(ggpubr)
 library(pscl)
 library(MuMIn)
-library(scales)
-
+  library(scales)
+  library(relaimpo)
 
 ####Merge Wiki_all and PA_EI datasets
 merge_pa_df<-inner_join(pa_df,
@@ -107,11 +108,15 @@ gmod_views_pt
 mod_avg_pt<-model.avg(gmod_views_pt)
 summary(mod_avg_pt)
 
+saveRDS(dd_views_pt, "hurdle_model_PT_1.rds")
+
 out <- capture.output(summary(mod_avg_pt))
 cat("Hurdle Model PT", out, file='Hurdle_Model_PT.txt', sep = '\n', append = FALSE)
 
 out2 <- capture.output(confint(mod_avg_pt))
 cat("Confint Hurdle Model PT Avg Model", out2, file='Confint_Hurdle_Avg_Model_PT.txt', sep = '\n', append = FALSE)
+
+###calc.relimp(dd_views_pt, type = c("lmg"), rela = TRUE) 
 
 library(ggplot2)
 

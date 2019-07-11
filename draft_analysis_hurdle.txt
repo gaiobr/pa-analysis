@@ -1,0 +1,41 @@
+area
+amazonia
+marinho
+mata atlantica
+população
+ano de estab
+
+negativo
+estadual
+municipal
+uso sustentável
+
+
+count eng
+ano
+população
+area
+
+negativo
+uso sustentável
+mata atlantica
+amazonia
+marinho
+
+estadual
+pampa
+
+count pt
+area
+ano
+
+negativo
+uso sustentavel
+mata atlantica
+amazonia
+marinho
+
+acessibilidade
+cerrado
+pantanal
+
