@@ -30,12 +30,14 @@ Component models:
 2/3/4/5/6/7/8/9/12/13/15/16/17/18   29 -937.59 1934.46  4.00   0.02
 
 Term codes: 
- count_acc_50k_mod    count_alt_r_mod count_area_km2_mod        count_bioma      count_bir_div       count_govern        count_group 
-                 1                  2                  3                  4                  5                  6                  7 
- count_pop_50k_mod     count_year_mod   zero_acc_50k_mod     zero_alt_r_mod  zero_area_km2_mod         zero_bioma       zero_bir_div 
-                 8                  9                 10                 11                 12                 13                 14 
-       zero_govern         zero_group   zero_pop_50k_mod      zero_year_mod 
-                15                 16                 17                 18 
+ count_acc_50k_mod    count_alt_r_mod count_area_km2_mod        count_bioma      count_bir_div 
+                 1                  2                  3                  4                  5 
+      count_govern        count_group  count_pop_50k_mod     count_year_mod   zero_acc_50k_mod 
+                 6                  7                  8                  9                 10 
+    zero_alt_r_mod  zero_area_km2_mod         zero_bioma       zero_bir_div        zero_govern 
+                11                 12                 13                 14                 15 
+        zero_group   zero_pop_50k_mod      zero_year_mod 
+                16                 17                 18 
 
 Model-averaged coefficients:  
 (full average) 
