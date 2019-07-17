@@ -103,3 +103,16 @@ rc_diff <- anti_join(rc_dataset, pa_dataset, by = "cod_cnuc")
 write_csv(rc_diff, "./data/rc_diff.csv")
 
 
+#Merge only names to dataset ENG Means
+eng_means <- read_csv("./data/BPA_Wiki_Eng_2019-06-25.csv")
+eng_means_names <- left_join(eng_means,
+                             pa_dataset[, c("cod_cnuc", "pa_name_cnuc", "en_wkname")],
+                             by = c("cod_cnuc" = "cod_cnuc"))
+write_csv(eng_means_names, "./data/ENG_MEANS.csv")
+
+#Merge only names to dataset PT Means
+pt_means <- read_csv("./data/BPA_Wiki_Pt_2019-06-25.csv")
+pt_means_names <- left_join(pt_means,
+                             pa_dataset[, c("cod_cnuc", "pa_name_cnuc", "pt_wkname")],
+                             by = c("cod_cnuc" = "cod_cnuc"))
+write_csv(pt_means_names, "./data/PT_MEANS.csv")

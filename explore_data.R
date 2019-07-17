@@ -27,15 +27,15 @@ library(ggpubr)
 
 # ---- Load datasets ----------
 #PA Dataset (CNUC)
-pa_dataset <- read_csv("./data/BrazilianProtectedAreas_2019-05-13.csv")
+pa_dataset <- read_csv("./data/BrazilianProtectedAreas_2019-07-14.csv")
 #PA data from Correia et al paper (Ecological Indicators - Correia, R.A. et al. 2019)
-pa_correia <- read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416_raw.csv",sep=";",dec=".", header=T, quote = "\"")
+pa_correia <- read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_correia <- read.table("/home/gaio/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_correia <- read.table("Z:/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #PA Dataset Merge from CNUC PA Dataset and Correia PA Dataset 
-eng_means <- read_csv('./data/BPA_Wiki_Eng_2019-06-21.csv')
-eng_month_means <- read_csv('./data/BPA_Wiki_Eng_Month_2019-06-21.csv')
-pt_means <- read_csv('./data/BPA_Wiki_Pt_2019-06-21.csv')
+eng_means <- read_csv('./data/BPA_Wiki_Eng_2019-06-25.csv')
+eng_month_means <- read_csv('./data/BPA_Wiki_Eng_Month_2019-06-21.csv.csv')
+pt_means <- read_csv('./data/BPA_Wiki_Pt_2019-06-25.csv')
 pt_month_means <- read_csv('./data/BPA_Wiki_Pt_Month_2019-06-21.csv')
 
 # ---- Transform datasets ----
@@ -372,8 +372,10 @@ pa_list_names(pa_dataset, eng_10$cod_cnuc)
 # Number of PT and ENG Wikipages
 n_pt_pages <- length(na.omit(pa_dataset$idPtWikiData))
 n_pt_pages
+print(paste("Number of Portuguese PAs:", n_pt_pages))
 n_eng_pages <- length(na.omit(pa_dataset$idEnWikiData))
 n_eng_pages
+print(paste("Number of English PAs:", n_eng_pages))
 
 # Number of Wikipages in both languages
 pa_both <- pa_dataset %>%
@@ -381,6 +383,7 @@ pa_both <- pa_dataset %>%
 pa_both <- pa_both  %>%
   filter(!is.na(pa_both$idEnWikiData))
 n_pa_both <- nrow(pa_both)
+print(paste("Number of PAs in both languages:", n_pa_both))
 
 # Number of PT and ENG Wikipages without a pair
 pt_unpair <- pa_dataset %>%
@@ -388,12 +391,26 @@ pt_unpair <- pa_dataset %>%
 pt_unpair <- pt_unpair %>%
   filter(!is.na(pt_unpair$idPtWikiData))
 n_pt_unpair <- nrow(pt_unpair)
+print(paste("Number of only Portuguese PAs:", n_pt_unpair))
 
 eng_unpair <- pa_dataset %>%
   filter(is.na(pa_dataset$idPtWikiData))
 eng_unpair <- eng_unpair %>%
   filter(!is.na(eng_unpair$idEnWikiData))
 n_eng_unpair <- nrow(eng_unpair)
+print(paste("Number of only English PAs:", n_eng_unpair))
+
+pt_pg_new <- pa_means_merge %>%
+  filter(is.na(pa_means_merge$))
+
+cat(paste("Number of Portuguese PAs:", n_pt_pages,
+            "Number of English PAs:", n_eng_pages,
+            "Number of PAs in both languages:", n_pa_both,
+            "Number of only Portuguese PAs:", n_pt_unpair,
+            "Number of only English PAs:", n_eng_unpair,
+            sep = "\n"))
+
+
 
 #______________________________
 # ### Merge Dataset ###
