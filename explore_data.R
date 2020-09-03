@@ -733,3 +733,6 @@ date_tmp <- "2015-07-01"
 date_tmp <- as.Date(date_tmp)
 date_tmp + pt_means$total_days[1]
 
+caatinga <- pa_means_merge[ which(pa_means_merge$bioma=="Caatinga"),]
+
+summary(caatinga)

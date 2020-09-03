@@ -103,6 +103,7 @@ AICc(mod1_pt,mod2_pt,mod3_pt)
 
 #Negative binomial seems to be the best choice based on AICc - Let's keep it and run all model combinations
 dd_views_pt <- dredge(mod2_pt,evaluate=TRUE, rank = "AICc", REML = F)
+#dd_views_pt <- readRDS("hurdle_model_ENG_1.1.rds")
 dd_views_pt
 gmod_views_pt <- get.models(dd_views_pt,subset = delta < 4)
 gmod_views_pt
