@@ -140,7 +140,9 @@ names(pa_means)
 
 today <- Sys.Date()
 
-#svg(paste0("./figures/PA_Pageviews_Scatterplot", today,".svg"))
+svg(paste0("./figures/PA_Pageviews_Scatterplot", today,".svg"))
+p2
+dev.off()  
 png(paste0("./figures/PA_Pageviews_Scatterplot", today,".png"))
 p2
 dev.off()  
