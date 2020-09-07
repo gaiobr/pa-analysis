@@ -31,10 +31,11 @@ pa_dataset <- read_csv("./data/BrazilianProtectedAreas_2019-07-14.csv")
 #PA data from Correia et al paper (Ecological Indicators - Correia, R.A. et al. 2019)
 #pa_correia <- read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_correia <- read.table("/home/gaio/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
-pa_correia <- read.table("Z:/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+#pa_correia <- read.table("Z:/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+pa_correia <-read.table("F:/GAIO/data/ricardo/EI/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #PA Dataset Merge from CNUC PA Dataset and Correia PA Dataset 
 eng_means <- read_csv('./data/BPA_Wiki_Eng_2019-06-25.csv')
-eng_month_means <- read_csv('./data/BPA_Wiki_Eng_Month_2019-06-21.csv.csv')
+eng_month_means <- read_csv('./data/BPA_Wiki_Eng_Month_2019-06-21.csv')
 pt_means <- read_csv('./data/BPA_Wiki_Pt_2019-06-25.csv')
 pt_month_means <- read_csv('./data/BPA_Wiki_Pt_Month_2019-06-21.csv')
 
@@ -110,31 +111,32 @@ dev.off()
 # ---- Scatterplot: PT vs ENG Pageviews ----
 # Only PAs with pages in both languages
 names(pa_means)
-p <- ggplot(pa_means,
+(
+  p <- ggplot(pa_means,
             aes(x = mean.eng, y = mean.pt)) +
-  scale_y_log10(labels = comma) + # Forces R to plot in long format instead abbreviated
-  scale_x_log10() +
-#  coord_trans(x = "log10", y = "log10") + # Transforms axes without changing values
-#  scale_y_continuous(labels = comma) +
   geom_point() +
   geom_smooth(method = "lm") +
-  labs(title = "Brazilian Protected Areas on Wikipedia\nPageviews",
-       x = "English PA \nPageviews",
-       y = "Portuguese PA \nPageviews") +
-  theme(plot.title = element_text(size = 20,
-                                  hjust = 0.5),
-        axis.text.x = element_text(size = 12, 
+  labs(
+       x = "Page views of \nEnglish Articles",
+       y = "Page views of \nPortuguese Articles") +
+  scale_y_log10(labels = comma, limits=c(NA,1000), breaks = c(1, 10, 100, 1000)) + 
+  scale_x_log10(labels = comma, limits=c(NA,1000), breaks = c(1, 10, 100, 1000)) +
+  theme(axis.text.x = element_text(size = 10, 
                                    angle = 45, 
                                    hjust = 1),
-        axis.text.y = element_text(size = 12),
+        axis.text.y = element_text(size = 10),
         axis.title = element_text(size = 14),
-        legend.title = element_text(size = 14),
-        legend.text = element_text(size = 12))
+        panel.background = element_rect(fill = "white",
+                                        colour = "lightgrey",
+                                        size = 0.2, linetype = "solid"),
+        panel.grid.major = element_line(size = 0.5, linetype = 'solid',
+                                        colour = "#ecf0f1"), 
+        panel.grid.minor = element_line(size = 0.1, linetype = 'solid',
+                                        colour = "#ecf0f1")
+        )
+)
 
-p
-
-p2 <- ggMarginal(p, type="boxplot", size = 8, fill="gray") # Add a boxplot in margins to Lang Pageviews
-p2
+(p2 <- ggMarginal(p, type="boxplot", size = 12, fill="white")) # Add a boxplot in margins to Lang Pageviews
 
 today <- Sys.Date()
 
