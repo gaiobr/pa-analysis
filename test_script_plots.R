@@ -41,7 +41,8 @@ model <- rbind(df_pt, df_eng)
     title = "Count Model",
     subtitle = "Portuguese and English"
   ) +
-  theme(legend.position = "right") +
+  theme(legend.position = "right",
+        axis.text.y = element_text(size = 12)) +
   theme(
     panel.background = element_rect(fill = "white",
                                     colour = "lightgrey",
