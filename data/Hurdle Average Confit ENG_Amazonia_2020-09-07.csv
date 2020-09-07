@@ -1,0 +1,31 @@
+order,type,var_output,var,cat,inferior,superior,estimate,std_error,z,p,significance
+1,count,count_area_km2_mod,Area (Km²),geographical,0.6196616,1.37328053,0.996471,0.192253,5183,2.00e-07,***
+1,zero,zero_area_km2_mod,Area (Km²),geographical,0.6259636,1.09865626,0.862310,0.120587,7151, < 2e-16,***
+2,count,count_alt_r_mod,Altitudinal Range,geographical,-0.2402774,0.38025756,0.069990,0.158303,442,0.658396,
+2,zero,zero_alt_r_mod,Altitudinal Range,geographical,-0.3205800,0.16944896,-0.075566,0.125010,604,0.545526,
+3,count,count_acc_50k_mod,Accessibility (50 Km),geographical,-0.3154359,0.31862431,0.001594,0.161753,10,0.992136,
+3,zero,zero_acc_50k_mod,Accessibility (50 Km),geographical,-0.1853737,0.29206166,0.053344,0.121797,438,0.661405,
+4,count,count_pop_50k_mod,Population (50 Km),geographical,0.1064133,0.77512196,0.440768,0.170592,2584,0.009773,**
+4,zero,zero_pop_50k_mod,Population (50 Km),geographical,0.1593211,0.65359801,0.406460,0.126093,3223,0.001266,**
+5,count,count_year_mod,Year of Establishment,governance,0.2761801,0.67121693,0.473699,0.100777,4700,2.60e-06,***
+5,zero,zero_year_mod,Year of Establishment,governance,0.1704908,0.48565102,0.328071,0.080399,4081,4.49e-05,***
+6,count,count_governestadual,State Government,governance,-1.4259692,-0.42302873,-0.924499,0.255857,3613,0.000302,***
+6,zero,zero_governestadual,State Government,governance,-3.3383294,-2.35423089,-2.846280,0.251050,11337, < 2e-16,***
+7,count,count_governmunicipal,Municipal Government,governance,-3.7825242,2.53980021,-0.621362,1.612867,385,0.700050,
+7,zero,zero_governmunicipal,Municipal Government,governance,-7.3656039,-4.29169838,-5.828651,0.784174,7433, < 2e-16,***
+8,count,count_groupUS,Sustainable Use,governance,-2.7340723,-1.40550476,-2.069789,0.338927,6107, < 2e-16,***
+8,zero,zero_groupUS,Sustainable Use,governance,-3.8139434,-2.81038224,-3.312163,0.256015,12937, < 2e-16,***
+9,count,count_bir_div_mod,Bird Diversity,biological,-0.3377961,0.17364444,-0.082076,0.130472,629,0.529304,
+9,zero,zero_bir_div_mod,Bird Diversity,biological,-0.2072263,0.20997248,0.001373,0.106430,13,0.989707,
+10,count,count_biomaMata Atlantica,Atlantic Forest,biological,-1.0572940,0.70061047,-0.178342,0.448453,398,0.690865,
+10,zero,zero_biomaMata Atlantica,Atlantic Forest,biological,-0.9585077,0.25554024,-0.351484,0.309712,1135,0.256428,
+11,count,count_biomaCaatinga,Caatinga,biological,0.7194212,3.33662431,2.028023,0.667666,3037,0.002386,**
+11,zero,zero_biomaCaatinga,Caatinga,biological,-2.3387310,-0.49852246,-1.418627,0.469450,3022,0.002512,**
+12,count,count_biomaCerrado,Cerrado,biological,0.4822485,2.00024117,1.241245,0.387250,3205,0.001349,**
+12,zero,zero_biomaCerrado,Cerrado,biological,-1.2221101,-0.05208396,-0.637097,0.298482,2134,0.032805,*
+13,count,count_biomaMarinho,Marine,biological,-0.5290812,1.77591230,0.623416,0.588019,1060,0.289056,
+13,zero,zero_biomaMarinho,Marine,biological,-0.2708958,1.40274328,0.565924,0.426957,1325,0.185011,
+14,count,count_biomaPampa,Pampas,biological,-2.6186240,1.24407409,-0.687275,0.985400,697,0.485516,
+14,zero,zero_biomaPampa,Pampas,biological,-1.8239540,1.21185540,-0.306049,0.774455,395,0.692710,
+15,count,count_biomaPantanal,Pantanal,biological,-1.1991007,3.08078916,0.940844,1.091829,862,0.388845,
+15,zero,zero_biomaPantanal,Pantanal,biological,-2.6780374,2.25687404,-0.210582,1.258929,167,0.867157,
