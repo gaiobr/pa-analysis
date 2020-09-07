@@ -3,14 +3,14 @@
 rm(list=ls())
 
 ####Set working directory
-setwd('F:/GAIO/github/pa-analysis/')
+#setwd('F:/GAIO/github/pa-analysis/')
 
 library(ggplot2)
 library(tidyverse)
 
 today = Sys.Date()
-#biome = 'Amazonia'
-biome = 'Mata-Atlantica'
+biome = 'Amazonia'
+#biome = 'Mata-Atlantica'
 
 # COUNT MODEL -------------------------------------------------------------
 
