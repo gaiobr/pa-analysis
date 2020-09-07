@@ -1,0 +1,35 @@
+Confint Hurdle Model PT Avg Model
+                                 2.5 %      97.5 %
+count_(Intercept)          2.362151780  4.09269327
+count_acc_50k_mod         -0.729828634 -0.29030631
+count_alt_r_mod           -0.001738933  0.46500809
+count_area_km2_mod         0.308057766  0.89689589
+count_biomaAmazonia       -4.032500700 -2.05958835
+count_biomaCerrado        -2.662372822 -0.88847136
+count_biomaMarinho        -3.200667850 -1.16362545
+count_biomaMata Atlantica -3.345774664 -1.52992860
+count_biomaPampa          -3.016157454  0.15050327
+count_biomaPantanal       -3.868947987 -0.07282274
+count_groupUS             -2.130341799 -1.16536517
+count_year_mod             0.214381946  0.51023840
+count_Log(theta)          -1.453426416 -0.49992033
+zero_(Intercept)           0.211862359  1.95658959
+zero_area_km2_mod          0.626062109  1.09800650
+zero_biomaAmazonia         0.500534217  2.33748187
+zero_biomaCerrado         -0.099910045  1.66287609
+zero_biomaMarinho          0.942273134  3.02752810
+zero_biomaMata Atlantica   0.215720294  1.91854360
+zero_biomaPampa           -0.534903851  2.76058445
+zero_biomaPantanal        -1.382368279  3.79922127
+zero_governestadual       -3.338438818 -2.35435820
+zero_governmunicipal      -7.365205582 -4.29172962
+zero_groupUS              -3.813774982 -2.81035430
+zero_pop_50k_mod           0.159977334  0.65145655
+zero_year_mod              0.170448053  0.48559062
+count_bir_div_mod         -0.047039676  0.38713376
+count_pop_50k_mod         -0.186164860  0.36057145
+count_governestadual      -0.070072444  0.71415430
+count_governmunicipal     -1.721922317  2.59631835
+zero_alt_r_mod            -0.320544368  0.16947810
+zero_acc_50k_mod          -0.185355494  0.29200641
+zero_bir_div_mod          -0.206901768  0.21011057
