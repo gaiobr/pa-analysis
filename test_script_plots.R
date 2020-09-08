@@ -38,11 +38,11 @@ model <- rbind(df_pt, df_eng)
   xlab('Model Parameters') +
   ylab('Estimate') +
   labs(
-    title = "Count Model",
-    subtitle = "Portuguese and English"
+    title = "Count Model"
   ) +
-  theme(legend.position = "right",
-        axis.text.y = element_text(size = 12)) +
+  theme(legend.position = "none",
+        axis.text.y = element_text(size = 9),
+        plot.title = element_text(size = 9)) +
   theme(
     panel.background = element_rect(fill = "white",
                                     colour = "lightgrey",
@@ -55,10 +55,10 @@ model <- rbind(df_pt, df_eng)
 )
 
 
-svg(paste0("./figures/PA_PT_ENG_Count_Model_", biome, '_', today,".svg"))
+svg(paste0("./figures/PA_PT_ENG_Count_Model_", biome, '_', today,".svg"), width = 350, height = 300)
 p_model
 dev.off()
-png(paste0("./figures/PA_PT_ENG_Count_Model_", biome, '_', today,".png"))
+png(paste0("./figures/PA_PT_ENG_Count_Model_", biome, '_', today,".png"), width = 350, height = 300)
 p_model
 dev.off()
 
@@ -91,10 +91,11 @@ model <- df_pt
   xlab('Model Parameters') +
   ylab('Estimate') +
   labs(
-    title = "Zero Model",
-    subtitle = "Portuguese and English"
+    title = "Zero Model"
   ) +
-  theme(legend.position = "none") +
+  theme(legend.position = "none",
+        axis.text.y = element_text(size = 9),
+        plot.title = element_text(size = 9)) +
   theme(
     panel.background = element_rect(fill = "white",
                                     colour = "lightgrey",
@@ -106,9 +107,9 @@ model <- df_pt
   )
 )
 
-svg(paste0("./figures/PA_PT_ENG_Zero_Model_", biome, '_', today,".svg"))
+svg(paste0("./figures/PA_PT_ENG_Zero_Model_", biome, '_', today,".svg"), width = 350, height = 300)
 p_model
 dev.off()
-png(paste0("./figures/PA_PT_ENG_Zero_Model_", biome, '_', today,".png"))
+png(paste0("./figures/PA_PT_ENG_Zero_Model_", biome, '_', today,".png"), width = 350, height = 300)
 p_model
 dev.off()

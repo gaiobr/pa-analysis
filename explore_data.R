@@ -74,7 +74,8 @@ pa_means_vertical <- rbind(pt_means, eng_means)
 # ---- Boxplot: Pageviews by Language ----
 # All PAs with Pages #
 names(pa_means_vertical)
-p <- ggplot(pa_means_vertical, 
+(
+  p <- ggplot(pa_means_vertical, 
             aes(x = lang, y = mean, color = lang)) +
   geom_boxplot(outlier.color = "red",
                outlier.size = 1) +
@@ -97,8 +98,8 @@ p <- ggplot(pa_means_vertical,
       axis.title = element_text(size = 16),
       legend.title = element_text(size = 14),
       legend.text = element_text(size = 12))
+)
 
-p
   # scale_y_log10() # Scale Y axys into a Log scale: base 10
 today <- Sys.Date()
 
@@ -226,22 +227,52 @@ pa_means_melted <- melt(data = pa_means_merge, id.vars = c("id", "cat.y", "esfer
 head(pa_means_melted)
 
 # Rename category values
-pa_means_melted$cat.y[pa_means_melted$cat.y == "Área de Proteção Ambiental"] <- "APA"
-pa_means_melted$cat.y[pa_means_melted$cat.y == "Área de Relevante Interesse Ecológico"] <- "ARIE"
-pa_means_melted$cat.y[pa_means_melted$cat.y == "Estação Ecológica"] <- "ESEC"
-pa_means_melted$cat.y[pa_means_melted$cat.y == "Floresta"] <- "FLO"
-pa_means_melted$cat.y[pa_means_melted$cat.y == "Monumento Natural"] <- "MONAT"
+
+# Portuguese version
+# pa_means_melted$cat.y[pa_means_melted$cat.y == "Área de Proteção Ambiental"] <- "APA"
+# pa_means_melted$cat.y[pa_means_melted$cat.y == "Área de Relevante Interesse Ecológico"] <- "ARIE"
+# pa_means_melted$cat.y[pa_means_melted$cat.y == "Estação Ecológica"] <- "ESEC"
+# pa_means_melted$cat.y[pa_means_melted$cat.y == "Floresta"] <- "FLO"
+# pa_means_melted$cat.y[pa_means_melted$cat.y == "Monumento Natural"] <- "MONAT"
+# pa_means_melted$cat.y[pa_means_melted$cat.y == "Parque"] <- "PAR"
+# pa_means_melted$cat.y[pa_means_melted$cat.y == "Refúgio de Vida Silvestre"] <- "RVS"
+# pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva Biológica"] <- "REBIO"
+# pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva de Desenvolvimento Sustentável"] <- "RDS"
+# pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva Extrativista"] <- "RESEX"
+# pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva Particular do Patrimônio Natural"] <- "RPPN"
+
+# Base
+# Park (PAR) 
+# Biological Reserve (BR) 
+# Ecological Station (ES) 
+# Wildlife Refuge (WR) 
+# Natural Monument (NM) 
+# Forest (NF) 
+# Sustainable Development Reserve (SDR) 
+# Extractive Reserve (ER) 
+# Environmental Protection Area (EPA) 
+# Area of Relevant Ecological Interest (AREI)
+# Private Natural Heritage Reserve (PNHR)
+
+# English version
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Área de Proteção Ambiental"] <- "EPA"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Área de Relevante Interesse Ecológico"] <- "AREI"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Estação Ecológica"] <- "ES"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Floresta"] <- "FOR"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Monumento Natural"] <- "NM"
 pa_means_melted$cat.y[pa_means_melted$cat.y == "Parque"] <- "PAR"
-pa_means_melted$cat.y[pa_means_melted$cat.y == "Refúgio de Vida Silvestre"] <- "RVS"
-pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva Biológica"] <- "REBIO"
-pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva de Desenvolvimento Sustentável"] <- "RDS"
-pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva Extrativista"] <- "RESEX"
-pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva Particular do Patrimônio Natural"] <- "RPPN"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Refúgio de Vida Silvestre"] <- "WR"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva Biológica"] <- "BR"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva de Desenvolvimento Sustentável"] <- "SDR"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva Extrativista"] <- "ER"
+pa_means_melted$cat.y[pa_means_melted$cat.y == "Reserva Particular do Patrimônio Natural"] <- "PNHR"
+
 table(pa_means_melted$cat.y)
 
 
 
-p_c <- ggplot(data = subset(pa_means_melted, !is.na(cat.y) & cat.y != "Reserva Particular do Patrimônio Natural"),
+(
+  p_c <- ggplot(data = subset(pa_means_melted, !is.na(cat.y) & cat.y != "Reserva Particular do Patrimônio Natural"),
             aes(x = cat.y, y = value, color = variable)) +
   geom_boxplot(outlier.size = 0.3) +
   coord_trans(y = "log10") + # Transforms axes without changing values
@@ -252,7 +283,7 @@ p_c <- ggplot(data = subset(pa_means_melted, !is.na(cat.y) & cat.y != "Reserva P
 #    title = "Brazilian Protected Areas on Wikipedia\nPageviews vs Categories",
     title = "c)",
     x = "Categories",
-    y = "PA Pageviews \n (Means)") +
+    y = "Mean Page Views") +
   theme(plot.title = element_text(size = 14,
                                   hjust = 0),
         axis.text.x = element_text(size = 12, 
@@ -262,9 +293,9 @@ p_c <- ggplot(data = subset(pa_means_melted, !is.na(cat.y) & cat.y != "Reserva P
         axis.title = element_text(size = 14),
         legend.title = element_text(size = 14),
         legend.text = element_text(size = 12))
+)
 
-p_c
-today = Sys.Date()
+  today = Sys.Date()
 #svg(paste0("./figures/PA_Categories_Pageviews_Boxplot", today,".svg"), width = 1000, height = 500)
 png(paste0("./figures/PA_All_Categories_Pageviews_Boxplot", today,".png"), width = 1000, height = 500)
 p_c
