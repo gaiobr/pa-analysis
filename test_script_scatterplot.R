@@ -104,3 +104,22 @@ dev.off()
 png(paste0("./figures/PA_Pageviews_Scatterplot", today,".png"))
 p2
 dev.off()  
+
+
+# Correlation tests -------------------------------------------------------
+shapiro.test(pa_means$mean.pt)
+shapiro.test(pa_means$mean.eng)
+ggqqplot(pa_means$mean.pt, ylab = 'Portuguese')
+ggqqplot(pa_means$mean.eng, ylab = 'English')
+
+# Pearson
+cor(pa_means$mean.eng, pa_means$mean.pt, method = 'pearson')
+cor.test(pa_means$mean.eng, pa_means$mean.pt, method = 'pearson', use = 'complete.obs')
+
+# Spearman
+cor(pa_means$mean.eng, pa_means$mean.pt, method = 'spearman')
+cor.test(pa_means$mean.eng, pa_means$mean.pt, method = 'spearman')
+
+# Kendall
+cor(pa_means$mean.eng, pa_means$mean.pt, method = 'kendall')
+cor.test(pa_means$mean.eng, pa_means$mean.pt, method = 'kendall')
