@@ -5,6 +5,8 @@
 #
 # Created in 2019-05-30
 #
+# Updated in 2021-04-23 (Article Review for JNC)
+#
 # Guedes-Santos, J
 #
 #______________________________
@@ -30,6 +32,7 @@ library(ggpubr)
 pa_dataset <- read_csv("./data/BrazilianProtectedAreas_2019-07-14.csv")
 #PA data from Correia et al paper (Ecological Indicators - Correia, R.A. et al. 2019)
 #pa_correia <- read.table("/media/gaio/Argos/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
+# Argos Linux 15
 #pa_correia <- read.table("/home/gaio/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 #pa_correia <- read.table("Z:/Dropbox/Pesquisa/Doutorado/Qualificação II/Análises Ricardo/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
 pa_correia <-read.table("F:/GAIO/data/ricardo/EI/PA_data_030416.csv",sep=";",dec=".", header=T, quote = "\"")
@@ -70,19 +73,19 @@ names(pa_means)
 (
   p <- ggplot(pa_means,
               aes(x = mean.eng, y = mean.pt)) +
-    geom_point(color = "cadetblue4",
-               alpha = 0.3,
-               size = 3) +
-    geom_smooth(method = "lm") +
+    geom_point(color = "black",
+               alpha = 0.5,
+               size = 1.5) +
+#    geom_smooth(method = "lm") + # Removed in the Article Review for JNC (2021-04-23)
     labs(
-      x = "Page views of \nEnglish Articles",
-      y = "Page views of \nPortuguese Articles") +
+      x = "Page views of English Articles",
+      y = "Page views of Portuguese Articles") +
     scale_y_log10(labels = comma, limits=c(NA,1000), breaks = c(1, 10, 100, 1000)) + 
     scale_x_log10(labels = comma, limits=c(NA,1000), breaks = c(1, 10, 100, 1000)) +
-    theme(axis.text.x = element_text(size = 10, 
+    theme(axis.text.x = element_text(size = 13, 
                                      angle = 45, 
                                      hjust = 1),
-          axis.text.y = element_text(size = 10),
+          axis.text.y = element_text(size = 13),
           axis.title = element_text(size = 14),
           panel.background = element_rect(fill = "white",
                                           colour = "lightgrey",
